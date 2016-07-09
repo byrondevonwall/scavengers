@@ -1,0 +1,11 @@
+<head>
+    <title>SCAVENGERS ALL OF YA</title>
+</head>
+<body>
+    {{#if currentUser}}
+      {{> dashboard}}
+    {{else}}
+        {{> register}}
+        {{> login}}
+    {{/if}}
+</body>
