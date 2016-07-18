@@ -1,4 +1,12 @@
 <template name='dashboard'>
   <p>You're logged in.</p>
-  <aside> <a href="#" class="logout">LOG THE FUCK OUT</a></aside>
+  <a href="loginPg" class="logout">LOG THE FUCK OUT</a>
+
+  <div class="dash">
+    <br><br>
+    <div class="allQuestions">
+      {{> question}}
+    </div>
+  </div>
+
 </template>

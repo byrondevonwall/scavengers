@@ -1,11 +1,13 @@
 <head>
     <title>SCAVENGERS ALL OF YA</title>
 </head>
+
 <body>
-    {{#if currentUser}}
-      {{> dashboard}}
-    {{else}}
-        {{> register}}
-        {{> login}}
-    {{/if}}
+  <br>
+  {{> App_body}}
 </body>
+
+
+<template name="App_body">
+  {{> Template.dynamic template=main}}
+</template>

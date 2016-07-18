@@ -3,12 +3,33 @@ body {
   text-align: center; }
 
 .login {
-  display: inline-block; }
+  display: inline-block;
+  border: green 1px solid; }
 
 .eachLogin {
-  float: left; }
+  float: left;
+  border: blue 1px solid; }
 
 .heroImg {
   width: 100%; }
+
+.qBox {
+  width: 80%;
+  height: 100px;
+  margin-left: 10%;
+  background: #bfe4dc;
+  border: yellow 1px solid; }
+
+.allQuestions {
+  display: inline-block;
+  width: 100%;
+  border: red 1px solid; }
+
+.anwserMe {
+  background: white;
+  border: salmon 1px solid;
+  height: 100%;
+  float: right;
+  width: 20%; }
 
 /*# sourceMappingURL=main.css.map */

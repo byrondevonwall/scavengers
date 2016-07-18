@@ -4,11 +4,32 @@ body{
 }
 .login{
   display: inline-block;
-
+  border: green 1px solid;
 }
 .eachLogin{
   float: left;
+  border: blue 1px solid;
 }
 .heroImg{
   width:100%;
+}
+.qBox{
+  width:80%;
+  height: 100px;
+  margin-left: 10%;
+  background: rgb(191, 228, 220);
+  border: yellow 1px solid;
+}
+.allQuestions{
+  display: inline-block;
+  width: 100%;
+  border: red 1px solid;
+  //text-align: center;
+}
+.anwserMe{
+  background: white;
+  border: salmon 1px solid;
+  height:100%;
+  float:right;
+  width: 20%;
 }
