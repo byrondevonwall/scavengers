@@ -32,6 +32,7 @@ if (Meteor.isClient) {
       'click.logout': function(event){
         event.preventDefault;
         Meteor.logout();
+        window.location.href = "loginPg";
         console.log("logged out");
       },//end click.logout
 
