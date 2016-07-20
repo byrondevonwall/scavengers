@@ -17,6 +17,28 @@ if(Meteor.isServer){
     {name: "Katie", email: "katie@katie.com", roles: ['team-3']}
   ];
 
+
+};//end isServer
+
+Meteor.methods({
+  'createQuestion' : function(questionText, questionType, groupName){
+    // check(questionText, String);
+    // check(questionType, String);
+    // check(groupName, String);
+    questionsList.insert({
+      question: questionText,
+      type: questionType,
+      group: groupName
+    })
+  }
+})
+
+
+
+
+
+
+//when we drop the database, this block of code is how we add users
   // _.each(users, function(user){
   //   var id;
   //
@@ -30,4 +52,3 @@ if(Meteor.isServer){
   //     Roles.addUsersToRoles(id, user.roles, 'default-group')
   //   }
   // });//end each
-}//end isServer
