@@ -2,13 +2,55 @@ body {
   background: #A1D7D9;
   text-align: center; }
 
-.login {
+.off {
+  display: none; }
+
+.loginArea {
   display: inline-block;
-  border: green 1px solid; }
+  height: 300px;
+  font-size: 24px; }
 
 .eachLogin {
-  float: left;
-  border: blue 1px solid; }
+  text-align: center;
+  height: 70px;
+  font-size: 36px; }
+  .eachLogin input {
+    height: 60px;
+    width: 300px;
+    font-size: 34px; }
+
+.needRegBtn {
+  display: inline-block;
+  background: #73948d;
+  width: 300px;
+  padding: 15px;
+  text-align: center; }
+
+.modalGrey {
+  background: rgba(115, 148, 141, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1; }
+
+.modalBox {
+  background: #A1D7D9;
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  height: 30%;
+  z-index: 15; }
+  .modalBox input {
+    height: 60px;
+    width: 300px;
+    font-size: 34px;
+    z-index: 17; }
+
+.logoutBtn {
+  border: purple 1px solid; }
 
 .heroImg {
   width: 100%; }
@@ -25,9 +67,9 @@ body {
   width: 100%;
   border: red 1px solid; }
 
-.anwserMe {
+.anwserTheQ {
   background: white;
-  border: salmon 1px solid;
+  border: green 1px solid;
   height: 100%;
   float: right;
   width: 20%; }

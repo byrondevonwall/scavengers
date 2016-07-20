@@ -1,8 +1,20 @@
 
 <template name ="loginPg">
   <img src="images/2016CSHlogo.jpg" class="heroImg">
-  <div class="login">
-    {{> register}}
-    {{> login}}
+  <div class="loginArea"><br>
+    <div class="needRegBtn">
+      Click here to sign up!<br>
+    </div>
+    <br><br>
+    or just log in if you've already signed up.
+    <div class="off modalGrey">
+      <div class="off modalBox" id="regModal">
+        <br><br>
+        {{> register}}
+      </div>
+    </div>
+    <div class="needLog">
+      {{> login}}
+    </div>
   </div>
 </template>
