@@ -1,4 +1,5 @@
 if(Meteor.isServer){
+  //declare seed users
   var users = [
     {name: "Matt", email:"matt@matt.com", roles: ['team-1']},
     {name: "Damian", email:"damian@damian.com", roles: ['team-1']},
@@ -16,6 +17,7 @@ if(Meteor.isServer){
     {name: "Jesalyn", email: "jesalyn@jesalyn.com", roles: ['team-3']},
     {name: "Katie", email: "katie@katie.com", roles: ['team-3']}
   ];
+
   //when we drop the database, this block of code is how we add users
     // _.each(users, function(user){
     //   var id;
@@ -33,7 +35,9 @@ if(Meteor.isServer){
 
 };//end isServer
 
+
 Meteor.methods({
+  //method to create question...to do so type in chrome console: `Meteor.call('createQuestion', 'questiontext', 'questiontype', 'teamname')`
   'createQuestion' : function(questionText, questionType, groupName){
     check(questionText, String);
     check(questionType, String);
@@ -44,7 +48,7 @@ Meteor.methods({
       group: groupName
     })
   }
-})
+});//end methods
 
 
 

@@ -60,7 +60,7 @@ if (Meteor.isClient) {
 
 
     });//end template.register.events
-
+    //got rid of client-side email verification in favor of server-side (see server/app.js)
     Template.login.events({
       'submit form': function(event) {
           var isGood = false;
@@ -98,16 +98,14 @@ if (Meteor.isClient) {
     });//end template.dashboard.events
 
     Template.dashboard.helpers({
+      //pull questions from mongo collection based on user's team name
       'questions' : function(){
+        //get user, the using that var get team name
         var currentUser = Meteor.user();
         var team = currentUser.roles.defaultGroup[0];
-        console.log(team)
+        // console.log(team)
+        //find questions marked for relevant team based on team name in Q collection
         return questionsList.find({group: team})
-      },
-      'equals' : function(a,b){
-        if(a == b){
-          return true;
-        }
       }
     })
 }//end isclient
