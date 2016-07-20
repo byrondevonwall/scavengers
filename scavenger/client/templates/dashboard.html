@@ -5,7 +5,11 @@
   <div class="dash">
     <br><br>
     <div class="allQuestions">
-      {{> question}}
+      {{#each questions}}
+
+          <li class='question'>{{question}}</li>
+
+        {{/each}}
     </div>
   </div>
 

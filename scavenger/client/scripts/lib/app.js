@@ -1,6 +1,6 @@
 //https://www.sitepoint.com/creating-custom-login-registration-form-with-meteor/
 
-var emails = ['bob@bob.com', 'matt@matt.com', 'email@email.com'];
+var emails = [];
 
 if (Meteor.isClient) {
 
@@ -96,4 +96,18 @@ if (Meteor.isClient) {
       }//end anwser the q event
 
     });//end template.dashboard.events
+
+    Template.dashboard.helpers({
+      'questions' : function(){
+        var currentUser = Meteor.user();
+        var team = currentUser.roles.defaultGroup[0];
+        console.log(team)
+        return questionsList.find({group: team})
+      },
+      'equals' : function(a,b){
+        if(a == b){
+          return true;
+        }
+      }
+    })
 }//end isclient

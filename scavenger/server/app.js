@@ -16,15 +16,28 @@ if(Meteor.isServer){
     {name: "Jesalyn", email: "jesalyn@jesalyn.com", roles: ['team-3']},
     {name: "Katie", email: "katie@katie.com", roles: ['team-3']}
   ];
-
+  //when we drop the database, this block of code is how we add users
+    // _.each(users, function(user){
+    //   var id;
+    //
+    //   id = Accounts.createUser({
+    //     email: user.email,
+    //     password: "password",
+    //     profile: {name: user.name}
+    //   });
+    //
+    //   if(user.roles.length > 0){
+    //     Roles.addUsersToRoles(id, user.roles, 'defaultGroup')
+    //   }
+    // });//end each
 
 };//end isServer
 
 Meteor.methods({
   'createQuestion' : function(questionText, questionType, groupName){
-    // check(questionText, String);
-    // check(questionType, String);
-    // check(groupName, String);
+    check(questionText, String);
+    check(questionType, String);
+    check(groupName, String);
     questionsList.insert({
       question: questionText,
       type: questionType,
@@ -49,6 +62,6 @@ Meteor.methods({
   //   });
   //
   //   if(user.roles.length > 0){
-  //     Roles.addUsersToRoles(id, user.roles, 'default-group')
+  //     Roles.addUsersToRoles(id, user.roles, 'defaultGroup')
   //   }
   // });//end each
