@@ -93,9 +93,18 @@ if (Meteor.isClient) {
         event.preventDefault();
         window.location.href = "anwserMe";
         console.log("clicked the awnser");
+        var questionId = this._id;
+        Session.set('selectedQuestion', questionId);
       }//end anwser the q event
 
     });//end template.dashboard.events
+
+    Template.answerMe.helpers({
+      'selectedQuestion' : function(){
+        var questionId = Session.get('selectedQuestion');
+        return questionsList.find({_id: questionId});
+      }
+    })
 
     Template.dashboard.helpers({
       //pull questions from mongo collection based on user's team name
