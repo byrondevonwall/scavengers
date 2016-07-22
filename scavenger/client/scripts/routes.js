@@ -1,10 +1,10 @@
-FlowRouter.route( '/anwserMe', {
+FlowRouter.route( '/anwserPage', {
   action: function() {
     // Do whatever we need to do when we visit this page
     console.log( "Okay, we're on the anwserMe page!" );
-    BlazeLayout.render( 'anwserMe', { main: 'anwserMe' } );
+    BlazeLayout.render( 'anwserPage', { main: 'anwserPage' } );
   },
-  name: 'anwserMe' // Optional route name.
+  name: 'anwserPage' // Optional route name.
 });
 
 FlowRouter.route( '/dashboard', {

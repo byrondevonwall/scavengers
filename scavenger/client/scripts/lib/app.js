@@ -91,7 +91,7 @@ if (Meteor.isClient) {
 
       'click .anwserTheQ': function(event){
         event.preventDefault();
-        window.location.href = "anwserMe";
+        window.location.href = "anwserPage";
         console.log("clicked the awnser");
         var questionId = this._id;
         Session.set('selectedQuestion', questionId);
@@ -99,12 +99,7 @@ if (Meteor.isClient) {
 
     });//end template.dashboard.events
 
-    Template.answerMe.helpers({
-      'selectedQuestion' : function(){
-        var questionId = Session.get('selectedQuestion');
-        return questionsList.find({_id: questionId});
-      }
-    })
+
 
     Template.dashboard.helpers({
       //pull questions from mongo collection based on user's team name
