@@ -105,7 +105,7 @@ if (Meteor.isClient) {
         var team = currentUser.roles.defaultGroup[0];
         // console.log(team)
         //find questions marked for relevant team based on team name in Q collection
-        return questionsList.find({group: team})
+        return questionsList.find({groupName: team})
       }
-    })
+    });//end 'questions'
 }//end isclient
