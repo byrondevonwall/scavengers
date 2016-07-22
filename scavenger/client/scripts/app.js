@@ -35,14 +35,18 @@ if (Meteor.isClient) {
                 email: regEmail,
                 password: regPass
               }), function(error){
-              $("#regModal").addClass('off');
-              $(".modalGrey").addClass('off');
-              $(".needLog").removeClass('off');
-              // Meteor.loginWithPassword(regEmail, regPass, function(error){
-              //   console.log(error);
-              //   window.location.href = "dashboard";
-              //})//end loginwithpassword
+                if(error === undefined)//if there's no error
+                {
+                  $("#regModal").addClass('off');
+                  $(".modalGrey").addClass('off');
+                  $(".needLog").removeClass('off');
+                }//end error check
+                else
+                {
+                  console.log(error);
+                }//end else
               }//end error function
+
             }//end isgood
             else
             {
@@ -56,9 +60,7 @@ if (Meteor.isClient) {
           $("#regModal").addClass('off');
           $(".modalGrey").addClass('off');
           $(".needLog").removeClass('off');
-        }//end click modalGrey event
-
-
+        }//end click cancelReg event
     });//end template.register.events
 
     Template.login.events({

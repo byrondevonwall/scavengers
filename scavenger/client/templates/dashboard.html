@@ -1,10 +1,17 @@
 <template name='dashboard'>
-  <p>You're logged in, {{currentUser._id}}.</p>
-  <div class="logoutBtn">LOG THE FUCK OUT</div>
+
+  <div class="dashBanner">
+    You're logged in, {{currentUser._id}}.
+    <div class="logoutBtn">-Logout-</div>
+  </div>
 
   <div class="dash">
     <br><br>
     <div class="allQuestions">
+      {{> question}}
+      <br><br>
+      {{> question}}
+      <br><br>
       {{> question}}
     </div>
   </div>
