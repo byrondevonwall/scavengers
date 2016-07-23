@@ -110,6 +110,7 @@ body {
   font-size: 36px; }
 
 .question {
-  font-size: 10em; }
+  font-size: 5em;
+  border: solid thin black; }
 
 /*# sourceMappingURL=main.css.map */
