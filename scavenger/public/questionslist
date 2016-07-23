@@ -1,0 +1,14 @@
+{questionNumber: 1,
+isSA: true,
+isGPS: false,
+isItem: false,
+isPic: false,
+questionText: 'What is your Name',
+shortAnswer: '',
+isAnswered: false,
+answeredTime: '',
+groupName: 'team-1'
+ }
+
+ undefined
+ Meteor.call('createQuestion', 1, true, false, false, false, 'What is your Quest','',false,'','team-1')
