@@ -1,5 +1,43 @@
 <template name="answerPage">
   <div class="answerContainer">
-    {{theQuestion.questionText}}
+    <div class="dashBanner">
+      question # {{theQuestion.questionNumber}}<br><br>
+      <div class="questionText">{{theQuestion.questionText}}</div>
+
+    </div>
+
+    <br><br><br>
+    <textarea placeholder="Enter your short anwser here"></textarea>
+    <br><br><br>
+
+    <div class="PicGPSContainer">
+      <span class="picBox">this is where we'll do pic uploads</span>
+      <span class="gpsBox">this is where the google map will go</span>
+    </div>
+
+    <br><br><br>
+
+    <!-- {{#if theQuestion.isItem}} this... doesnt seem to work.-->
+      <form class="itemCheckFrm">Do you have the item refered to in this question?<br>
+        Yeah, we got it!<input class="radioBtn" type="radio" name="gotItem" value="true">
+        Nope.<input class="radioBtn" type="radio" name="gotItem" value="false">
+      </form>
+    <!-- {{/if}} -->
+
+    <br><br><br>
+
+    <div class="submitAnswerBtn">
+      Submit Answer!
+    </div>
+
+    <div class="anwserDebug">
+      THIS IS ALL THE QUESTION INFORMATION WE HAVE.<br>
+      short anwser: {{theQuestion.isSA}}<br>
+      GPS required: {{theQuestion.isGPS}}<br>
+      picture required: {{theQuestion.isPic}}<br>
+      item required: {{theQuestion.isItem}}<br>
+      team name: {{theQuestion.groupName}}<br>
+      already anwsered: {{theQuestion.isAnswered}}
+    </div>
   </div>
 </template>

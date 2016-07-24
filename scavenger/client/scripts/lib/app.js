@@ -97,7 +97,7 @@ if (Meteor.isClient) {
         console.log(questionId)
         Session.set('selectedQuestion', questionId);
         var testId = Session.get('selectedQuestion')
-        
+
         console.log(testId)
       }//end anwser the q event
 

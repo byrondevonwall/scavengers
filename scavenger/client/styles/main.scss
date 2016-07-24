@@ -128,3 +128,50 @@ body{
   font-size: 5em;
   border: solid thin black;
 }
+.questionText{
+  font-size: 40px;
+  color: white;
+}
+.answerContainer{
+  padding: 20px;
+  textarea{
+    width: 100%;
+    height: 200px;
+  }
+}
+.itemCheckFrm{
+  font-size:36px;
+}
+.radioBtn{
+  width: 36px;
+  height: 36px;
+}
+.PicGPSContainer{
+  width:100%;
+}
+.gpsBox{
+  display: inline-block;
+  padding-left:.5%;
+  width:49%;
+  height:400px;
+  background: rgb(239, 240, 199);
+}
+.picBox{
+  display: inline-block;
+  padding-right:.5%;
+  width:49%;
+  height:400px;
+  background: rgb(239, 240, 199);
+}
+.anwserDebug{
+  background: rgb(228, 60, 255);
+}
+.submitAnswerBtn{
+  text-align: center;
+  width: 100%;
+  background: rgb(64, 150, 70);
+  font-size: 72px;
+}
+.backToQsBtn{
+
+}
