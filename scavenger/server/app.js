@@ -61,7 +61,10 @@ Meteor.methods({
       answerTime: answerTime,
       groupName: groupName,
     })
-  }//end create question
+  },//end create question
+
+
+
 });//end methods
 
 

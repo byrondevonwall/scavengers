@@ -7,22 +7,25 @@
     </div>
 
     <br><br><br>
-    <textarea placeholder="Enter your short anwser here"></textarea>
+    <textarea id='sa-answer' placeholder="{{#if theQuestion.shortAnswer}}
+    {{theQuestion.shortAnswer}}{{else}} Enter your short anwser here {{/if}}"></textarea>
     <br><br><br>
 
     <div class="PicGPSContainer">
       <span class="picBox">this is where we'll do pic uploads</span>
+      {{#if theQuestion.isGPS}}
       <span class="gpsBox">this is where the google map will go</span>
+      {{/if}}
     </div>
 
     <br><br><br>
 
-    <!-- {{#if theQuestion.isItem}} this... doesnt seem to work.-->
+    {{#if theQuestion.isItem}}
       <form class="itemCheckFrm">Do you have the item refered to in this question?<br>
         Yeah, we got it!<input class="radioBtn" type="radio" name="gotItem" value="true">
         Nope.<input class="radioBtn" type="radio" name="gotItem" value="false">
       </form>
-    <!-- {{/if}} -->
+    {{/if}}
 
     <br><br><br>
 

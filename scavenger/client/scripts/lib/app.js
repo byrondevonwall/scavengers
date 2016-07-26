@@ -127,4 +127,13 @@ if (Meteor.isClient) {
       }
     });
 
+    Template.answerPage.events({
+      'click .submitAnswerBtn' : function(){
+        var SAanswer = $('#sa-answer').val();
+        var questionID = Session.get('selectedQuestion');
+        questionsList.update({_id: questionID},
+                              {$set: {shortAnswer: SAanswer}} )
+      }
+    });
+
 }//end isclient
