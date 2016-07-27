@@ -1,18 +1,26 @@
 <template name="answerPage">
   <div class="answerContainer">
     <div class="dashBanner">
-      question # {{theQuestion.questionNumber}}<br><br>
-      <div class="questionText">{{theQuestion.questionText}}</div>
+      <div class="backToQsBtn">
+        Back to Questions
+      </div>
+      <br><br>
+      <div class="questionText">question # {{theQuestion.questionNumber}}</div>
+      <div class="questionText off">{{theQuestion.questionText}}</div>
 
     </div>
 
     <br><br><br>
+    {{#if theQuestion.isSA}}
     <textarea id='sa-answer' placeholder="{{#if theQuestion.shortAnswer}}
     {{theQuestion.shortAnswer}}{{else}} Enter your short anwser here {{/if}}"></textarea>
+    {{/if}}
     <br><br><br>
 
     <div class="PicGPSContainer">
+      {{#if theQuestion.isPic}}
       <span class="picBox">this is where we'll do pic uploads</span>
+      {{/if}}
       {{#if theQuestion.isGPS}}
       <span class="gpsBox">this is where the google map will go</span>
       {{/if}}
@@ -22,8 +30,8 @@
 
     {{#if theQuestion.isItem}}
       <form class="itemCheckFrm">Do you have the item refered to in this question?<br>
-        Yeah, we got it!<input class="radioBtn" type="radio" name="gotItem" value="true">
-        Nope.<input class="radioBtn" type="radio" name="gotItem" value="false">
+        Yeah, we got it!<input class="radioBtn" type="radio" name="gotItem" value="false">
+        Nope.<input class="radioBtn" type="radio" name="gotItem" value="true">
       </form>
     {{/if}}
 
@@ -33,7 +41,7 @@
       Submit Answer!
     </div>
 
-    <div class="anwserDebug">
+    <div class="anwserDebug off">
       THIS IS ALL THE QUESTION INFORMATION WE HAVE.<br>
       short anwser: {{theQuestion.isSA}}<br>
       GPS required: {{theQuestion.isGPS}}<br>
