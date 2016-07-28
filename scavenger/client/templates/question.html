@@ -4,7 +4,15 @@
 
     <span class="qBoxLeft">{{questionNumber}}</span>
       <span class="qBoxMiddle">
-        <div>{{questionText}}</div>
+        <div class="qtext">
+          {{questionText}}
+        </div>
+        <div class="iconBox">
+          {{#if isSA}}{{> shortGray}}{{/if}}
+          {{#if isPic}}{{> picGray}}{{/if}}
+          {{#if isGPS}}{{> GPSGray}}{{/if}}
+          {{#if isItem}}{{> itemGray}}{{/if}}
+        </div>
       </span>
     <span class="anwserTheQ">Tap to anwser</span>
 
