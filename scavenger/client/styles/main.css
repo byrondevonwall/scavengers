@@ -1,6 +1,7 @@
 body {
   background: #A1D7D9;
-  text-align: center; }
+  text-align: center;
+  font-family: sans-serif; }
 
 .off {
   display: none; }
@@ -51,12 +52,15 @@ body {
 
 .logoutBtn {
   float: left;
-  background: purple;
+  background: red;
   height: 100%;
-  width: 10%;
+  width: 15%;
   vertical-align: middle;
   text-align: center;
   font-size: 24px; }
+
+.logoutBtn:active {
+  background: #701111; }
 
 .heroImg {
   width: 100%; }
@@ -102,9 +106,12 @@ body {
   width: 20%;
   padding-top: 50px; }
 
+.anwserTheQ:active {
+  background: yellow; }
+
 .dashBanner {
   height: 150px;
-  width: 100%;
+  width: 101%;
   vertical-align: middle;
   background: #2856a3;
   font-size: 36px; }
@@ -117,32 +124,44 @@ body {
   font-size: 40px;
   color: white; }
 
-.answerContainer {
-  padding: 20px; }
-  .answerContainer textarea {
-    width: 100%;
-    height: 200px; }
-
-.itemCheckFrm {
+.answerContainer textarea {
+  width: 100%;
+  height: 200px; }
+.answerContainer textarea::-webkit-input-placeholder {
+  font-size: 36px; }
+.answerContainer textarea::-webkit-input-placeholder {
+  font-size: 36px; }
+.answerContainer textarea:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 36px; }
+.answerContainer textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 36px; }
+.answerContainer textarea:-ms-input-placeholder {
   font-size: 36px; }
 
+.itemCheckFrm {
+  display: inline-block;
+  font-size: 36px;
+  margin-top: 50px; }
+
 .radioBtn {
-  width: 36px;
-  height: 36px; }
+  width: 42px;
+  height: 42px; }
 
 .PicGPSContainer {
   width: 100%; }
 
 .gpsBox {
   display: inline-block;
-  padding-left: .5%;
+  float: right;
   width: 49%;
   height: 400px;
   background: #eff0c7; }
 
 .picBox {
   display: inline-block;
-  padding-right: .5%;
+  float: left;
   width: 49%;
   height: 400px;
   background: #eff0c7; }
@@ -152,8 +171,25 @@ body {
 
 .submitAnswerBtn {
   text-align: center;
-  width: 100%;
+  width: 80%;
+  height: 100px;
+  margin-left: 10%;
   background: #409646;
   font-size: 72px; }
+
+.submitAnswerBtn:active {
+  background: #61fb6b; }
+
+.backToQsBtn {
+  float: left;
+  background: purple;
+  height: 100%;
+  width: 15%;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 24px; }
+
+.backToQsBtn:active {
+  background: #311c33; }
 
 /*# sourceMappingURL=main.css.map */

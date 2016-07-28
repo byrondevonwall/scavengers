@@ -121,7 +121,6 @@ if (Meteor.isClient) {
     Template.answerPage.helpers({
       'theQuestion' : function(){
         var testId = Session.get('selectedQuestion')
-        // console.log(testId);
         var q = questionsList.findOne(testId);
         return q
       }
@@ -130,10 +129,21 @@ if (Meteor.isClient) {
     Template.answerPage.events({
       'click .submitAnswerBtn' : function(){
         var SAanswer = $('#sa-answer').val();
+        var itemAnswer = $('input[name="gotItem"]:checked').val();
         var questionID = Session.get('selectedQuestion');
         questionsList.update({_id: questionID},
-                              {$set: {shortAnswer: SAanswer}} )
-      }
-    });
+                              {$set: {
+                                shortAnswer: SAanswer,
+                                isAnswered: true,
+                                answerTime: new Date()}
+                            })//end the updateCall
+        FlowRouter.go('/dashboard');
+      },//end submitanswer event
+
+    'click .backToQsBtn' : function(){
+      FlowRouter.go('/dashboard');
+    }//end back to questions button event
+
+    });//end all answer page events.
 
 }//end isclient
