@@ -121,7 +121,6 @@ if (Meteor.isClient) {
     Template.answerPage.helpers({
       'theQuestion' : function(){
         var testId = Session.get('selectedQuestion')
-        //console.log(testId);
         var q = questionsList.findOne(testId);
         return q
       }
