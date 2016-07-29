@@ -142,8 +142,26 @@ if (Meteor.isClient) {
 
     'click .backToQsBtn' : function(){
       FlowRouter.go('/dashboard');
-    }//end back to questions button event
+    },//end back to questions button event
+
+    'click .picBox' : function(){
+      var uploader = new Slingshot.Upload("myFileUploads");
+
+      uploader.send(document.getElementById('uploadPic').files[0], function (error, downloadUrl) {
+        if (error) {
+          // Log service detailed response
+          console.error('Error uploading', uploader.xhr.response);
+          alert (error);
+        }
+        else {
+          Meteor.users.update(Meteor.userId(), {$push: {"profile.files": downloadUrl}});
+        }
+      });
+
+    }//end click picBox fn
 
     });//end all answer page events.
+
+
 
 }//end isclient
