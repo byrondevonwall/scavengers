@@ -116,7 +116,7 @@ if (Meteor.isClient) {
         //get user, the using that var get team name
         var currentUser = Meteor.user();
         var team = currentUser.roles.defaultGroup[0];
-        // console.log(team)
+        console.log(team)
         //find questions marked for relevant team based on team name in Q collections
         return questionsList.find({groupName: team})
       }
