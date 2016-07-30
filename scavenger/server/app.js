@@ -19,19 +19,19 @@ if(Meteor.isServer){
   ];
 
   //when we drop the database, this block of code is how we add users
-    // _.each(users, function(user){
-    //   var id;
-    //
-    //   id = Accounts.createUser({
-    //     email: user.email,
-    //     password: "password",
-    //     profile: {name: user.name}
-    //   });
-    //
-    //   if(user.roles.length > 0){
-    //     Roles.addUsersToRoles(id, user.roles, 'defaultGroup')
-    //   }
-    // });//end each
+    _.each(users, function(user){
+      var id;
+
+      id = Accounts.createUser({
+        email: user.email,
+        password: "password",
+        profile: {name: user.name}
+      });
+
+      if(user.roles.length > 0){
+        Roles.addUsersToRoles(id, user.roles, 'defaultGroup')
+      }
+    });//end each
     Slingshot.fileRestrictions("uploadFiles", {
       allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
       maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
