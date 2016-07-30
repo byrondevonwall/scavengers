@@ -75,6 +75,7 @@ if (Meteor.isClient) {
             Meteor.loginWithPassword(logEmail, logPass, function(error){
               if(error === undefined)//if there isnt a problem with the login info
               {
+                console.log(Meteor.user())
                 FlowRouter.go('/dashboard')
               }
               else

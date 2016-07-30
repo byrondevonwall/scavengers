@@ -53,9 +53,8 @@ if(Meteor.isServer){
 
       key: function(file){
         //store file in a directory based on a users team name
-        // console.log(this)
-        // var team = Meteor.users.findOne(this.groupName);
-        return  file.name;
+        var teamName = Meteor.user().roles.defaultGroup[0]
+        return teamName + "/" + file.name;
       }
     });
 
