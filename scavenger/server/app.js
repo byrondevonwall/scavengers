@@ -80,21 +80,21 @@ Meteor.methods({
     check(groupName, String);
     check(questionNumber, Number);
     questionsList.insert({
-      questionNumber: questionNumber,
       isSA: isSA,
       isGPS: isGPS,
       isItem: isItem,
       isPic: isPic,
-      picUrl: picUrl);
-      targetGps: targetGps);
-      answerGps: answerGps);
-      hasItem: hasItem);
+      picUrl: picUrl,
+      targetGps: targetGps,
+      answerGps: answerGps,
+      hasItem: hasItem,
       questionText: questionText,
       shortAnswer: shortAnswer,
       isAnswered: isAnswered,
       answerTime: answerTime,
       ptsAwarded: ptsAwarded,
       groupName: groupName,
+      questionNumber: questionNumber
     })
   },//end create question
 
