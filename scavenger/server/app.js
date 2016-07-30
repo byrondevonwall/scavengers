@@ -64,7 +64,6 @@ if(Meteor.isServer){
 Meteor.methods({
   //method to create question...to do so type in chrome console: `Meteor.call('createQuestion', 'questiontext', 'questiontype', 'teamname')`
   'createQuestion' : function(isSA, isGPS, isItem, isPic, picUrl, targetGps, answerGps, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, questionNumber){
-    check(questionNumber, Number);
     check(isSA, Boolean);
     check(isGPS, Boolean);
     check(isItem, Boolean);
@@ -79,6 +78,7 @@ Meteor.methods({
     check(answerTime, String);
     check(ptsAwarded, Number);
     check(groupName, String);
+    check(questionNumber, Number);
     questionsList.insert({
       questionNumber: questionNumber,
       isSA: isSA,
