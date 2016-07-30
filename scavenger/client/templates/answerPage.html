@@ -18,11 +18,16 @@
     <br><br><br>
 
     <div class="PicGPSContainer">
-    
-        {{>uploader}}
-
+      {{#if theQuestion.isPic}}
+        <span class="picBox">this is where the pic will go
+          {{#if theQuestion.picUrl}}
+            <img src="{{theQuestion.picUrl}}" width="300px" height="300px">
+          {{/if}}
+          {{>uploader}}
+        </span>
+      {{/if}}
       {{#if theQuestion.isGPS}}
-      <span class="gpsBox">this is where the google map will go</span>
+        <span class="gpsBox">this is where the google map will go</span>
       {{/if}}
     </div>
 
