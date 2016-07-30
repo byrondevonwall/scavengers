@@ -3,6 +3,10 @@
 var emails = [];
 
 if (Meteor.isClient) {
+  Slingshot.fileRestrictions("myFileUploads", {
+    allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
+    maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
+});
 
     Template.loginPg.events({
       'click .needRegBtn': function(event){
@@ -140,27 +144,35 @@ if (Meteor.isClient) {
         FlowRouter.go('/dashboard');
       },//end submitanswer event
 
-    'click .backToQsBtn' : function(){
-      FlowRouter.go('/dashboard');
-    },//end back to questions button event
-
-    'click .picBox' : function(){
-      var uploader = new Slingshot.Upload("myFileUploads");
-
-      uploader.send(document.getElementById('uploadPic').files[0], function (error, downloadUrl) {
-        if (error) {
-          // Log service detailed response
-          console.error('Error uploading', uploader.xhr.response);
-          alert (error);
-        }
-        else {
-          Meteor.users.update(Meteor.userId(), {$push: {"profile.files": downloadUrl}});
-        }
-      });
-
-    }//end click picBox fn
+      'click .backToQsBtn' : function(){
+        FlowRouter.go('/dashboard');
+      }//end back to questions button event
 
     });//end all answer page events.
+
+    Template.uploader.events({
+
+      'change #imgUpload' : function(){
+        var uploader = new Slingshot.Upload("uploadFiles");
+        var questionId = Session.get('selectedQuestion');
+        uploader.send(document.getElementById('uploadInput').files[0], function (error, downloadUrl) {
+          if (error) {
+            // Log service detailed response
+            console.log(error)
+            console.error('Error uploading' );
+            alert (error);
+          }
+          else {
+            questionsList.update({_id: questionId},
+                                  {$set: {
+                                    imgUrl: downloadUrl
+                                  }
+                                });
+          }
+        });
+
+      }//end click picBox fn
+    })
 
 
 

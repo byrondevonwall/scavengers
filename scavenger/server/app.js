@@ -32,6 +32,32 @@ if(Meteor.isServer){
     //     Roles.addUsersToRoles(id, user.roles, 'defaultGroup')
     //   }
     // });//end each
+    Slingshot.fileRestrictions("uploadFiles", {
+      allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
+      maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
+  });
+
+    Slingshot.createDirective("uploadFiles", Slingshot.S3Storage, {
+      bucket: "scavengerhuntphotos",
+      acl: "public-read",
+
+
+      authorize: function(){
+        //you can't upload if youre not logged in
+        if(!this.userId){
+          var message = "Please log in before posting files";
+          throw new Meteor.Error("Login Required", message);
+        }
+        return true;
+      },
+
+      key: function(file){
+        //store file in a directory based on a users team name
+        // console.log(this)
+        // var team = Meteor.users.findOne(this.groupName);
+        return  file.name;
+      }
+    });
 
 };//end isServer
 
@@ -66,23 +92,3 @@ Meteor.methods({
 
 
 });//end methods
-
-
-
-
-
-
-//when we drop the database, this block of code is how we add users
-  // _.each(users, function(user){
-  //   var id;
-  //
-  //   id = Accounts.createUser({
-  //     email: user.email,
-  //     password: "password",
-  //     profile: {name: user.name}
-  //   });
-  //
-  //   if(user.roles.length > 0){
-  //     Roles.addUsersToRoles(id, user.roles, 'defaultGroup')
-  //   }
-  // });//end each

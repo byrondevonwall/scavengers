@@ -18,9 +18,9 @@
     <br><br><br>
 
     <div class="PicGPSContainer">
-      {{#if theQuestion.isPic}}
-        <span id='uploadPic' class="picBox">this is where we'll do pic uploads</span>
-      {{/if}}
+    
+        {{>uploader}}
+
       {{#if theQuestion.isGPS}}
       <span class="gpsBox">this is where the google map will go</span>
       {{/if}}
