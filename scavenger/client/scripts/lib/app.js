@@ -136,11 +136,16 @@ if (Meteor.isClient) {
         var SAanswer = $('#sa-answer').val();
         var itemAnswer = $('input[name="gotItem"]:checked').val();
         var questionID = Session.get('selectedQuestion');
+        var gpsLoc = "For Now We write this in place of the GPS Location";
+        //change to meteor method
         questionsList.update({_id: questionID},
                               {$set: {
                                 shortAnswer: SAanswer,
                                 isAnswered: true,
-                                answerTime: new Date()}
+                                answerTime: new Date(),
+                                answerGps: gpsLoc,
+                                hasItem: itemAnswer,
+                                }
                             })//end the updateCall
         FlowRouter.go('/dashboard');
       },//end submitanswer event
@@ -164,9 +169,10 @@ if (Meteor.isClient) {
             alert (error);
           }
           else {
+            //change to meteor method
             questionsList.update({_id: questionId},
                                   {$set: {
-                                    imgUrl: downloadUrl
+                                    picUrl: downloadUrl
                                   }
                                 });
           }
