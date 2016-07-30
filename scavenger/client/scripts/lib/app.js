@@ -3,6 +3,10 @@
 var emails = [];
 
 if (Meteor.isClient) {
+  Slingshot.fileRestrictions("myFileUploads", {
+    allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
+    maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
+});
 
     Template.loginPg.events({
       'click .needRegBtn': function(event){
@@ -71,6 +75,7 @@ if (Meteor.isClient) {
             Meteor.loginWithPassword(logEmail, logPass, function(error){
               if(error === undefined)//if there isnt a problem with the login info
               {
+                console.log(Meteor.user())
                 FlowRouter.go('/dashboard')
               }
               else
@@ -140,10 +145,36 @@ if (Meteor.isClient) {
         FlowRouter.go('/dashboard');
       },//end submitanswer event
 
-    'click .backToQsBtn' : function(){
-      FlowRouter.go('/dashboard');
-    }//end back to questions button event
+      'click .backToQsBtn' : function(){
+        FlowRouter.go('/dashboard');
+      }//end back to questions button event
 
     });//end all answer page events.
+
+    Template.uploader.events({
+
+      'change #imgUpload' : function(){
+        var uploader = new Slingshot.Upload("uploadFiles");
+        var questionId = Session.get('selectedQuestion');
+        uploader.send(document.getElementById('uploadInput').files[0], function (error, downloadUrl) {
+          if (error) {
+            // Log service detailed response
+            console.log(error)
+            console.error('Error uploading' );
+            alert (error);
+          }
+          else {
+            questionsList.update({_id: questionId},
+                                  {$set: {
+                                    imgUrl: downloadUrl
+                                  }
+                                });
+          }
+        });
+
+      }//end click picBox fn
+    })
+
+
 
 }//end isclient
