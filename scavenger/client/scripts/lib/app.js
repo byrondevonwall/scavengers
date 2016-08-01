@@ -4,19 +4,7 @@ var emails = [];
 
 if (Meteor.isClient) {
 
-  //this restricts the type/size of file that users can upload to AWS
-  Slingshot.fileRestrictions("myFileUploads", {
-    allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
-    maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
-  });
-
-  //this is the map zoom variable for google maps
-  var MAP_ZOOM = 15;
-
-  //this loads google maps for geolocation
-  Meteor.startup(function(){
-    GoogleMaps.load();
-  })
+//----------login page helpers and events----------//
     //this instantiates the modal
     Template.loginPg.events({
       'click .needRegBtn': function(event){
@@ -29,8 +17,10 @@ if (Meteor.isClient) {
 
     });//end loginPg events
 
-    Template.register.events({
 
+
+//----------register page helpers and events----------//
+    Template.register.events({
       //this creates a user based on whether they have a valid registration
       'submit form': function(event) {
           var isGood = false;
@@ -61,7 +51,8 @@ if (Meteor.isClient) {
               console.log('sorry thats not an approved email address.')
           }
       },//end 'submit form' function
-      //this closes the registartoin modal
+
+      //this closes the registartion modal
       'click .cancelReg': function(event){
         event.preventDefault();
         console.log("register modal is down");
@@ -72,6 +63,10 @@ if (Meteor.isClient) {
 
 
   });//end template.register.events
+
+
+
+//----------login helpers and events----------//
 
     Template.login.events({
       'submit form': function(event) {
@@ -93,6 +88,10 @@ if (Meteor.isClient) {
             })//end loginwithpassword
         }//end 'submit form'
     });//end login template events
+
+
+
+//----------dashboard helpers and events----------//
 
     Template.dashboard.events({
       'click .logoutBtn': function(event){
@@ -116,8 +115,6 @@ if (Meteor.isClient) {
 
     });//end template.dashboard.events
 
-
-
     Template.dashboard.helpers({
       //pull questions from mongo collection based on user's team name
       'questions' : function(){
@@ -130,6 +127,8 @@ if (Meteor.isClient) {
       }
     });//end 'questions'
 
+
+//----------answer page helpers and events----------//
 
     Template.answerPage.helpers({
       'theQuestion' : function(){
@@ -164,30 +163,85 @@ if (Meteor.isClient) {
 
     });//end all answer page events.
 
-    Template.uploader.events({
 
-      'change #imgUpload' : function(){
-        var uploader = new Slingshot.Upload("uploadFiles");
-        var questionId = Session.get('selectedQuestion');
-        uploader.send(document.getElementById('uploadInput').files[0], function (error, downloadUrl) {
-          if (error) {
-            // Log service detailed response
-            console.log(error)
-            console.error('Error uploading' );
-            alert (error);
-          }
-          else {
-            //change to meteor method
-            questionsList.update({_id: questionId},
-                                  {$set: {
-                                    picUrl: downloadUrl
-                                  }
-                                });
-          }
-        });
 
-      }//end click picBox fn
-    })
+//----------file-uploader directives events and helpers----------//
+
+  //this restricts the type/size of file that users can upload to AWS
+  Slingshot.fileRestrictions("myFileUploads", {
+    allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
+    maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
+  });
+
+  Template.uploader.events({
+    //upload to AWS once file is selected
+    'change #imgUpload' : function(){
+      var uploader = new Slingshot.Upload("uploadFiles");
+      var questionId = Session.get('selectedQuestion');
+      uploader.send(document.getElementById('uploadInput').files[0], function (error, downloadUrl) {
+        if (error) {
+          // Log service detailed response
+          console.log(error)
+          console.error('Error uploading' );
+          alert (error);
+        }
+        else {
+          //change to meteor method
+          questionsList.update({_id: questionId},
+                                {$set: {
+                                  picUrl: downloadUrl
+                                }
+                              });
+        }
+      });
+
+    }//end click picBox fn
+  });
+
+//----------geolocation helpers events and directives----------//
+  //this is the map zoom variable for google maps
+  var MAP_ZOOM = 15;
+
+  //this loads google maps for geolocation
+  Meteor.startup(function(){
+    GoogleMaps.load({key: 'AIzaSyA4eOr-DCvq3nHOFBDMzm6hXJRFYp0jnQI'});
+  });
+
+  Template.map.helpers({
+    //set up geolocation error handling
+    geolocationError : function(){
+      var error = Geolocation.error()
+      return error && error.message;
+    },
+
+    //set up google map options
+    mapOptions: function(){
+      //declare user's current lat/lng
+      var latLng = Geolocation.latLng();
+
+      //init map once latLng is grabbed
+      if (GoogleMaps.loaded() && latLng){
+        return{
+          center: new google.maps.LatLng(latLng.lat, latLng.lng),
+          zoom: MAP_ZOOM
+        };
+      }
+    }
+  });//end helpers
+
+  //set map marker and make map update dynamically as the user moves around
+  Template.map.onCreated(function(){
+
+    GoogleMaps.ready('map', function(map){
+      //declare current user's lat/lng
+      var latLng = Geolocation.latLng();
+      //position marker at latLng
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(latLng.lat, latLng.lng),
+        map: map.instance
+      });
+    });
+  });
 
 
 
