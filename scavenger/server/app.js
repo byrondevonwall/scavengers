@@ -18,7 +18,7 @@ if(Meteor.isServer){
     {name: "Katie", email: "katie@katie.com", roles: ['team-3']}
   ];
 
-  //when we drop the database, this block of code is how we add users
+  // when we drop the database, this block of code is how we add users
     // _.each(users, function(user){
     //   var id;
     //
@@ -32,6 +32,8 @@ if(Meteor.isServer){
     //     Roles.addUsersToRoles(id, user.roles, 'defaultGroup')
     //   }
     // });//end each
+
+//this code uploads photos
     Slingshot.fileRestrictions("uploadFiles", {
       allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
       maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)

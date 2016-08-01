@@ -3,11 +3,21 @@
 var emails = [];
 
 if (Meteor.isClient) {
+
+  //this restricts the type/size of file that users can upload to AWS
   Slingshot.fileRestrictions("myFileUploads", {
     allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
     maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
-});
+  });
 
+  //this is the map zoom variable for google maps
+  var MAP_ZOOM = 15;
+
+  //this loads google maps for geolocation
+  Meteor.startup(function(){
+    GoogleMaps.load();
+  })
+    //this instantiates the modal
     Template.loginPg.events({
       'click .needRegBtn': function(event){
         event.preventDefault();
@@ -20,6 +30,8 @@ if (Meteor.isClient) {
     });//end loginPg events
 
     Template.register.events({
+
+      //this creates a user based on whether they have a valid registration
       'submit form': function(event) {
           var isGood = false;
           event.preventDefault();
@@ -42,10 +54,6 @@ if (Meteor.isClient) {
             $("#regModal").addClass('off');
             $(".modalGrey").addClass('off');
             $(".needLog").removeClass('off');
-            // Meteor.loginWithPassword(regEmail, regPass, function(error){
-            //   console.log(error);
-            //   window.location.href = "dashboard";
-            //})//end loginwithpassword
             }//end error function
           }//end isgood
           else
@@ -53,7 +61,7 @@ if (Meteor.isClient) {
               console.log('sorry thats not an approved email address.')
           }
       },//end 'submit form' function
-
+      //this closes the registartoin modal
       'click .cancelReg': function(event){
         event.preventDefault();
         console.log("register modal is down");

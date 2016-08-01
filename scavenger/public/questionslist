@@ -11,6 +11,6 @@ groupName: 'team-1'
  }
 
  undefined
- Meteor.call('createQuestion', true, false, false, true, '', '', '', false, 'What is your Quest','',false,'',0,'team-1', 1)
+ Meteor.call('createQuestion', true, false, false, true, '', '', '', false, 'What is your name?','',false,'',0,'team-1', 1)
 
 isSA, isGPS, isItem, isPic, picUrl, targetGps, answerGps, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, questionNumber){
