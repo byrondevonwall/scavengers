@@ -232,13 +232,41 @@ if (Meteor.isClient) {
   //set map marker and make map update dynamically as the user moves around
   Template.map.onCreated(function(){
 
+    var self = this;
+
+
     GoogleMaps.ready('map', function(map){
-      //declare current user's lat/lng
-      var latLng = Geolocation.latLng();
-      //position marker at latLng
-      var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(latLng.lat, latLng.lng),
-        map: map.instance
+      //this code can be modified to show a the item's location with a marker
+      // var latLng = Geolocation.latLng();
+      // //position marker at latLng
+      // var marker = new google.maps.Marker({
+      //   position: new google.maps.LatLng(latLng.lat, latLng.lng),
+      //   map: map.instance
+      // });
+
+      var marker;
+      //create and move the marker as lat/lng change
+      self.autorun(function(){
+        var latLng = Geolocation.latLng();
+        if (! latLng)
+        return;
+
+        //if the marker doesn't exist, create it.
+        if (! marker){
+          marker  = new google.maps.Marker({
+            position: new google.maps.LatLng(latLng.lat, latLng.lng),
+            map: map.instance
+          });
+        }
+
+        //the marker already exists, but position needs to update
+        else {
+          marker.setPosition(latLng);
+        }
+
+        //center and zoom map vie to current position
+        map.instance.setCenter(marker.getPosition());
+        map.instance.setZoom(MAP_ZOOM);
       });
     });
   });
