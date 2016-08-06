@@ -140,20 +140,24 @@ if (Meteor.isClient) {
 
     Template.answerPage.events({
       'click .submitAnswerBtn' : function(){
-        var SAanswer = $('#sa-answer').val();
+        var SAnswer = $('#sa-answer').val();
         var itemAnswer = $('input[name="gotItem"]:checked').val();
         var questionID = Session.get('selectedQuestion');
-        var gpsLoc = "For Now We write this in place of the GPS Location";
-        //change to meteor method
-        questionsList.update({_id: questionID},
-                              {$set: {
-                                shortAnswer: SAanswer,
-                                isAnswered: true,
-                                answerTime: new Date(),
-                                answerGps: gpsLoc,
-                                hasItem: itemAnswer,
-                                }
-                            })//end the updateCall
+        var gpsLoc = Geolocation.latLng();
+
+        //so check doesnt get hung on empty answers/not being able to pull geoloc in time
+        if(SAnswer == null || undefined){
+          SAnswer = 'not answered'
+        };
+        if (itemAnswer == null || undefined){
+          itemAnswer = 'false';
+        };
+        if(gpsLoc == null){
+          gpsLoc = {};
+        }
+        //call method to submit the answer
+        // console.log(questionID, SAnswer, itemAnswer, gpsLoc)
+        Meteor.call('submitAnswer', questionID, SAnswer, itemAnswer, gpsLoc)
         FlowRouter.go('/dashboard');
       },//end submitanswer event
 
@@ -187,11 +191,7 @@ if (Meteor.isClient) {
         }
         else {
           //change to meteor method
-          questionsList.update({_id: questionId},
-                                {$set: {
-                                  picUrl: downloadUrl
-                                }
-                              });
+          Meteor.call('uploadImage', questionId, downloadUrl);
         }
       });
 

@@ -71,8 +71,8 @@ Meteor.methods({
     check(isItem, Boolean);
     check(isPic, Boolean);
     check(picUrl, String);
-    check(targetGps, String);
-    check(answerGps, String);
+    check(targetGps, Number);
+    check(answerGps, Number);
     check(hasItem, Boolean);
     check(questionText, String);
     check(shortAnswer, String);
@@ -100,6 +100,33 @@ Meteor.methods({
     })
   },//end create question
 
+  'uploadImage' : function(questionId, downloadUrl){
+    check(questionId, String);
+    check(downloadUrl, String);
+    questionsList.update({_id: questionId},
+                          {$set: {
+                            picUrl: downloadUrl
+                          }
+                        });
+  }, //end upload image
 
+  'submitAnswer' : function(questionID, SAnswer, itemAnswer, gpsLoc){
+
+  // console.log(questionID, SAnswer, itemAnswer, gpsLoc);
+    check(questionID, String);
+    check(SAnswer, String);
+    check(itemAnswer, String);
+    check(gpsLoc, Object);
+
+    questionsList.update({_id: questionID},
+                          {$set: {
+                            shortAnswer: SAnswer,
+                            isAnswered: true,
+                            answerTime: new Date(),
+                            answerGps: gpsLoc,
+                            hasItem: itemAnswer,
+                            }
+                        })//end the updateCall
+  }
 
 });//end methods
