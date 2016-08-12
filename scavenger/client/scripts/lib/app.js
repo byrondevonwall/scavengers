@@ -93,27 +93,43 @@ if (Meteor.isClient) {
 
 //----------dashboard helpers and events----------//
 
-    Template.dashboard.events({
-      'click .logoutBtn': function(event){
-        // event.preventDefault();
-        Meteor.logout();
-        FlowRouter.go("/loginPg");
-        console.log("logged out");
-      },//end click.logoutbtn
+Template.dashboard.events({
+  'click .logoutBtn': function(event){
+    // event.preventDefault();
+    Meteor.logout();
+    FlowRouter.go("/loginPg");
+    console.log("logged out");
+  },//end click.logoutbtn
 
-      'click .anwserTheQ': function(event){
-        // event.preventDefault();
-        FlowRouter.go('/answerPage')
-        console.log("clicked the answer");
-        var questionId = this._id;
-        console.log(questionId)
-        Session.set('selectedQuestion', questionId);
-        var testId = Session.get('selectedQuestion')
+  'click .hamburger': function(event){
+    // event.preventDefault();
+    if($('.hamMenu').hasClass("off"))
+    {
+      $(".hamMenu").removeClass('off');
+      $(".modalGrey").removeClass('off');
+      console.log("opened hamburger menu");
+    }
+    else
+    {
+      $(".hamMenu").addClass('off');
+      $(".modalGrey").addClass('off');
+      console.log("closed hamburger menu");
+    }
+  },//end click.logoutbtn
 
-        console.log(testId)
-      }//end anwser the q event
+  'click .qBox': function(event){
+    // event.preventDefault();
+    FlowRouter.go('/answerPage')
+    console.log("clicked the answer");
+    var questionId = this._id;
+    console.log(questionId)
+    Session.set('selectedQuestion', questionId);
+    var testId = Session.get('selectedQuestion')
 
-    });//end template.dashboard.events
+    console.log(testId)
+  }//end anwser the q event
+
+});//end template.dashboard.events
 
     Template.dashboard.helpers({
       //pull questions from mongo collection based on user's team name

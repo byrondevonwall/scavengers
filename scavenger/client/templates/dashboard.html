@@ -1,20 +1,37 @@
 <template name='dashboard'>
 
-  <div class="dashBanner">
-    You're logged in, {{currentUser.profile.name}}.
-    <div class="logoutBtn">-Logout-</div>
-  </div>
+    <div class="dashBanner">
 
-  <div class="dash">
-    <br><br>
-    <div class="allQuestions">
-      {{#each questions}}
-
-        {{>question}}<br>
-
-      {{/each}}
+      <span class="hamburger">Options</span>
+      <br>
+      You're logged in, {{currentUser.profile.name}}.<br><br>
+      &nbsp;&nbsp;<span class="dashTitle">Questions</span>
 
     </div>
-  </div>
+
+    <div class="dash">
+      <br><br>
+      <div class="allQuestions">
+        {{#each questions}}
+
+          {{>question}}<br><br>
+
+        {{/each}}
+
+      </div>
+    </div>
+
+    <div class="off modalGrey">
+      <div class="hamMenu off animate slideInLeft">
+        <ul>
+          <li>show all questions</li>
+          <li>show only answered questions</li>
+          <li>show only unanswered questions</li>
+          <li>about the hunt</li>
+          <li>Sponsors</li>
+          <li><span class="logoutBtn">-Logout-</span></li>
+        </ul>
+      </div>
+    </div>
 
 </template>
