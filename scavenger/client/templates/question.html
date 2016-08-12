@@ -1,11 +1,12 @@
+
 <template name="question">
 
   <div class="qBox">
 
-    <span class="qBoxLeft">{{questionNumber}}</span>
+    <span class="qBoxLeft {{#if isAnswered}}answered{{/if}}">{{questionNumber}}</span>
       <span class="qBoxMiddle">
         <div class="qtext">
-          {{questionText}}
+          <!-- {{questionText}} -->
         </div>
         <div class="iconBox">
           {{#if isSA}}{{> shortGray}}{{/if}}
@@ -14,7 +15,9 @@
           {{#if isItem}}{{> itemGray}}{{/if}}
         </div>
       </span>
-    <span class="anwserTheQ">Tap to anwser</span>
+    <span class="anwserTheQ {{#if isAnswered}}answered{{/if}}">
+      {{#if isAnswered}}{{> answeredQuestion}}<br>Answered!<br>Tap to change{{else}}<br>Tap<br>to<br> anwser{{/if}}
+    </span>
 
   </div>
 

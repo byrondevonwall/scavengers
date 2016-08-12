@@ -205,7 +205,6 @@ body {
 
 .picBox {
   display: inline-block;
-  float: left;
   width: 49%;
   height: 300px;
   background: #eff0c7; }
