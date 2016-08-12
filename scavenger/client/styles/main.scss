@@ -1,5 +1,6 @@
 body{
-  background: #A1D7D9;
+  background: #eee;
+  //background: red;
   text-align: center;
   font-family: sans-serif;
 }
@@ -7,20 +8,30 @@ body{
   display: none;
 }
 .loginArea{
+  background: #A1D7D9;
   display: inline-block;
   //border: green 1px solid;
-  height: 300px;
+  //height: 100%;
+  width: 100%;
   font-size: 24px;
+}
+.loginContainer{
+  display: inline-block;
+  position: relative;
+  background: #A1D7D9;
+  height: 100%;
+  width: 100%;
+
 }
 .eachLogin{
   text-align: center;
   //border: blue 1px solid;
   height: 70px;
-  font-size: 36px;
+  font-size: 24px;
   input{
     height:60px;
     width: 300px;
-    font-size: 34px;
+    font-size: 24px;
   }
 }
 .needRegBtn{
@@ -42,26 +53,48 @@ body{
 .modalBox{
   background: #A1D7D9;
   position: absolute;
-  top: 35%;
-  left: 25%;
-  width: 50%;
-  height: 30%;
+  top: 5%;
+  left: 0%;
+  width: 100%;
+  //width: 50%;
+  height: 450px;
+  padding: 10px;
   // margin-top: 40%;
   // margin-left: 25%;
   z-index: 15;
   input{
     height:60px;
     width: 300px;
-    font-size: 34px;
+    font-size: 24px;
     z-index: 17;
   }
 }
-.logoutBtn{
+.hamburger{
   // border: purple 1px solid;
   float: left;
-  background: red;
+  background: #327d80;
   height:100%;
   width: 15%;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 18px;
+  z-index: 50;
+}
+.hamburger:active{
+  background: #045e4b;
+}
+.hamMenu{
+  background: #327d80;
+  position: absolute;
+  top: 150px;
+  width: 50%;
+  height: 100%;
+  z-index: 15;
+}
+.logoutBtn{
+  // border: purple 1px solid;
+  background: red;
+  width: 100%;
   vertical-align: middle;
   text-align: center;
   font-size: 24px;
@@ -69,10 +102,17 @@ body{
 .logoutBtn:active{
   background: rgb(112, 17, 17);
 }
+.dashTitle{
+  font-size: 64px;
+  color: #35b0b5;
+  font-family: sans-serif;
+  float: left;
+}
 .heroImg{
   width:100%;
 }
 .allQuestions{
+  //margin-top: 200px;
   display: inline-block;
   width: 100%;
   //border: red 1px solid;
@@ -80,55 +120,71 @@ body{
 .qBox{
   position: relative;
   width: 80%;
-  height: 150px;
-  margin-left: 10%;
+  height: 125px;
+  //box-sizing: border-box;
+  margin-left: 15%;
   background: rgb(191, 228, 220);
-  display: block;
+  border: black 1px solid;
+  //display: inline-block;
+  .answered{
+    background: rgb(95, 185, 72);
+  }
   //border: yellow 1px solid;
 }
 .qBoxLeft{
   //border: green 1px solid;
-  //box-sizing: border-box;
-  position: absolute;
-  padding-top: 30px;
+  //position: absolute;
+  float: left;
+  display: inline-block;
+  padding-top: 15px;
   box-sizing: border-box;
   top:0px;
   left:0px;
-  background: white;
-  font-size: 72px;
+  background: #A1D7D9;
+  .answered{
+    color: rgb(95, 185, 72);
+    background: rgb(95, 185, 72);
+  }
+  font-size: 48px;
   height:100%;
   width: 20%;
   //padding-top: 35px;
 }
 .qBoxMiddle{
   //border: red 1px solid;
+  float: left;
   display: inline-block;
   box-sizing: border-box;
   padding: 15px;
-  font-size: 24px;
-  width: 60%;
+  font-size: 18px;
+  width: 40%;
   height:100%;
   padding-top: 20px;
+  background: #eee;
 }
 .anwserTheQ{
   //border: green 1px solid;
-  font-size: 36px;
-  position: absolute;
+  float: left;
+  font-size: 24px;
+  //position: absolute;
+  //display: inline-block;
   box-sizing: border-box;
-  background: white;
+  background: #A1D7D9;
   height:100%;
-  width: 20%;
-  padding-top: 50px;
-}
-.anwserTheQ:active{
-  background: yellow;
+  width: 40%;
+  .answered{
+    color: rgb(95, 185, 72);
+    background: rgb(95, 185, 72);
+  }
 }
 .dashBanner{
+  //position: fixed;
   height: 150px;
   width: 101%;
   vertical-align: middle;
-  background: rgb(40, 86, 163);
-  font-size:36px;
+  background: #A1D7D9;
+  color:  #35b0b5;
+  font-size:24px;
 }
 
 .question{
@@ -136,14 +192,17 @@ body{
   border: solid thin black;
 }
 .questionText{
-  font-size: 40px;
-  color: white;
+  font-size: 36px;
+  color: #eee;
 }
 .answerContainer{
+  // margin-top: 200px;
   //padding: 20px;
   textarea{
+    //margin-top: 200px;
     width: 100%;
     height: 200px;
+    border: 1px black solid;
   }
   textarea::-webkit-input-placeholder {
     font-size: 36px;
@@ -163,7 +222,7 @@ body{
 }
 .itemCheckFrm{
   display: inline-block;
-  font-size: 36px;
+  font-size: 24px;
   margin-top: 50px;
 }
 .radioBtn{
@@ -172,13 +231,14 @@ body{
 }
 .PicGPSContainer{
   width:100%;
+  display: inline-block;
 }
 .gpsBox{
   display: inline-block;
   //padding-left:.5%;
   float: right;
   max-width:49%;
-  height:400px;
+  height:300px;
   background: rgb(239, 240, 199);
 }
 .picBox{
@@ -186,11 +246,15 @@ body{
   //padding-right:.5%;
   float: left;
   width:49%;
-  height:400px;
+  height:300px;
   background: rgb(239, 240, 199);
 }
 .anwserDebug{
   background: rgb(228, 60, 255);
+}
+.submitBtnContainer{
+  width: 100%;
+  margin-top: 10px;
 }
 .submitAnswerBtn{
   text-align: center;
@@ -198,7 +262,7 @@ body{
   height: 100px;
   margin-left:10%;
   background: rgb(64, 150, 70);
-  font-size: 72px;
+  font-size: 48px;
 }
 .submitAnswerBtn:active{
   background: rgb(97, 251, 107);
@@ -210,7 +274,7 @@ body{
   width: 15%;
   vertical-align: middle;
   text-align: center;
-  font-size: 24px;
+  font-size: 18px;
 }
 .backToQsBtn:active{
   background: rgb(49, 28, 51);
