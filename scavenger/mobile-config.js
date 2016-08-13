@@ -38,3 +38,4 @@ App.launchScreens({'iphone_2x': 'public/images/mobile/splashes/2016CSHlogo-iphon
 
 App.setPreference('Fullscreen', true);
 App.setPreference('Orientation', 'portrait');
+App.setPreference('BackgroundColor', '0xa1d7d9ff'); 

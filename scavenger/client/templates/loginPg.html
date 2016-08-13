@@ -1,20 +1,23 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 <template name ="loginPg">
   <div class="loginContainer">
-    <img src="images/2016CSHlogo.jpg" class="heroImg" height="550px">
-    <div class="loginArea"><br>
+    <img src="images/2016CSHlogo.jpg" class="heroImg">
+    <div class="loginArea">
+      <div class="needLog">
+        {{> login}}
+      </div>
+
       <div class="needRegBtn">
         Click here to sign up!<br>
       </div>
       <br><br>
-      or just log in if you've already signed up.
       <div class="off modalGrey">
         <div class="off modalBox animated slideInUp" id="regModal">
           <br><br>
           {{> register}}
         </div>
-      </div>
-      <div class="needLog">
-        {{> login}}
       </div>
     </div>
     <br>
