@@ -122,9 +122,16 @@ Template.dashboard.events({
     console.log(questionId)
     Session.set('selectedQuestion', questionId);
     var testId = Session.get('selectedQuestion')
-
     console.log(testId)
-  }//end anwser the q event
+  },//end anwser the q event
+
+  'click .aboutPg': function(event){
+    FlowRouter.go('/aboutPg');
+  },//end click .modalgrey
+
+  'click .sponsorsPg': function(event){
+    FlowRouter.go('/sponsorsPg');
+  },//end click .modalgrey
 
 });//end template.dashboard.events
 
@@ -140,6 +147,21 @@ Template.dashboard.events({
       }
     });//end 'questions'
 
+//-------------about page events-------------------//
+Template.aboutPg.events({
+  'click .back': function(event){
+    console.log("back to dash");
+    FlowRouter.go("/dashboard");
+    }//end click.logoutbtn
+  });//end dashboard events
+
+  //-------------sponsors page events-------------------//
+  Template.sponsorsPg.events({
+    'click .back': function(event){
+      console.log("back to dash");
+      FlowRouter.go("/dashboard");
+      }//end click.logoutbtn
+    });//end dashboard events
 
 //----------answer page helpers and events----------//
 

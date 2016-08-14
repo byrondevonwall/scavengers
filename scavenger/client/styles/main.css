@@ -61,6 +61,7 @@ body {
   top: 5%;
   left: 5%;
   width: 85%;
+  height: 500px;
   padding: 10px;
   z-index: 15; }
   .modalBox input {
@@ -92,6 +93,25 @@ body {
   width: 50%;
   height: 100%;
   z-index: 15; }
+
+.menuOpt:active {
+  background: #045e4b; }
+
+.back {
+  display: visible;
+  padding-top: 20px;
+  box-sizing: border-box;
+  float: left;
+  background: #327d80;
+  height: 100%;
+  width: 15%;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 18px;
+  z-index: 50; }
+
+.back:active {
+  background: #045e4b; }
 
 .iconDesc {
   width: 80;
