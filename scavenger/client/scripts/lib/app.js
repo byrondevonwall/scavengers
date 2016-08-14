@@ -103,19 +103,16 @@ Template.dashboard.events({
 
   'click .hamburger': function(event){
     // event.preventDefault();
-    if($('.hamMenu').hasClass("off"))
-    {
       $(".hamMenu").removeClass('off');
       $(".modalGrey").removeClass('off');
       console.log("opened hamburger menu");
-    }
-    else
-    {
-      $(".hamMenu").addClass('off');
-      $(".modalGrey").addClass('off');
-      console.log("closed hamburger menu");
-    }
-  },//end click.logoutbtn
+  },//end click.hamburger
+
+  'click .modalGrey': function(event){
+    $(".hamMenu").addClass('off');
+    $(".modalGrey").addClass('off');
+    console.log("closed hamburger menu");
+  },//end click .modalgrey
 
   'click .qBox': function(event){
     // event.preventDefault();
