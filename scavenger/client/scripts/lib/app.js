@@ -27,29 +27,31 @@ if (Meteor.isClient) {
           event.preventDefault();
           var regEmail = event.target.registerEmail.value;
           var regPass = event.target.registerPassword.value;
-          for (var e = 0; e < emails.length; e++){
-            if(regEmail.toLowerCase() === emails[e]){
-              isGood = true;
-            }
-          }
-          if(isGood){
-            console.log("Form submitted.", event.target.registerEmail.value);
-            //TODO---------------------------------------------------------------------------
-            //here we should check if the user is already in the DB, and if not create a user.
-            //if he is, just say, sorry thats already in there.
-            Accounts.createUser({
-              email: regEmail,
-              password: regPass
-            }), function(error){
-            $("#regModal").addClass('off');
-            $(".modalGrey").addClass('off');
-            $(".needLog").removeClass('off');
-            }//end error function
-          }//end isgood
-          else
-          {
-              console.log('sorry thats not an approved email address.')
-          }
+          var confirmPass = event.target.confirmPassword.value;
+          var userList = Meteor.users.find().fetch()
+          // for (var e = 0; e < emails.length; e++){
+          //   if(regEmail.toLowerCase() === emails[e]){
+          //     isGood = true;
+          //   }
+          // }
+          // if(isGood){
+          //   console.log("Form submitted.", event.target.registerEmail.value);
+          //   //TODO---------------------------------------------------------------------------
+          //   //here we should check if the user is already in the DB, and if not create a user.
+          //   //if he is, just say, sorry thats already in there.
+          //   Accounts.createUser({
+          //     email: regEmail,
+          //     password: regPass
+          //   }), function(error){
+          //   $("#regModal").addClass('off');
+          //   $(".modalGrey").addClass('off');
+          //   $(".needLog").removeClass('off');
+          //   }//end error function
+          // }//end isgood
+          // else
+          // {
+          //     console.log('sorry thats not an approved email address.')
+          // }
       },//end 'submit form' function
 
       //this closes the registartion modal
