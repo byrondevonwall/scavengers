@@ -60,6 +60,9 @@ body {
     z-index: 17; }
 
 .hamburger {
+  display: visible;
+  padding-top: 40px;
+  box-sizing: border-box;
   float: left;
   background: #327d80;
   height: 100%;
@@ -75,7 +78,7 @@ body {
 .hamMenu {
   background: #327d80;
   position: absolute;
-  top: 150px;
+  top: 100px;
   width: 50%;
   height: 100%;
   z-index: 15; }
@@ -90,11 +93,27 @@ body {
 .logoutBtn:active {
   background: #701111; }
 
+.dashBanner {
+  height: 100px;
+  width: 100%;
+  vertical-align: middle;
+  background: #A1D7D9;
+  color: #35b0b5;
+  font-size: 24px; }
+
+.dashLogin {
+  margin-top: -20px;
+  font-size: 28px;
+  color: #35b0b5;
+  font-family: sans-serif;
+  float: left; }
+
 .dashTitle {
   font-size: 64px;
   color: #35b0b5;
   font-family: sans-serif;
-  float: left; }
+  float: left;
+  margin-top: -35px; }
 
 .heroImg {
   width: 100%; }
@@ -149,14 +168,6 @@ body {
   .anwserTheQ .answered {
     color: #5fb948;
     background: #5fb948; }
-
-.dashBanner {
-  height: 150px;
-  width: 101%;
-  vertical-align: middle;
-  background: #A1D7D9;
-  color: #35b0b5;
-  font-size: 24px; }
 
 .question {
   font-size: 5em;

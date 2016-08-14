@@ -2,9 +2,24 @@
 
     <div class="dashBanner">
 
+      <div class="off modalGrey">
+
+        <div class="hamMenu off animate slideInLeft">
+          <br><br>
+          <ul>
+            <!-- <li>show all questions</li>
+            <li>show only answered questions</li>
+            <li>show only unanswered questions</li> -->
+            <li>about the hunt</li><br>
+            <li>Sponsors</li><br>
+            <li><span class="logoutBtn">-Logout-</span></li><br>
+          </ul>
+        </div>
+      </div>
+
       <span class="hamburger">Options</span>
       <br>
-      You're logged in, {{currentUser.profile.name}}.<br><br>
+      <span class="dashLogin">You're logged in, {{currentUser.profile.name}}.</span><br><br>
       &nbsp;&nbsp;<span class="dashTitle">Questions</span>
 
     </div>
@@ -21,17 +36,6 @@
       </div>
     </div>
 
-    <div class="off modalGrey">
-      <div class="hamMenu off animate slideInLeft">
-        <ul>
-          <li>show all questions</li>
-          <li>show only answered questions</li>
-          <li>show only unanswered questions</li>
-          <li>about the hunt</li>
-          <li>Sponsors</li>
-          <li><span class="logoutBtn">-Logout-</span></li>
-        </ul>
-      </div>
-    </div>
+
 
 </template>
