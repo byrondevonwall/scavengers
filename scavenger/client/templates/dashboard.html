@@ -2,9 +2,27 @@
 
     <div class="dashBanner">
 
+      <div class="off modalGrey">
+
+        <div class="hamMenu off animate slideInLeft">
+          <br><br>
+          <div class="iconDesc">
+            ICON LEGEND:<br><br>
+            {{> shortWhite}}<br>A question with this icon requires a short written answer.<br><br>
+            {{> picWhite}}<br>A question with this icon requires a picture to be uploaded<br><br>
+            {{> itemWhite}}<br>A question with this icon requires a specific item to be obtained<br><br>
+          </div><br>
+          <ul>
+            <li class="menuOpt aboutPg">about the hunt</li><br>
+            <li class="menuOpt sponsorsPg">Sponsors</li><br>
+            <li class="logoutBtn">Logout</li><br>
+          </ul>
+        </div>
+      </div>
+
       <span class="hamburger">Options</span>
       <br>
-      You're logged in, {{currentUser.profile.name}}.<br><br>
+      <span class="dashLogin">You're logged in, {{currentUser.profile.name}}.</span><br><br>
       &nbsp;&nbsp;<span class="dashTitle">Questions</span>
 
     </div>
@@ -21,17 +39,6 @@
       </div>
     </div>
 
-    <div class="off modalGrey">
-      <div class="hamMenu off animate slideInLeft">
-        <ul>
-          <li>show all questions</li>
-          <li>show only answered questions</li>
-          <li>show only unanswered questions</li>
-          <li>about the hunt</li>
-          <li>Sponsors</li>
-          <li><span class="logoutBtn">-Logout-</span></li>
-        </ul>
-      </div>
-    </div>
+
 
 </template>
