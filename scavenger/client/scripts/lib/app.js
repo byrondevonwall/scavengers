@@ -1,3 +1,20 @@
+Meteor.startup(function () {
+
+    sAlert.config({
+        effect: '',
+        position: 'top-right',
+        timeout: 5000,
+        html: false,
+        onRouteClose: true,
+        stack: true,
+        offset: 0, // in px - will be added to first alert (bottom or top - depends of the position in config)
+        beep: false,
+        onClose: _.noop //
+    });//end Salert config
+
+});//end startup scripts
+
+
 //https://www.sitepoint.com/creating-custom-login-registration-form-with-meteor/
 
 var emails = [];
@@ -23,35 +40,28 @@ if (Meteor.isClient) {
     Template.register.events({
       //this creates a user based on whether they have a valid registration
       'submit form': function(event) {
-          var isGood = false;
           event.preventDefault();
           var regEmail = event.target.registerEmail.value;
+          var regName = event.target.registerName.value
           var regPass = event.target.registerPassword.value;
           var confirmPass = event.target.confirmPassword.value;
-          var userList = Meteor.users.find().fetch()
-          // for (var e = 0; e < emails.length; e++){
-          //   if(regEmail.toLowerCase() === emails[e]){
-          //     isGood = true;
-          //   }
-          // }
-          // if(isGood){
-          //   console.log("Form submitted.", event.target.registerEmail.value);
-          //   //TODO---------------------------------------------------------------------------
-          //   //here we should check if the user is already in the DB, and if not create a user.
-          //   //if he is, just say, sorry thats already in there.
-          //   Accounts.createUser({
-          //     email: regEmail,
-          //     password: regPass
-          //   }), function(error){
-          //   $("#regModal").addClass('off');
-          //   $(".modalGrey").addClass('off');
-          //   $(".needLog").removeClass('off');
-          //   }//end error function
-          // }//end isgood
-          // else
-          // {
-          //     console.log('sorry thats not an approved email address.')
-          // }
+          console.log(regEmail, regName, regPass, confirmPass);
+          if(regPass === confirmPass){
+            Accounts.createUser({
+              email: regEmail,
+              password: regPass,
+              profile:{name: regName}
+            });
+            sAlert.success('You have been registered, please Log In!');
+            $("#regEmail").val('');
+            $("#regName").val('');
+            $("#regPass").val('');
+            $("#regPassConf").val('');
+          } else{
+            sAlert.error('Please enter a matching password');
+            $("#regPass").val('');
+            $("#regPassConf").val('');
+          }
       },//end 'submit form' function
 
       //this closes the registartion modal
@@ -61,6 +71,10 @@ if (Meteor.isClient) {
         $("#regModal").addClass('off');
         $(".modalGrey").addClass('off');
         $(".needLog").removeClass('off');
+        $("#regEmail").val('');
+        $("#regName").val('');
+        $("#regPass").val('');
+        $("#regPassConf").val('');
       }//end click modalGrey event
 
 
@@ -105,16 +119,19 @@ Template.dashboard.events({
 
   'click .hamburger': function(event){
     // event.preventDefault();
+    if($('.hamMenu').hasClass("off"))
+    {
       $(".hamMenu").removeClass('off');
       $(".modalGrey").removeClass('off');
       console.log("opened hamburger menu");
-  },//end click.hamburger
-
-  'click .modalGrey': function(event){
-    $(".hamMenu").addClass('off');
-    $(".modalGrey").addClass('off');
-    console.log("closed hamburger menu");
-  },//end click .modalgrey
+    }
+    else
+    {
+      $(".hamMenu").addClass('off');
+      $(".modalGrey").addClass('off');
+      console.log("closed hamburger menu");
+    }
+  },//end click.logoutbtn
 
   'click .qBox': function(event){
     // event.preventDefault();
@@ -124,16 +141,9 @@ Template.dashboard.events({
     console.log(questionId)
     Session.set('selectedQuestion', questionId);
     var testId = Session.get('selectedQuestion')
+
     console.log(testId)
-  },//end anwser the q event
-
-  'click .aboutPg': function(event){
-    FlowRouter.go('/aboutPg');
-  },//end click .modalgrey
-
-  'click .sponsorsPg': function(event){
-    FlowRouter.go('/sponsorsPg');
-  },//end click .modalgrey
+  }//end anwser the q event
 
 });//end template.dashboard.events
 
@@ -149,21 +159,6 @@ Template.dashboard.events({
       }
     });//end 'questions'
 
-//-------------about page events-------------------//
-Template.aboutPg.events({
-  'click .back': function(event){
-    console.log("back to dash");
-    FlowRouter.go("/dashboard");
-    }//end click.logoutbtn
-  });//end dashboard events
-
-  //-------------sponsors page events-------------------//
-  Template.sponsorsPg.events({
-    'click .back': function(event){
-      console.log("back to dash");
-      FlowRouter.go("/dashboard");
-      }//end click.logoutbtn
-    });//end dashboard events
 
 //----------answer page helpers and events----------//
 

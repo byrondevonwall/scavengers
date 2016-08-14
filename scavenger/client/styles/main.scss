@@ -35,8 +35,25 @@ body{
   input{
     height:60px;
     width: 300px;
-    font-size: 24px;
+    font-size: 20px;
     margin: 1% 0 0 0;
+  }
+}
+.regModalText{
+  font-size: 14px;
+  margin: -20px 0 0 0;
+}
+.regLogin{
+  text-align: center;
+  //border: blue 1px solid;
+  height: 70px;
+  font-size: 24px;
+  margin: 50px 0 0 0;
+  input{
+    height:60px;
+    width: 300px;
+    font-size: 20px;
+    margin: 3% 0 3% 0;
   }
 }
 .sponsorImgs{
@@ -52,11 +69,15 @@ body{
   bottom: 0;
   left: 0;
 }
-.login-sponsor-text{
+.login-presented-text{
   width: 100%;
   text-align: center;
   font-size: 16px;
   margin: 150px 0 0 0;
+}
+.login-sponsor-text{
+  font-size: 14px;
+  margin: -5px 0 5px 0;
 }
 .cc-logo{
   width: 95%;
