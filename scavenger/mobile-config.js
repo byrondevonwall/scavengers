@@ -1,6 +1,6 @@
 App.info({
     id: 'com.example.scavengerapp',
-    name: 'CCSH-2016',
+    name: 'CCSH',
     description: 'Cary Citizen 2016 Scavenger Hunt App',
     author: 'MattByron Development Group',
     email: 'carycitizenscavengerhunt@gmail.com',
@@ -38,4 +38,4 @@ App.launchScreens({'iphone_2x': 'public/images/mobile/splashes/2016CSHlogo-iphon
 
 App.setPreference('Fullscreen', true);
 App.setPreference('Orientation', 'portrait');
-App.setPreference('BackgroundColor', '0xa1d7d9ff'); 
+App.setPreference('BackgroundColor', '0xa1d7d9ff');

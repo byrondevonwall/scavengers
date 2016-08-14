@@ -46,6 +46,24 @@ body {
   bottom: 0;
   left: 0; }
 
+.login-sponsor-text {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  margin: 150px 0 0 0; }
+
+.cc-logo {
+  width: 95%;
+  height: 70px; }
+
+.TFD-logo {
+  width: 49%;
+  height: 60px; }
+
+.COD-logo {
+  width: 49%;
+  height: 60px; }
+
 .modalGrey {
   background: rgba(115, 148, 141, 0.5);
   width: 100%;
@@ -68,7 +86,8 @@ body {
     height: 60px;
     width: 300px;
     font-size: 24px;
-    z-index: 17; }
+    z-index: 17;
+    margin: -50px 0 0 0; }
 
 .hamburger {
   display: visible;
