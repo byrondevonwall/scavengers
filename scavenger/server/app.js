@@ -1,4 +1,9 @@
+//always use the heroku server
+
+
 if(Meteor.isServer){
+  import { DDP } from 'meteor/ddp-client'
+  DDP.connect('https://cc-scavenger-hunt.herokuapp.com')
   //declare seed users
   var users = [
     {name: "Matt", email:"matt@matt.com", roles: ['team-1']},

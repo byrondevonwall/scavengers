@@ -51,7 +51,15 @@ body {
 
 .cc-logo {
   width: 95%;
-  height: 50px; }
+  height: 70px; }
+
+.TFD-logo {
+  width: 49%;
+  height: 60px; }
+
+.COD-logo {
+  width: 49%;
+  height: 60px; }
 
 .modalGrey {
   background: rgba(115, 148, 141, 0.5);
