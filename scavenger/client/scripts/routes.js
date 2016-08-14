@@ -16,6 +16,24 @@ FlowRouter.route( '/dashboard', {
   name: 'dashboard' // Optional route name.
 });
 
+FlowRouter.route( '/sponsorsPg', {
+  action: function() {
+    // Do whatever we need to do when we visit this page
+    console.log( "Okay, we're on the sponsors page!" );
+    BlazeLayout.render( 'sponsorsPg', { main: 'sponsorsPg' } );
+  },
+  name: 'sponsorsPg' // Optional route name.
+});
+
+FlowRouter.route( '/aboutPg', {
+  action: function() {
+    // Do whatever we need to do when we visit this page
+    console.log( "Okay, we're on the about page!" );
+    BlazeLayout.render( 'aboutPg', { main: 'aboutPg' } );
+  },
+  name: 'aboutPg' // Optional route name.
+});
+
 FlowRouter.route( '/loginPg', {
   action: function() {
     // Do whatever we need to do when we visit this page
