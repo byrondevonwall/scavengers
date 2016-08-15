@@ -4,7 +4,8 @@ App.info({
     description: 'Cary Citizen 2016 Scavenger Hunt App',
     author: 'MattByron Development Group',
     email: 'carycitizenscavengerhunt@gmail.com',
-    website: 'https://cc-scavenger-hunt.herokuapp.com'
+    website: 'https://cc-scavenger-hunt.herokuapp.com',
+    version: "0.0.1"
 });
 
 App.accessRule('https://cc-scavenger-hunt.herokuapp.com/*');
