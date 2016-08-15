@@ -2,7 +2,7 @@
 
 
 if(Meteor.isServer){
-  
+
   //declare seed users
   var users = [
     {name: "Matt", email:"matt@matt.com", roles: ['team-1']},
@@ -134,3 +134,8 @@ Meteor.methods({
   }
 
 });//end methods
+
+Meteor.publish('users', function(){
+  console.log("Server: publishing all users");
+  return Meteor.users.find();
+})
