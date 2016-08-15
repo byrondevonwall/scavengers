@@ -57,6 +57,9 @@ if (Meteor.isClient) {
             $("#regName").val('');
             $("#regPass").val('');
             $("#regPassConf").val('');
+            $("#regModal").addClass('off');
+            $(".modalGrey").addClass('off');
+            $(".needLog").removeClass('off');
           } else{
             sAlert.error('Please enter a matching password');
             $("#regPass").val('');
