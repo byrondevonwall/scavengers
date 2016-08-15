@@ -370,3 +370,18 @@ body{
 .backToQsBtn:active{
   background: rgb(49, 28, 51);
 }
+.sponsorLine{
+  border-bottom: 1px rgb(95, 185, 72) solid;
+  position: relative;
+  text-align: center;
+}
+.sponsorTitle{
+  // position: absolute;
+  padding: 5px;
+  top: 12px;
+  font-size: 24px;
+  background: #eee;
+  border-left: 1px rgb(95, 185, 72) solid;
+  border-right: 1px rgb(95, 185, 72) solid;
+  // color: rgb(95, 185, 72);
+}
