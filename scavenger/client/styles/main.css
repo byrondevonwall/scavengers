@@ -282,9 +282,12 @@ body {
   border-radius: 10px;
   background: rgba(255, 255, 255, 0); }
 
+.userPic {
+  z-index: 0; }
+
 .uploadWords {
   position: absolute;
-  top: 50px;
+  top: 320px;
   left: 60px;
   color: #797979; }
 
@@ -292,6 +295,10 @@ body {
   color: white; }
 
 .fileLoader {
+  z-index: 5;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   opacity: 0;
   width: 349px;
   height: 349px;
