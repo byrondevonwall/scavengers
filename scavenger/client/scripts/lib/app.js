@@ -196,9 +196,10 @@ Template.aboutPg.events({
         FlowRouter.go('/dashboard');
       },//end submitanswer event
 
-      'click .backToQsBtn' : function(){
+      'click .back' : function(){
         FlowRouter.go('/dashboard');
-      }//end back to questions button event
+      },//end back to questions button event
+
 
     });//end all answer page events.
 
@@ -212,7 +213,16 @@ Template.aboutPg.events({
     maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
   });
 
+  //click .picBox
+  //change #imgUpload
   Template.uploader.events({
+
+    // 'click .picBox' : function(){
+    //   console.log("clicked the big img upload.")
+    //   $("#uploadInput").trigger('click');
+    // },//end back to questions button event
+
+
     //upload to AWS once file is selected
     'change #imgUpload' : function(){
       var uploader = new Slingshot.Upload("uploadFiles");

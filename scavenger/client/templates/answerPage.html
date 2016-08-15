@@ -1,44 +1,44 @@
 <template name="answerPage">
-  <div class="answerContainer">
     <div class="dashBanner">
       <div class="back">
-        Back to Questions
+        Back to<br>dash<br>board
       </div>
       <br><br>
-      <div class="questionText">question # {{theQuestion.questionNumber}}</div>
+      <div class="dashTitle">question {{theQuestion.questionNumber}}</div>
       <div class="questionText off">{{theQuestion.questionText}}</div>
-
     </div>
+    <div class="answerContainer">
 
-    <br><br><br>
     <!-- {{> shortGray}} -->
     {{#if theQuestion.isSA}}
     <textarea id='sa-answer' placeholder="{{#if theQuestion.shortAnswer}}
     {{theQuestion.shortAnswer}}{{else}} Enter your short anwser here {{/if}}"></textarea>
     {{/if}}
-    <br><br><br>
+    <br><br>
 
     <div class="PicGPSContainer">
       {{#if theQuestion.isPic}}
-        <span class="picBox">this is where the pic will go
+        <!-- <span class="picBox"> -->
           {{#if theQuestion.picUrl}}
+          <!-- if we dont have a pic, do nothing -->
+          {{else}}
             <img src="{{theQuestion.picUrl}}" width="300px" height="300px">
           {{/if}}
+
           {{>uploader}}
-        </span>
+        <!-- </span> -->
       {{/if}}
     </div>
 
-    <br><br><br>
-
     {{#if theQuestion.isItem}}
       <form class="itemCheckFrm">Do you have the item refered to in this question?<br>
-        Yeah, we got it!<input class="radioBtn" type="radio" name="gotItem" value="false">
+        Yeah, we got it!<input class="radioBtn" type="radio" name="gotItem" value="false"><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Nope.<input class="radioBtn" type="radio" name="gotItem" value="true">
       </form>
     {{/if}}
 
-    <br><br><br>
+    <br><br>
 
     <div class="submitAnswerBtn">
       Submit Answer!

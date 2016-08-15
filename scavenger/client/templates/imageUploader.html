@@ -1,6 +1,10 @@
 <template name="uploader">
+
+<span class="picBox">
   <form id="imgUpload">
-    <span>Tap here to upload/take a picture</span>
-    <input id='uploadInput' type="file">
+    <input id='uploadInput' class="fileLoader" name="file" type="file">
+      <br><br><br>
+    <label for="file" class="uploadWords">Tap here to upload/take a picture</label>
   </form>
+</span>
 </template>
