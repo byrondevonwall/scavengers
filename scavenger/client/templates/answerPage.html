@@ -16,19 +16,16 @@
     {{/if}}
     <br><br>
 
-    <div class="PicGPSContainer">
+    <!-- <div class="PicGPSContainer"> -->
       {{#if theQuestion.isPic}}
-        <!-- <span class="picBox"> -->
+        <span class="picBox">
           {{#if theQuestion.picUrl}}
-          <!-- if we dont have a pic, do nothing -->
-          {{else}}
-            <img src="{{theQuestion.picUrl}}" width="300px" height="300px">
+            <img src="{{theQuestion.picUrl}}" width="300px" height="300px" class="userPic">
           {{/if}}
-
           {{>uploader}}
-        <!-- </span> -->
+        </span>
       {{/if}}
-    </div>
+    <!-- </div> -->
 
     {{#if theQuestion.isItem}}
       <form class="itemCheckFrm">Do you have the item refered to in this question?<br>
