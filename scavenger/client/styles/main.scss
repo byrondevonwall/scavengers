@@ -146,6 +146,9 @@ body{
 .menuOpt:active{
   background: #045e4b;
 }
+.menuOpt{
+  z-index: 100;
+}
 .back{
     // border: purple 1px solid;
     display: visible;
@@ -331,7 +334,7 @@ body{
 .picBox{
   position: relative;
   display: inline-block;
-  width: 350px;
+  width: 90%;
   height:350px;
   border: 10px dashed #fff;
   border-radius: 10px;
