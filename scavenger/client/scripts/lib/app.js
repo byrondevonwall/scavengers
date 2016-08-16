@@ -108,8 +108,6 @@ if (Meteor.isClient) {
         }//end 'submit form'
     });//end login template events
 
-
-
 //----------dashboard helpers and events----------//
 
 Template.dashboard.events({
@@ -122,19 +120,24 @@ Template.dashboard.events({
 
   'click .hamburger': function(event){
     // event.preventDefault();
-    if($('.hamMenu').hasClass("off"))
-    {
       $(".hamMenu").removeClass('off');
       $(".modalGrey").removeClass('off');
       console.log("opened hamburger menu");
-    }
-    else
-    {
-      $(".hamMenu").addClass('off');
-      $(".modalGrey").addClass('off');
-      console.log("closed hamburger menu");
-    }
   },//end click.logoutbtn
+
+  'click .closeBurger': function(event){
+    $(".hamMenu").addClass('off');
+    $(".modalGrey").addClass('off');
+    console.log("closed hamburger menu");
+  },//end click modalGrey event
+
+  'click .sponsorsPg' : function(){
+    FlowRouter.go('/sponsorsPg');
+  },//end back to questions button event
+
+  'click .aboutPg' : function(){
+    FlowRouter.go('/aboutPg');
+  },//end back to questions button event
 
   'click .qBox': function(event){
     // event.preventDefault();
@@ -162,6 +165,21 @@ Template.dashboard.events({
       }
     });//end 'questions'
 
+//----------Sponsors page events-------------------//
+
+Template.sponsorsPg.events({
+  'click .back' : function(){
+    FlowRouter.go('/dashboard');
+  },//end back to questions button event
+});
+
+//----------aboutPg page events-------------------//
+
+Template.aboutPg.events({
+  'click .back' : function(){
+    FlowRouter.go('/dashboard');
+  },//end back to questions button event
+});
 
 //----------answer page helpers and events----------//
 
