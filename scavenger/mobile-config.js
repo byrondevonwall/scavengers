@@ -5,7 +5,7 @@ App.info({
     author: 'MattByron Development Group',
     email: 'carycitizenscavengerhunt@gmail.com',
     website: 'https://cc-scavenger-hunt.herokuapp.com',
-    version: "0.0.1"
+    version: "0.0.2"
 });
 
 App.accessRule('https://cc-scavenger-hunt.herokuapp.com/*');
