@@ -22,20 +22,20 @@ if(Meteor.isServer){
     {name: "Katie", email: "katie@katie.com", roles: ['team-3']}
   ];
 
-  // // when we drop the database, this block of code is how we add users
-  //   _.each(users, function(user){
-  //     var id;
-  //
-  //     id = Accounts.createUser({
-  //       email: user.email,
-  //       password: "password",
-  //       profile: {name: user.name}
-  //     });
-  //
-  //     if(user.roles.length > 0){
-  //       Roles.addUsersToRoles(id, user.roles, 'defaultGroup')
-  //     }
-  //   });//end each
+  // when we drop the database, this block of code is how we add users
+    // _.each(users, function(user){
+    //   var id;
+    //
+    //   id = Accounts.createUser({
+    //     email: user.email,
+    //     password: "password",
+    //     profile: {name: user.name}
+    //   });
+    //
+    //   if(user.roles.length > 0){
+    //     Roles.addUsersToRoles(id, user.roles, 'defaultGroup')
+    //   }
+    // });//end each
 
 //this code uploads photos
     Slingshot.fileRestrictions("uploadFiles", {
