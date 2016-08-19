@@ -1,11 +1,11 @@
 App.info({
-    id: 'com.mattbyrondev.ccsh2016',
-    name: 'CCSH',
+    id: 'com.mattandyrondev.ccsh',
+    name: 'CCSH-2016',
     description: 'Cary Citizen 2016 Scavenger Hunt App',
     author: 'MattByron Development Group',
     email: 'byronssupersweetdevacct@gmail.com',
     website: 'https://cc-scavenger-hunt.herokuapp.com',
-    version: "0.0.2"
+    version: "0.0.3"
 });
 
 App.accessRule('https://cc-scavenger-hunt.herokuapp.com/*');

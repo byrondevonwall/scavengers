@@ -21,6 +21,22 @@ var emails = [];
 
 if (Meteor.isClient) {
 
+  // var questionsArray =[
+  //   [false, false, true, '', false, "Years ago this sculpture was in another station, Did it 'Getaway' to its new location? Have a team member climb inside and take a seat. Take their photo: it will look pretty neat. TEAM MEMBER PHOTO", '', false, '', 175, '', 4],
+  //   [false, false, true, '', false, "Dragon Boats will race on Symphony Lake today. Asian Focus brings this unique Chinese event annually to Cary. Take a photo with a boat. TEAM PHOTO", '', false, '', 225, '', 5],
+  //   [false, false, true, '', false, "While you're eating Thanksgiving turkey, this high school's marching band will travel far. Find where they practice and take your team photo on the star TEAM PHOTO", '', false, '', 185, '', 6],
+  // ];//end questionsArray
+  //
+  // for(var team=0;team<=3;team++)
+  // {
+  //   console.log('adding questions')
+  //   for(var q=0; q<questionsArray.length; q++)
+  //   {
+  //     console.log( questionsArray[q][0], questionsArray[q][1], questionsArray[q][2], questionsArray[q][3], questionsArray[q][4], questionsArray[q][5], questionsArray[q][6], questionsArray[q][7], questionsArray[q][8], questionsArray[q][9], "team-"+team, questionsArray[q][11])
+  //     Meteor.call('createQuestion', questionsArray[q][0], questionsArray[q][1], questionsArray[q][2], questionsArray[q][3], questionsArray[q][4], questionsArray[q][5], questionsArray[q][6], questionsArray[q][7], questionsArray[q][8], questionsArray[q][9], "team-"+team, questionsArray[q][11]);
+  //   }//end question for loop
+  // }//end team for loop
+
 //----------login page helpers and events----------//
     //this instantiates the modal
     Template.loginPg.events({
@@ -95,14 +111,16 @@ if (Meteor.isClient) {
           var logPass = event.target.loginPassword.value;
             console.log("Form submitted.", event.target.loginEmail.value);
             Meteor.loginWithPassword(logEmail, logPass, function(error){
-              if(error === undefined)//if there isnt a problem with the login info
+              if(error)//if there is a problem with the login info
               {
-                console.log(Meteor.user())
-                FlowRouter.go('/dashboard')
+                console.log(error);
+                sAlert.error(error.reason)
+
               }
               else
               {
-                console.log(error);
+                console.log(Meteor.user())
+                FlowRouter.go('/dashboard')
               }
             })//end loginwithpassword
         }//end 'submit form'
@@ -210,8 +228,15 @@ Template.aboutPg.events({
         }
         //call method to submit the answer
         // console.log(questionID, SAnswer, itemAnswer, gpsLoc)
-        Meteor.call('submitAnswer', questionID, SAnswer, itemAnswer, gpsLoc)
-        FlowRouter.go('/dashboard');
+        Meteor.call('submitAnswer', questionID, SAnswer, itemAnswer, gpsLoc, function(error, result){
+          if(error){
+            sAlert.error(error);
+          } else{
+            // console.log(result);
+            FlowRouter.go('/dashboard');
+          }
+        });
+
       },//end submitanswer event
 
       'click .back' : function(){
@@ -248,9 +273,9 @@ Template.aboutPg.events({
       uploader.send(document.getElementById('uploadInput').files[0], function (error, downloadUrl) {
         if (error) {
           // Log service detailed response
-          console.log(error)
+          // console.log(error)
           console.error('Error uploading' );
-          alert (error);
+          sAlert.error(error);
         }
         else {
           //change to meteor method

@@ -3,6 +3,21 @@
 
 if(Meteor.isServer){
 
+  var questionsArray =[
+    [false, false, true, '', false, "Years ago this sculpture was in another station, Did it 'Getaway' to its new location? Have a team member climb inside and take a seat. Take their photo: it will look pretty neat. TEAM MEMBER PHOTO", '', false, '', 175, '', 4],
+    [false, false, true, '', false, "Dragon Boats will race on Symphony Lake today. Asian Focus brings this unique Chinese event annually to Cary. Take a photo with a boat. TEAM PHOTO", '', false, '', 225, '', 5],
+    [false, false, true, '', false, "While you're eating Thanksgiving turkey, this high school's marching band will travel far. Find where they practice and take your team photo on the star TEAM PHOTO", '', false, '', 185, '', 6],
+  ];//end questionsArray
+
+  for(var team=0;team>=3;team++)
+  {
+
+    for(var q=0;q>questionsArray.length;q++)
+    {
+      Meteor.call('createQuestion', questionArray[q][0], questionArray[q][1], questionArray[q][2], questionArray[q][3], questionArray[q][4], questionArray[q][5], questionArray[q][6], questionArray[q][7], questionArray[q][8], questionArray[q][9], "team-"+team, questionArray[q][11]);
+    }//end question for loop
+  }//end team for loop
+
   //declare seed users
   var users = [
     {name: "Matt", email:"matt@matt.com", roles: ['team-1']},
@@ -21,6 +36,9 @@ if(Meteor.isServer){
     {name: "Jesalyn", email: "jesalyn@jesalyn.com", roles: ['team-3']},
     {name: "Katie", email: "katie@katie.com", roles: ['team-3']}
   ];
+
+  // Meteor.call('createQuestion', true, false, false, true, '0', '0', '', false, 'What is your name?','',false,'',0,'team-1', 1)
+  // isSA, isItem, isPic, picUrl, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, questionNumber)
 
   // when we drop the database, this block of code is how we add users
     // _.each(users, function(user){
@@ -69,14 +87,11 @@ if(Meteor.isServer){
 
 Meteor.methods({
   //method to create question...to do so type in chrome console: `Meteor.call('createQuestion', 'questiontext', 'questiontype', 'teamname')`
-  'createQuestion' : function(isSA, isGPS, isItem, isPic, picUrl, targetGps, answerGps, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, questionNumber){
+  'createQuestion' : function(isSA, isItem, isPic, picUrl, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, questionNumber){
     check(isSA, Boolean);
-    check(isGPS, Boolean);
     check(isItem, Boolean);
     check(isPic, Boolean);
     check(picUrl, String);
-    check(targetGps, String);
-    check(answerGps, String);
     check(hasItem, Boolean);
     check(questionText, String);
     check(shortAnswer, String);
@@ -87,12 +102,9 @@ Meteor.methods({
     check(questionNumber, Number);
     questionsList.insert({
       isSA: isSA,
-      isGPS: isGPS,
       isItem: isItem,
       isPic: isPic,
       picUrl: picUrl,
-      targetGps: targetGps,
-      answerGps: answerGps,
       hasItem: hasItem,
       questionText: questionText,
       shortAnswer: shortAnswer,
