@@ -21,17 +21,17 @@ body {
   .loginContainer .heroImg {
     width: 95%;
     margin: 2% 0 0 2.5%;
-    height: 200px; }
+    height: 150px; }
 
 .eachLogin {
   text-align: center;
-  height: 70px;
+  height: 50px;
   font-size: 24px; }
   .eachLogin input {
-    height: 60px;
+    height: 40px;
     width: 300px;
     font-size: 20px;
-    margin: 1% 0 0 0; }
+    margin: 3% 0 0 0; }
 
 .regModalText {
   font-size: 14px;
@@ -42,11 +42,11 @@ body {
   height: 70px;
   font-size: 24px;
   margin: 50px 0 0 0; }
-  .regLogin input {
-    height: 60px;
-    width: 300px;
+  .regLogin .regInput {
+    height: 40px;
+    width: 250px;
     font-size: 20px;
-    margin: 3% 0 3% 0; }
+    margin: 0; }
 
 .sponsorImgs {
   border-top: 1px #327d80 solid; }
@@ -65,7 +65,7 @@ body {
   width: 100%;
   text-align: center;
   font-size: 16px;
-  margin: 150px 0 0 0; }
+  margin: 130px 0 -5px 0; }
 
 .login-sponsor-text {
   font-size: 14px;
@@ -76,11 +76,11 @@ body {
   height: 70px; }
 
 .TFD-logo {
-  width: 49%;
+  width: 45%;
   height: 60px; }
 
 .COD-logo {
-  width: 49%;
+  width: 45%;
   height: 60px; }
 
 .modalGrey {
