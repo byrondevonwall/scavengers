@@ -3,6 +3,7 @@ body{
   //background: red;
   text-align: center;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 .off{
   display: none;
@@ -195,7 +196,7 @@ body{
   background: rgb(112, 17, 17);
 }
 .dashBanner{
-  //position: fixed;
+  position: fixed;
   height: 70px;
   width: 100%;
   vertical-align: middle;
@@ -203,15 +204,19 @@ body{
   color:  #35b0b5;
   font-size:24px;
   position: fixed;
-  top: 0;
+  top: -1;
   left: 0;
   z-index: 20;
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.14);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.14);
+  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.14);
 }
 .dashLogin{
   font-size: 28px;
   color: #35b0b5;
   font-family: sans-serif;
   text-align: center;
+  text-overflow: ellipsis;
 }
 .dashTitle{
   font-size: 40px;
@@ -220,6 +225,7 @@ body{
   float: left;
   margin: -30px 0 0 5px;
   text-align: center;
+  text-overflow: ellipsis;
 }
 .heroImg{
   width:100%;
@@ -306,12 +312,16 @@ body{
 }
 .answerContainer{
   padding: 20px;
+  // border: solid thin red;
+  margin: 40px 0 0 0;
+  position: relative;
   textarea{
     //margin-top: 200px;
     width: 100%;
     height: 200px;
     border: 1px black solid;
     font-size: 24px;
+    margin: 20px 0 0 0;
   }
   textarea::-webkit-input-placeholder {
     font-size: 24px;
@@ -358,15 +368,20 @@ body{
   border: 10px dashed #fff;
   border-radius: 10px;
   background: rgba(255,255,255,0);
+  img{
+    z-index: 20;
+  }
 }
 .userPic{
-  z-index: 0;
+  z-index: 20;
 }
 .uploadWords{
   position: absolute;
-  top: 320px;
-  left: 60px;
+  top: 1%;
+  left: 0;
+  width: 100%;
   color: rgb(121, 121, 121);
+  z-index: 0;
 }
 .imgUpload{
   color: white;
@@ -392,11 +407,12 @@ body{
 }
 .submitAnswerBtn{
   text-align: center;
-  width: 80%;
-  height: 100px;
-  margin-left:10%;
+  width: 90%;
+  margin: 5px 0 0 5%;
   background: rgb(64, 150, 70);
-  font-size: 48px;
+  border: solid 4px darken(rgb(64, 150, 70), 20%);
+  font-size: 35px;
+  padding: 15px 0;
 }
 .submitAnswerBtn:active{
   background: rgb(97, 251, 107);

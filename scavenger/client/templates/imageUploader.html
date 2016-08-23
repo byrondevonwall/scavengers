@@ -3,7 +3,7 @@
 <!-- <span class="picBox"> -->
   <form id="imgUpload">
     <input id='uploadInput' class="fileLoader" name="file" type="file">
-    <label for="file" class="uploadWords">Tap here to upload/take a picture</label>
+    <label for="file" class="uploadWords {{#if theQuestion.picUrl}}off{{/if}}">Tap here to upload/take a picture</label>
   </form>
 <!-- </span> -->
 </template>
