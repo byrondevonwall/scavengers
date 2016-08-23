@@ -1,3 +1,5 @@
+import { Accounts } from 'meteor/accounts-base'
+
 Meteor.startup(function () {
 
     sAlert.config({
@@ -113,9 +115,14 @@ if (Meteor.isClient) {
             Meteor.loginWithPassword(logEmail, logPass, function(error){
               if(error)//if there is a problem with the login info
               {
-                console.log(error);
-                sAlert.error(error.reason)
-
+                  console.log(error)
+                if(error.message === "Incorrect password [403]"){
+                  $('.resetPassBtn').removeClass('off');
+                  console.log(error);
+                  sAlert.error(error.message)
+                }else{
+                  sAlert.error(error.message)
+                }
               }
               else
               {
@@ -123,7 +130,25 @@ if (Meteor.isClient) {
                 FlowRouter.go('/dashboard')
               }
             })//end loginwithpassword
-        }//end 'submit form'
+        },//end 'submit form'
+
+        'click .resetPassBtn' : function(){
+          event.preventDefault();
+          var userEmail = $('#loginEmail').val().toString();
+          console.log(userEmail)
+          Accounts.forgotPassword({email: userEmail}, function(err){
+            if (err) {
+              if (err.message === 'User not found [403]') {
+                sAlert.error('This email does not exist.');
+              } else {
+                sAlert.error(err.message);
+              }
+            } else {
+              sAlert.success('Email Sent. Check your mailbox.');
+            }
+          })
+        }
+
     });//end login template events
 
 //----------dashboard helpers and events----------//

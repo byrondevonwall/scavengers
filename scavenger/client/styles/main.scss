@@ -27,6 +27,14 @@ body{
     height: 150px;
   }
 }
+.resetPassBtn{
+  font-size: 20px;
+  color: darken(gray, 15%);
+  border: solid thin darken(gray, 15%);
+  width: 70%;
+  margin: 0 0 0 15%;
+  padding: 1% 0;
+}
 .eachLogin{
   text-align: center;
   //border: blue 1px solid;
