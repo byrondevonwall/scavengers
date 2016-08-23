@@ -1,24 +1,23 @@
 
 <template name="question">
 
-  <div class="qBox">
+  <div class="qBoxWrap">
+    <span class="qBox {{#if isAnswered}}answered{{/if}}">
+      <div class="qNumberText">
+        {{questionNumber}}
+      </div>
+      <div class="qIcons">
+        {{#if isSA}}{{> shortGray}}{{/if}}
+        {{#if isPic}}{{> picGray}}{{/if}}
+        {{#if isGPS}}{{> GPSGray}}{{/if}}
+        {{#if isItem}}{{> itemGray}}{{/if}}
+      </div>
 
-    <span class="qBoxLeft {{#if isAnswered}}answered{{/if}}">{{questionNumber}}</span>
-      <span class="qBoxMiddle">
-        <div class="qtext">
-          <!-- {{questionText}} -->
-        </div>
-        <div class="iconBox">
-          {{#if isSA}}{{> shortGray}}{{/if}}
-          {{#if isPic}}{{> picGray}}{{/if}}
-          {{#if isGPS}}{{> GPSGray}}{{/if}}
-          {{#if isItem}}{{> itemGray}}{{/if}}
-        </div>
-      </span>
-    <span class="anwserTheQ {{#if isAnswered}}answered{{/if}}">
-      {{#if isAnswered}}{{> answeredQuestion}}<br>Answered!<br>Tap to change{{else}}<br>Tap<br>to<br> anwser{{/if}}
+      <div class="qAnswerStatus">
+        {{#if isAnswered}}{{> answeredQuestion}}Answered!{{else}}tap to anwser{{/if}}
+      </div>
+
     </span>
-
   </div>
 
 </template>

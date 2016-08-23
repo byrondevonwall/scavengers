@@ -23,21 +23,6 @@ var emails = [];
 
 if (Meteor.isClient) {
 
-  // var questionsArray =[
-  //   [false, false, true, '', false, "Years ago this sculpture was in another station, Did it 'Getaway' to its new location? Have a team member climb inside and take a seat. Take their photo: it will look pretty neat. TEAM MEMBER PHOTO", '', false, '', 175, '', 4],
-  //   [false, false, true, '', false, "Dragon Boats will race on Symphony Lake today. Asian Focus brings this unique Chinese event annually to Cary. Take a photo with a boat. TEAM PHOTO", '', false, '', 225, '', 5],
-  //   [false, false, true, '', false, "While you're eating Thanksgiving turkey, this high school's marching band will travel far. Find where they practice and take your team photo on the star TEAM PHOTO", '', false, '', 185, '', 6],
-  // ];//end questionsArray
-  //
-  // for(var team=0;team<=3;team++)
-  // {
-  //   console.log('adding questions')
-  //   for(var q=0; q<questionsArray.length; q++)
-  //   {
-  //     console.log( questionsArray[q][0], questionsArray[q][1], questionsArray[q][2], questionsArray[q][3], questionsArray[q][4], questionsArray[q][5], questionsArray[q][6], questionsArray[q][7], questionsArray[q][8], questionsArray[q][9], "team-"+team, questionsArray[q][11])
-  //     Meteor.call('createQuestion', questionsArray[q][0], questionsArray[q][1], questionsArray[q][2], questionsArray[q][3], questionsArray[q][4], questionsArray[q][5], questionsArray[q][6], questionsArray[q][7], questionsArray[q][8], questionsArray[q][9], "team-"+team, questionsArray[q][11]);
-  //   }//end question for loop
-  // }//end team for loop
 
 //----------login page helpers and events----------//
     //this instantiates the modal
