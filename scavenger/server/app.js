@@ -216,11 +216,25 @@ Meteor.methods({
                             hasItem: itemAnswer,
                             }
                         })//end the updateCall
+  },
+
+  'setRegisteredUser' : function(userEmail, userTeam){
+    registeredUsers.insert({
+      email: userEmail,
+      role: userTeam
+    });
   }
+
+
+
 
 });//end methods
 
 Meteor.publish('users', function(){
   console.log("Server: publishing all users");
   return Meteor.users.find();
-})
+});
+
+Meteor.publish('registeredUsers'), function(){
+  return Meteor.registeredUsers.find()
+}
