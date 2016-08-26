@@ -22,6 +22,8 @@ var emails = [];
 
 if (Meteor.isClient) {
 
+
+
 // var users =
 // _.each(users, function(user){
 //   console.log(user.email + "added to " + user.roles)
