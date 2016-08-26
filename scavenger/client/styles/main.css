@@ -1,7 +1,8 @@
 body {
   background: #eee;
   text-align: center;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  box-sizing: border-box; }
 
 .off {
   display: none; }
@@ -21,17 +22,25 @@ body {
   .loginContainer .heroImg {
     width: 95%;
     margin: 2% 0 0 2.5%;
-    height: 200px; }
+    height: 150px; }
+
+.resetPassBtn {
+  font-size: 20px;
+  color: #5a5a5a;
+  border: solid thin #5a5a5a;
+  width: 70%;
+  margin: 0 0 0 15%;
+  padding: 1%; }
 
 .eachLogin {
   text-align: center;
-  height: 70px;
+  height: 50px;
   font-size: 24px; }
   .eachLogin input {
-    height: 60px;
+    height: 40px;
     width: 300px;
     font-size: 20px;
-    margin: 1% 0 0 0; }
+    margin: 3% 0 0 0; }
 
 .regModalText {
   font-size: 14px;
@@ -42,11 +51,11 @@ body {
   height: 70px;
   font-size: 24px;
   margin: 50px 0 0 0; }
-  .regLogin input {
-    height: 60px;
-    width: 300px;
+  .regLogin .regInput {
+    height: 40px;
+    width: 250px;
     font-size: 20px;
-    margin: 3% 0 3% 0; }
+    margin: 0; }
 
 .sponsorImgs {
   border-top: 1px #327d80 solid; }
@@ -65,7 +74,7 @@ body {
   width: 100%;
   text-align: center;
   font-size: 16px;
-  margin: 150px 0 0 0; }
+  margin: 130px 0 -5px 0; }
 
 .login-sponsor-text {
   font-size: 14px;
@@ -76,11 +85,11 @@ body {
   height: 70px; }
 
 .TFD-logo {
-  width: 49%;
+  width: 45%;
   height: 60px; }
 
 .COD-logo {
-  width: 49%;
+  width: 45%;
   height: 60px; }
 
 .modalGrey {
@@ -90,7 +99,7 @@ body {
   position: fixed;
   top: 0px;
   left: 0px;
-  z-index: 1; }
+  z-index: 155000; }
 
 .modalBox {
   background: #A1D7D9;
@@ -110,12 +119,12 @@ body {
 
 .hamburger {
   display: visible;
-  padding-top: 40px;
+  padding-top: 20px;
   box-sizing: border-box;
   float: left;
   background: #327d80;
   height: 100%;
-  width: 15%;
+  width: 25%;
   vertical-align: middle;
   text-align: center;
   font-size: 18px;
@@ -130,7 +139,7 @@ body {
   top: 0px;
   width: 50%;
   height: 100%;
-  z-index: 15; }
+  z-index: 200000000; }
 
 .menuOpt:active {
   background: #045e4b; }
@@ -148,7 +157,8 @@ body {
   width: 15%;
   vertical-align: middle;
   text-align: center;
-  font-size: 18px;
+  font-size: 45px;
+  font-weight: bold;
   z-index: 50; }
 
 .back:active {
@@ -172,78 +182,74 @@ body {
   background: #701111; }
 
 .dashBanner {
-  height: 100px;
+  position: fixed;
+  height: 70px;
   width: 100%;
   vertical-align: middle;
   background: #A1D7D9;
   color: #35b0b5;
-  font-size: 24px; }
+  font-size: 24px;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14); }
 
 .dashLogin {
-  margin-top: -20px;
   font-size: 28px;
   color: #35b0b5;
   font-family: sans-serif;
-  float: left; }
+  text-align: center;
+  text-overflow: ellipsis; }
 
 .dashTitle {
-  font-size: 64px;
+  font-size: 40px;
   color: #35b0b5;
   font-family: sans-serif;
   float: left;
-  margin-top: -35px; }
+  margin: 10px 0 0 5px;
+  text-align: center;
+  text-overflow: ellipsis; }
 
 .heroImg {
   width: 100%; }
 
 .allQuestions {
-  display: inline-block;
-  width: 100%; }
+  display: block;
+  width: 100%;
+  margin: 80px 0 0 0;
+  z-index: -5; }
+  .allQuestions .questionLabel {
+    color: #d2d2d2; }
+
+.qBoxWrap {
+  width: 40%;
+  height: 100px;
+  margin: 2%;
+  background: #bfe4dc;
+  border: black 1px solid;
+  z-index: 0;
+  display: inline-block; }
+  .qBoxWrap .answered {
+    background: #5fb948; }
 
 .qBox {
   position: relative;
-  width: 80%;
-  height: 125px;
-  margin-left: 15%;
-  background: #bfe4dc;
-  border: black 1px solid; }
+  display: block;
+  padding-top: 5px;
+  box-sizing: border-box;
+  background: #A1D7D9;
+  height: 100px; }
+  .qBox .qNumberText {
+    font-size: 40px; }
+  .qBox .qAnswerStatus {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1% 0; }
   .qBox .answered {
-    background: #5fb948; }
-
-.qBoxLeft {
-  float: left;
-  display: inline-block;
-  padding-top: 15px;
-  box-sizing: border-box;
-  top: 0px;
-  left: 0px;
-  background: #A1D7D9;
-  font-size: 48px;
-  height: 100%;
-  width: 20%; }
-  .qBoxLeft .answered {
-    color: #5fb948;
-    background: #5fb948; }
-
-.qBoxMiddle {
-  float: left;
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 15px;
-  font-size: 18px;
-  width: 40%;
-  height: 100%;
-  padding-top: 20px;
-  background: #eee; }
-
-.anwserTheQ {
-  float: left;
-  font-size: 24px;
-  box-sizing: border-box;
-  background: #A1D7D9;
-  height: 100%;
-  width: 40%; }
-  .anwserTheQ .answered {
     color: #5fb948;
     background: #5fb948; }
 
@@ -256,12 +262,15 @@ body {
   color: #eee; }
 
 .answerContainer {
-  padding: 20px; }
+  padding: 20px;
+  margin: 40px 0 0 0;
+  display: block; }
   .answerContainer textarea {
     width: 100%;
     height: 200px;
     border: 1px black solid;
-    font-size: 24px; }
+    font-size: 24px;
+    margin: 20px 0 0 0; }
   .answerContainer textarea::-webkit-input-placeholder {
     font-size: 24px; }
   .answerContainer textarea::-webkit-input-placeholder {
@@ -303,15 +312,19 @@ body {
   border: 10px dashed #fff;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0); }
+  .picBox img {
+    z-index: 20; }
 
 .userPic {
-  z-index: 0; }
+  z-index: 20; }
 
 .uploadWords {
   position: absolute;
-  top: 320px;
-  left: 60px;
-  color: #797979; }
+  top: 1%;
+  left: 0;
+  width: 100%;
+  color: #797979;
+  z-index: 0; }
 
 .imgUpload {
   color: white; }
@@ -337,11 +350,12 @@ body {
 
 .submitAnswerBtn {
   text-align: center;
-  width: 80%;
-  height: 100px;
-  margin-left: 10%;
+  width: 90%;
+  margin: 5px 0 0 5%;
   background: #409646;
-  font-size: 48px; }
+  border: solid 4px #214f25;
+  font-size: 35px;
+  padding: 15px 0; }
 
 .submitAnswerBtn:active {
   background: #61fb6b; }

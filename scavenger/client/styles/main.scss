@@ -3,6 +3,7 @@ body{
   //background: red;
   text-align: center;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 .off{
   display: none;
@@ -24,19 +25,27 @@ body{
   .heroImg{
     width: 95%;
     margin: 2% 0 0 2.5%;
-    height: 200px;
+    height: 150px;
   }
+}
+.resetPassBtn{
+  font-size: 20px;
+  color: darken(gray, 15%);
+  border: solid thin darken(gray, 15%);
+  width: 70%;
+  margin: 0 0 0 15%;
+  padding: 1%;
 }
 .eachLogin{
   text-align: center;
   //border: blue 1px solid;
-  height: 70px;
+  height: 50px;
   font-size: 24px;
   input{
-    height:60px;
+    height:40px;
     width: 300px;
     font-size: 20px;
-    margin: 1% 0 0 0;
+    margin: 3% 0 0 0;
   }
 }
 .regModalText{
@@ -45,15 +54,15 @@ body{
 }
 .regLogin{
   text-align: center;
-  //border: blue 1px solid;
+  // border: blue 1px solid;
   height: 70px;
   font-size: 24px;
   margin: 50px 0 0 0;
-  input{
-    height:60px;
-    width: 300px;
+  .regInput{
+    height:40px;
+    width: 250px;
     font-size: 20px;
-    margin: 3% 0 3% 0;
+    margin: 0;
   }
 }
 .sponsorImgs{
@@ -73,7 +82,7 @@ body{
   width: 100%;
   text-align: center;
   font-size: 16px;
-  margin: 150px 0 0 0;
+  margin: 130px 0 -5px 0;
 }
 .login-sponsor-text{
   font-size: 14px;
@@ -84,11 +93,11 @@ body{
   height: 70px;
 }
 .TFD-logo{
-  width: 49%;
+  width: 45%;
   height: 60px;
 }
 .COD-logo{
-  width: 49%;
+  width: 45%;
   height: 60px;
 }
 .modalGrey{
@@ -98,7 +107,7 @@ body{
   position: fixed;
   top: 0px;
   left:0px;
-  z-index: 1;
+  z-index: 155000;
 }
 .modalBox{
   background: #A1D7D9;
@@ -121,12 +130,12 @@ body{
 .hamburger{
   // border: purple 1px solid;
   display: visible;
-  padding-top: 40px;
+  padding-top: 20px;
   box-sizing: border-box;
   float: left;
   background: #327d80;
   height:100%;
-  width: 15%;
+  width: 25%;
   vertical-align: middle;
   text-align: center;
   font-size: 18px;
@@ -141,7 +150,7 @@ body{
   top: 0px;
   width: 50%;
   height: 100%;
-  z-index: 15;
+  z-index: 200000000;
 }
 .menuOpt:active{
   background: #045e4b;
@@ -160,7 +169,8 @@ body{
     width: 15%;
     vertical-align: middle;
     text-align: center;
-    font-size: 18px;
+    font-size: 45px;
+    font-weight: bold;
     z-index: 50;
 }
 .back:active{
@@ -186,98 +196,115 @@ body{
   background: rgb(112, 17, 17);
 }
 .dashBanner{
-  //position: fixed;
-  height: 100px;
+  position: fixed;
+  height: 70px;
   width: 100%;
   vertical-align: middle;
   background: #A1D7D9;
   color:  #35b0b5;
   font-size:24px;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.14);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.14);
+  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.14);
 }
 .dashLogin{
-  margin-top: -20px;
   font-size: 28px;
   color: #35b0b5;
   font-family: sans-serif;
-  float: left;
+  text-align: center;
+  text-overflow: ellipsis;
 }
 .dashTitle{
-  font-size: 64px;
+  font-size: 40px;
   color: #35b0b5;
   font-family: sans-serif;
   float: left;
-  margin-top: -35px;
+  margin: 10px 0 0 5px;
+  text-align: center;
+  text-overflow: ellipsis;
 }
 .heroImg{
   width:100%;
 }
 .allQuestions{
   //margin-top: 200px;
-  display: inline-block;
+  display: block;
   width: 100%;
-  //border: red 1px solid;
+  margin: 80px 0 0 0;
+  z-index: -5;
+  // border: red 1px solid;
+  .questionLabel{
+    color: lighten(gray, 32%);
+  }
 }
-.qBox{
-  position: relative;
-  width: 80%;
-  height: 125px;
+.qBoxWrap{
+  width: 40%;
+  height: 100px;
   //box-sizing: border-box;
-  margin-left: 15%;
+  margin: 2%;
   background: rgb(191, 228, 220);
   border: black 1px solid;
   //display: inline-block;
+  z-index: 0;
+  display: inline-block;
   .answered{
     background: rgb(95, 185, 72);
   }
-  //border: yellow 1px solid;
 }
-.qBoxLeft{
-  //border: green 1px solid;
-  //position: absolute;
-  float: left;
-  display: inline-block;
-  padding-top: 15px;
+.qBox{
+  position: relative;
+  display: block;
+  padding-top: 5px;
   box-sizing: border-box;
-  top:0px;
-  left:0px;
   background: #A1D7D9;
+  height: 100px;
+  .qNumberText{
+    font-size: 40px;
+  }
+  .qAnswerStatus{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1% 0;
+  }
   .answered{
     color: rgb(95, 185, 72);
     background: rgb(95, 185, 72);
   }
-  font-size: 48px;
-  height:100%;
-  width: 20%;
   //padding-top: 35px;
 }
-.qBoxMiddle{
-  //border: red 1px solid;
-  float: left;
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 15px;
-  font-size: 18px;
-  width: 40%;
-  height:100%;
-  padding-top: 20px;
-  background: #eee;
-}
-.anwserTheQ{
-  //border: green 1px solid;
-  float: left;
-  font-size: 24px;
-  //position: absolute;
-  //display: inline-block;
-  box-sizing: border-box;
-  background: #A1D7D9;
-  height:100%;
-  width: 40%;
-  .answered{
-    color: rgb(95, 185, 72);
-    background: rgb(95, 185, 72);
-  }
-}
-.question{
+// .qBoxMiddle{
+//   //border: red 1px solid;
+//   float: left;
+//   display: inline-block;
+//   box-sizing: border-box;
+//   padding: 15px;
+//   font-size: 18px;
+//   width: 40%;
+//   height:100%;
+//   padding-top: 20px;
+//   background: #eee;
+// }
+// .anwserTheQ{
+//   //border: green 1px solid;
+//   float: left;
+//   font-size: 24px;
+//   //position: absolute;
+//   //display: inline-block;
+//   box-sizing: border-box;
+//   background: #A1D7D9;
+//   height:100%;
+//   width: 40%;
+//   .answered{
+//     color: rgb(95, 185, 72);
+//     background: rgb(95, 185, 72);
+//   }
+// }
+ .question{
   font-size: 5em;
   border: solid thin black;
 }
@@ -287,12 +314,16 @@ body{
 }
 .answerContainer{
   padding: 20px;
+  // border: solid thin red;
+  margin: 40px 0 0 0;
+  display: block;
   textarea{
     //margin-top: 200px;
     width: 100%;
     height: 200px;
     border: 1px black solid;
     font-size: 24px;
+    margin: 20px 0 0 0;
   }
   textarea::-webkit-input-placeholder {
     font-size: 24px;
@@ -339,15 +370,20 @@ body{
   border: 10px dashed #fff;
   border-radius: 10px;
   background: rgba(255,255,255,0);
+  img{
+    z-index: 20;
+  }
 }
 .userPic{
-  z-index: 0;
+  z-index: 20;
 }
 .uploadWords{
   position: absolute;
-  top: 320px;
-  left: 60px;
+  top: 1%;
+  left: 0;
+  width: 100%;
   color: rgb(121, 121, 121);
+  z-index: 0;
 }
 .imgUpload{
   color: white;
@@ -373,11 +409,12 @@ body{
 }
 .submitAnswerBtn{
   text-align: center;
-  width: 80%;
-  height: 100px;
-  margin-left:10%;
+  width: 90%;
+  margin: 5px 0 0 5%;
   background: rgb(64, 150, 70);
-  font-size: 48px;
+  border: solid 4px darken(rgb(64, 150, 70), 20%);
+  font-size: 35px;
+  padding: 15px 0;
 }
 .submitAnswerBtn:active{
   background: rgb(97, 251, 107);

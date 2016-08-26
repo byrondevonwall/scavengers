@@ -1,12 +1,16 @@
 <template name="answerPage">
+
     <div class="dashBanner">
       <div class="back">
-        Back to<br>dash<br>board
+        &#8678;
       </div>
-      <br><br>
-      <div class="dashTitle">question {{theQuestion.questionNumber}}</div>
-      <div class="questionText off">{{theQuestion.questionText}}</div>
+
+      <div class="dashTitle">
+        Question {{theQuestion.questionNumber}}
+      </div>
+
     </div>
+
     <div class="answerContainer">
 
     <!-- {{> shortGray}} -->
@@ -20,7 +24,7 @@
       {{#if theQuestion.isPic}}
         <span class="picBox">
           {{#if theQuestion.picUrl}}
-            <img src="{{theQuestion.picUrl}}" width="90%" class="userPic">
+            <img src="{{theQuestion.picUrl}}" width="90%"  height="350px" class="userPic">
           {{/if}}
           {{>uploader}}
         </span>

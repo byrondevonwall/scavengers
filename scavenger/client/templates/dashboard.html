@@ -23,22 +23,23 @@
 
       <span class="hamburger">Options</span>
       <br>
-      <span class="dashLogin">You're logged in, {{currentUser.profile.name}}.</span><br><br>
-      &nbsp;&nbsp;<span class="dashTitle">Questions</span>
+      <span class="dashLogin">Welcome {{currentUser.profile.name}}</span><br><br>
+      &nbsp;&nbsp;
 
     </div>
 
-    <div class="dash">
-      <br><br>
+
+
       <div class="allQuestions">
+        <div class='questionLabel'>-questions-</div>
         {{#each questions}}
 
-          {{>question}}<br><br>
+          {{>question}}
 
         {{/each}}
 
       </div>
-    </div>
+
 
 
 

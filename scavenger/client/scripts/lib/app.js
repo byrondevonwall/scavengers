@@ -1,3 +1,5 @@
+import { Accounts } from 'meteor/accounts-base'
+
 Meteor.startup(function () {
 
     sAlert.config({
@@ -20,21 +22,6 @@ var emails = [];
 
 if (Meteor.isClient) {
 
-  // var questionsArray =[
-  //   [false, false, true, '', false, "Years ago this sculpture was in another station, Did it 'Getaway' to its new location? Have a team member climb inside and take a seat. Take their photo: it will look pretty neat. TEAM MEMBER PHOTO", '', false, '', 175, '', 4],
-  //   [false, false, true, '', false, "Dragon Boats will race on Symphony Lake today. Asian Focus brings this unique Chinese event annually to Cary. Take a photo with a boat. TEAM PHOTO", '', false, '', 225, '', 5],
-  //   [false, false, true, '', false, "While you're eating Thanksgiving turkey, this high school's marching band will travel far. Find where they practice and take your team photo on the star TEAM PHOTO", '', false, '', 185, '', 6],
-  // ];//end questionsArray
-  //
-  // for(var team=0;team<=3;team++)
-  // {
-  //   console.log('adding questions')
-  //   for(var q=0; q<questionsArray.length; q++)
-  //   {
-  //     console.log( questionsArray[q][0], questionsArray[q][1], questionsArray[q][2], questionsArray[q][3], questionsArray[q][4], questionsArray[q][5], questionsArray[q][6], questionsArray[q][7], questionsArray[q][8], questionsArray[q][9], "team-"+team, questionsArray[q][11])
-  //     Meteor.call('createQuestion', questionsArray[q][0], questionsArray[q][1], questionsArray[q][2], questionsArray[q][3], questionsArray[q][4], questionsArray[q][5], questionsArray[q][6], questionsArray[q][7], questionsArray[q][8], questionsArray[q][9], "team-"+team, questionsArray[q][11]);
-  //   }//end question for loop
-  // }//end team for loop
 
 //----------login page helpers and events----------//
     //this instantiates the modal
@@ -112,9 +99,14 @@ if (Meteor.isClient) {
             Meteor.loginWithPassword(logEmail, logPass, function(error){
               if(error)//if there is a problem with the login info
               {
-                console.log(error);
-                sAlert.error(error.reason)
-
+                  console.log(error)
+                if(error.message === "Incorrect password [403]"){
+                  $('.resetPassBtn').removeClass('off');
+                  console.log(error);
+                  sAlert.error(error.message)
+                }else{
+                  sAlert.error(error.message)
+                }
               }
               else
               {
@@ -122,7 +114,25 @@ if (Meteor.isClient) {
                 FlowRouter.go('/dashboard')
               }
             })//end loginwithpassword
-        }//end 'submit form'
+        },//end 'submit form'
+
+        'click .resetPassBtn' : function(){
+          event.preventDefault();
+          var userEmail = $('#loginEmail').val().toString();
+          console.log(userEmail)
+          Accounts.forgotPassword({email: userEmail}, function(err){
+            if (err) {
+              if (err.message === 'User not found [403]') {
+                sAlert.error('This email does not exist.');
+              } else {
+                sAlert.error(err.message);
+              }
+            } else {
+              sAlert.success('Email Sent. Check your mailbox.');
+            }
+          })
+        }
+
     });//end login template events
 
 //----------dashboard helpers and events----------//
