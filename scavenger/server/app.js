@@ -187,6 +187,21 @@ Meteor.methods({
       email: userEmail,
       role: userTeam
     });
+  },
+
+  'registerUser' : function(email, password, name, roles){
+    console.log(email, password, name, roles)
+    var id;
+
+    id = Accounts.createUser({
+      email: email,
+      password: password,
+      profile:{name: name}
+    })
+    console.log(id)
+    if(roles.length > 0){
+      Roles.addUsersToRoles(id, roles, 'defaultGroup')
+    }
   }
 
 
