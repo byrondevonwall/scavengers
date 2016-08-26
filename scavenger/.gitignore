@@ -5,3 +5,4 @@ settings-production.json
 run.sh
 client/styles/.sass-cache
 client/styles/main.css.map
+userRegistration.js

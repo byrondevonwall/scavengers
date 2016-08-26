@@ -124,11 +124,12 @@ body {
   float: left;
   background: #327d80;
   height: 100%;
-  width: 25%;
+  width: 20%;
   vertical-align: middle;
   text-align: center;
-  font-size: 18px;
-  z-index: 50; }
+  font-size: 17px;
+  z-index: 50;
+  color: #49c5ca; }
 
 .hamburger:active {
   background: #045e4b; }
@@ -149,12 +150,12 @@ body {
 
 .back {
   display: visible;
-  padding-top: 20px;
+  padding-top: 15px;
   box-sizing: border-box;
   float: left;
   background: #327d80;
   height: 100%;
-  width: 15%;
+  width: 20%;
   vertical-align: middle;
   text-align: center;
   font-size: 45px;
