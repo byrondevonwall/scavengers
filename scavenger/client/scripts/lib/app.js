@@ -404,4 +404,102 @@ Template.aboutPg.events({
 
 
 
+//----------JUDGES PORTAL----------//
+
+
+  //----------------------teamsPg events ---------------------------
+
+Template.teamsPg.events({
+
+  'click .teamLink': function() {
+    FlowRouter.go('verifyPg');
+  },
+
+  'click .backToLogin': function () {
+    FlowRouter.go("loginView");
+  }
+
+});
+
+//--------------------TEAMLISTCONTAINER HELPERS----------------------
+  Template.teamListContainer.helpers({
+
+  'teams': function (type) {
+    // return ["dusty Jorgens", "stinging bunnies", "lightning ducks", "fire ferrets", "the wow doggos"];
+    if(type === 3)
+    {
+      return fakeCTeams;
+    }
+    else if(type === 2)
+    {
+      return fakeATeams;
+    }
+    else if(type === 1)
+    {
+      return fakeFTeams;
+    }
+  }//end teams function
+
+  });//end teamlist helpers
+
+//---------------------verifyPg helpers----------------------
+
+Template.verifyPg.helpers({
+
+  'questions': function () {
+    return fakeQuestions;
+  },//end questions function
+
+  'questionSelected': function () {
+      return questionSelected;
+  }//end questions function
+
+  }); //end helpers
+
+//------------------------verify pg events-----------------------
+
+Template.verifyPg.events({
+
+  'click .oneQuestion': function (e) {
+      var qNum = $(e.target).attr("id");
+
+      questionSelected = true;
+      $(".oneQuestion").removeClass("selected");
+      $(e.target).addClass("selected");
+      $(".qNum").text(qNum);
+      $(".questionText").text(fakeQuestions[qNum-1].questionText);
+      $(".SA").text(fakeQuestions[qNum-1].shortAnswer);
+
+      if(fakeQuestions[qNum-1].hasItem)
+      {
+        $(".item").text("yes they do, ask to see it.");
+      }
+      else
+      {
+        $(".item").text("no they dont.");
+      }
+
+      $(".URL").text(fakeQuestions[qNum-1].picURL);
+      $(".URL > img").attr("src", fakeQuestions[qNum-1].picURL);
+
+    },//end questions function
+
+    'click .backToTeams': function () {
+      FlowRouter.go("teamsPg");
+    },
+
+    'click .yep': function (e) {
+      console.log("this question counts!");
+      //fakeScore = fakeScore + this.
+    },
+
+    'click .nope': function (e) {
+      console.log("this question doesnt count!");
+    }
+
+  });//end verifypg events
+
+
+
+
 }//end isclient

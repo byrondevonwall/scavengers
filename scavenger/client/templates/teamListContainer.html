@@ -1,0 +1,32 @@
+<template name="teamListContainer">
+  <div class="teamListContainer">
+
+    <div class="teamList1">
+      <div class="listTitle">Corporate Teams</div>
+      <ul>
+        {{#each teams 1}}
+          <li class="teamLink">{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="teamList2">
+      <div class="listTitle">Family Teams</div>
+      <ul>
+        {{#each teams 2}}
+          <li class="teamLink">{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="teamList3">
+      <div class="listTitle">Adult Teams</div>
+      <ul>
+        {{#each teams 3}}
+          <li class="teamLink">{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+
+  </div>
+</template>

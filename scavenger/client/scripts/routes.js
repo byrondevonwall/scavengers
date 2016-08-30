@@ -51,3 +51,24 @@ FlowRouter.route( '/', {
   },
   name: 'loginPg' // Optional route name.
 });
+
+
+//this here isthe judges portal routes
+
+FlowRouter.route( '/teamsPg', {
+  action: function() {
+    // Do whatever we need to do when we visit this page
+    console.log( "Okay, we're on the teamsPg page!" );
+    BlazeLayout.render( 'teamsPg', { main: 'teamsPg' } );
+  },
+  name: 'teamsPg' // Optional route name.
+});
+
+FlowRouter.route( '/verifyPg', {
+  action: function() {
+    // Do whatever we need to do when we visit this page
+    console.log( "Okay, we're on the teamsPg page!" );
+    BlazeLayout.render( 'verifyPg', { main: 'verifyPg' } );
+  },
+  name: 'verifyPg' // Optional route name.
+});
