@@ -61,7 +61,10 @@ FlowRouter.route( '/teamsPg', {
     console.log( "Okay, we're on the teamsPg page!" );
     BlazeLayout.render( 'teamsPg', { main: 'teamsPg' } );
   },
-  name: 'teamsPg' // Optional route name.
+  name: 'teamsPg', // Optional route name.
+  waitOn: function() {
+        return Meteor.subscribe('userList');
+    }
 });
 
 FlowRouter.route( '/verifyPg', {

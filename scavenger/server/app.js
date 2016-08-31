@@ -254,6 +254,10 @@ Meteor.publish('users', function(){
   return Meteor.users.find();
 });
 
-Meteor.publish('registeredUsers'), function(){
+Meteor.publish('registeredUsers', function(){
   return Meteor.registeredUsers.find()
-}
+});
+
+Meteor.publish('userList', function (){
+  return Meteor.users.find({});
+});

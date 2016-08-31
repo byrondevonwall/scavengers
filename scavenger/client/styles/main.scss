@@ -447,3 +447,197 @@ body{
   border-right: 1px rgb(95, 185, 72) solid;
   // color: rgb(95, 185, 72);
 }
+
+
+// JUDGES PORTAL "I DIDNT COPY ANY CLASSES"-MATT
+$cshBlue: #94CED1;
+$cshMidBlue: #2D7A7C;
+$cshDarkBlue: #233F51;
+$cshRed: #DB432B;
+$cshGreen: #90A039;
+
+.topDash{
+  font-family: sans-serif;
+  font-size: 36px;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  height: 100px;
+  padding-top: 20px;
+  background: $cshBlue;
+  //background: "#94CED1";
+  //background: blue;
+  .red{
+    color: $cshRed;
+  }
+  .white{
+    color: white;
+  }
+  .blue{
+    color: $cshMidBlue;
+  }
+}
+.loginFrm{
+  text-align: center;
+  font-family: sans-serif;
+}
+.loginBtn{
+  display: inline-block;
+  background: $cshGreen;
+  width: 100px;
+  height: 30px;
+  box-sizing: border-box;
+  padding-top: 10px;
+  //text-align: center;
+}
+.loginBtn:hover{
+  background: #7add17;
+}
+.teamListContainer{
+  width: 100%;
+  margin-top: 20px;
+  font-family: sans-serif;
+}
+.teamList1{
+  background-color: $cshGreen;
+  padding: 10px;
+  box-sizing: border-box;
+  //border: red 1px solid;
+  width: 30%;
+  display: inline-block;
+  margin-left: 5%;
+}
+.teamList2{
+  background-color: $cshBlue;
+  padding: 10px;
+  box-sizing: border-box;
+  //border: red 1px solid;
+  width: 30%;
+  display: inline-block;
+}
+.teamList3{
+  background-color: $cshRed;
+  padding: 10px;
+  box-sizing: border-box;
+  //border: red 1px solid;
+  width: 30%;
+  display: inline-block;
+}
+.teamLink{
+  margin:5px;
+  text-decoration: underline;
+}
+.teamLink:hover{
+  margin:5px;
+  text-decoration: underline;
+  color: $cshDarkBlue;
+}
+.listTitle{
+  border-bottom: $cshDarkBlue 1px solid;
+  text-align: center;
+  color: white;
+}
+.AnswerArea{
+  //background: red;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.answeredQuestionsList{
+  display: inline-block;
+  text-align: center;
+  float:left;
+  background: $cshBlue;
+  width: 40%;
+  margin-left: 10%;
+  padding: 10px;
+}
+.oneQuestion{
+  font-family: sans-serif;
+  display: inline-block;
+  font-size: 28px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  height: 50px;
+  border: 2px $cshMidBlue solid;
+  background: $cshBlue;
+  width: 102%;
+}
+.selected{
+  background: $cshMidBlue;
+  color: white;
+}
+.accepted{
+  background: $cshGreen;
+}
+.rejected{
+  background: $cshRed;
+}
+.oneQuestion:hover{
+  background: $cshMidBlue;
+  color: white;
+}
+.questionAnswer{
+  padding: 20px;
+  box-sizing: border-box;
+  background: $cshMidBlue;
+  width: 38.4%;
+  position: fixed;
+  left: 51.5%;
+  height: 650px;
+  margin-right: 10%;
+  float:right;
+}
+.thumbsContainer{
+  text-align: center;
+}
+.imgURLWrapper{
+  background: #aaa;
+}
+.backToTeams{
+  box-sizing: border-box;
+  padding-top: 50px;
+  position: absolute;
+  top:0;
+  height: 120px;
+  background: $cshRed;
+  width:100px;
+}
+.backToLogin{
+  box-sizing: border-box;
+  padding-top: 50px;
+  position: absolute;
+  top:0;
+  height: 120px;
+  background: $cshRed;
+  width:100px;
+}
+.backToLogin:hover{
+  background: red;
+}
+.backToTeams:hover{
+  background: red;
+}
+.yep{
+  //background: $cshGreen;
+  border: 1px $cshGreen solid;
+  display: inline-block;
+  width:100px;
+  font-family: sans-serif;
+}
+.yep:hover{
+  background: $cshGreen;
+  border: 1px green solid;
+}
+.nope{
+  //background: $cshRed;
+  border: 1px $cshRed solid;
+  display: inline-block;
+  width:100px;
+  font-family: sans-serif;
+}
+.nope:hover{
+  background: $cshRed;
+  border: 1px red solid;
+}

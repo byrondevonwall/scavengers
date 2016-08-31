@@ -386,4 +386,177 @@ body {
   border-left: 1px #5fb948 solid;
   border-right: 1px #5fb948 solid; }
 
+.topDash {
+  font-family: sans-serif;
+  font-size: 36px;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  height: 100px;
+  padding-top: 20px;
+  background: #94CED1; }
+  .topDash .red {
+    color: #DB432B; }
+  .topDash .white {
+    color: white; }
+  .topDash .blue {
+    color: #2D7A7C; }
+
+.loginFrm {
+  text-align: center;
+  font-family: sans-serif; }
+
+.loginBtn {
+  display: inline-block;
+  background: #90A039;
+  width: 100px;
+  height: 30px;
+  box-sizing: border-box;
+  padding-top: 10px; }
+
+.loginBtn:hover {
+  background: #7add17; }
+
+.teamListContainer {
+  width: 100%;
+  margin-top: 20px;
+  font-family: sans-serif; }
+
+.teamList1 {
+  background-color: #90A039;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 30%;
+  display: inline-block;
+  margin-left: 5%; }
+
+.teamList2 {
+  background-color: #94CED1;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 30%;
+  display: inline-block; }
+
+.teamList3 {
+  background-color: #DB432B;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 30%;
+  display: inline-block; }
+
+.teamLink {
+  margin: 5px;
+  text-decoration: underline; }
+
+.teamLink:hover {
+  margin: 5px;
+  text-decoration: underline;
+  color: #233F51; }
+
+.listTitle {
+  border-bottom: #233F51 1px solid;
+  text-align: center;
+  color: white; }
+
+.AnswerArea {
+  display: inline-block;
+  width: 100%;
+  height: 100%; }
+
+.answeredQuestionsList {
+  display: inline-block;
+  text-align: center;
+  float: left;
+  background: #94CED1;
+  width: 40%;
+  margin-left: 10%;
+  padding: 10px; }
+
+.oneQuestion {
+  font-family: sans-serif;
+  display: inline-block;
+  font-size: 28px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  height: 50px;
+  border: 2px #2D7A7C solid;
+  background: #94CED1;
+  width: 102%; }
+
+.selected {
+  background: #2D7A7C;
+  color: white; }
+
+.accepted {
+  background: #90A039; }
+
+.rejected {
+  background: #DB432B; }
+
+.oneQuestion:hover {
+  background: #2D7A7C;
+  color: white; }
+
+.questionAnswer {
+  padding: 20px;
+  box-sizing: border-box;
+  background: #2D7A7C;
+  width: 38.4%;
+  position: fixed;
+  left: 51.5%;
+  height: 650px;
+  margin-right: 10%;
+  float: right; }
+
+.thumbsContainer {
+  text-align: center; }
+
+.imgURLWrapper {
+  background: #aaa; }
+
+.backToTeams {
+  box-sizing: border-box;
+  padding-top: 50px;
+  position: absolute;
+  top: 0;
+  height: 120px;
+  background: #DB432B;
+  width: 100px; }
+
+.backToLogin {
+  box-sizing: border-box;
+  padding-top: 50px;
+  position: absolute;
+  top: 0;
+  height: 120px;
+  background: #DB432B;
+  width: 100px; }
+
+.backToLogin:hover {
+  background: red; }
+
+.backToTeams:hover {
+  background: red; }
+
+.yep {
+  border: 1px #90A039 solid;
+  display: inline-block;
+  width: 100px;
+  font-family: sans-serif; }
+
+.yep:hover {
+  background: #90A039;
+  border: 1px green solid; }
+
+.nope {
+  border: 1px #DB432B solid;
+  display: inline-block;
+  width: 100px;
+  font-family: sans-serif; }
+
+.nope:hover {
+  background: #DB432B;
+  border: 1px red solid; }
+
 /*# sourceMappingURL=main.css.map */

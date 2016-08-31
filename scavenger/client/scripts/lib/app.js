@@ -24,6 +24,18 @@ if (Meteor.isClient) {
 
 
 
+var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "dev","dev","dev","adult","adult","adult","family","family","family","dev","dev","dev", "judges"];
+
+
+var teams = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"];
+
+for(var f=0;f<teams.length; f++){
+  console.log("------------------------")
+  console.log("team Name: "+teams[f]);
+  console.log("team type: "+teamTypes[f]);
+  //here we insert into our collection 
+}
+
 // var users =
 // _.each(users, function(user){
 //   console.log(user.email + "added to " + user.roles)
@@ -144,7 +156,14 @@ if (Meteor.isClient) {
               else
               {
                 console.log(Meteor.user())
-                FlowRouter.go('/dashboard')
+                if(Meteor.user().roles.defaultGroup[0] === "judges")
+                {
+                  FlowRouter.go("/teamsPg");
+                }
+                else
+                {
+                  FlowRouter.go('/dashboard');
+                }
               }
             })//end loginwithpassword
         },//end 'submit form'
@@ -416,7 +435,8 @@ Template.teamsPg.events({
   },
 
   'click .backToLogin': function () {
-    FlowRouter.go("loginView");
+    Meteor.logout();
+    FlowRouter.go("/loginPg");
   }
 
 });
@@ -424,17 +444,30 @@ Template.teamsPg.events({
 //--------------------TEAMLISTCONTAINER HELPERS----------------------
   Template.teamListContainer.helpers({
 
-  'teams': function (type) {
+  'teams': function () {
     // return ["dusty Jorgens", "stinging bunnies", "lightning ducks", "fire ferrets", "the wow doggos"];
-    if(type === 3)
+
+    var users = Meteor.users.find().fetch()
+
+    function isUserInRole(userId, role){
+      console.log(Roles.userIsInRole(userId, role))
+    }
+
+    _.each(users, function(user){
+
+    })
+
+
+
+    if(type === adult)
     {
       return fakeCTeams;
     }
-    else if(type === 2)
+    else if(type === family)
     {
       return fakeATeams;
     }
-    else if(type === 1)
+    else if(type === corporate)
     {
       return fakeFTeams;
     }
