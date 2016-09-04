@@ -33,7 +33,7 @@ for(var f=0;f<teams.length; f++){
   console.log("------------------------")
   console.log("team Name: "+teams[f]);
   console.log("team type: "+teamTypes[f]);
-  //here we insert into our collection 
+  //here we insert into our collection
 }
 
 // var users =
@@ -170,7 +170,7 @@ for(var f=0;f<teams.length; f++){
 
         'click .resetPassBtn' : function(){
           event.preventDefault();
-          var userEmail = $('#loginEmail').val().toString();
+          var userEmail = $('#loginEmail').val().toLowerCase().toString();
           console.log(userEmail)
           Accounts.forgotPassword({email: userEmail}, function(err){
             if (err) {
@@ -185,6 +185,9 @@ for(var f=0;f<teams.length; f++){
           })
         }
 
+        if (Accounts._resetPasswordToken){
+          
+        }
     });//end login template events
 
 //----------dashboard helpers and events----------//
