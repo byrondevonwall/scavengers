@@ -29,12 +29,12 @@ var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","ad
 
 var teams = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"];
 
-for(var f=0;f<teams.length; f++){
-  console.log("------------------------")
-  console.log("team Name: "+teams[f]);
-  console.log("team type: "+teamTypes[f]);
-  //here we insert into our collection
-}
+// for(var f=0;f<teams.length; f++){
+//   console.log("------------------------")
+//   console.log("team Name: "+teams[f]);
+//   console.log("team type: "+teamTypes[f]);
+//   //here we insert into our collection
+// }
 
 // var users =
 // _.each(users, function(user){
@@ -171,60 +171,69 @@ for(var f=0;f<teams.length; f++){
         'click .resetPassBtn' : function(){
           event.preventDefault();
           //get the user's email address
+
+          // Accounts.emailTemplates.sendResetPasswordEmail.text = function(user, url){
+          //   return "Click this link to reset your password: " + url +
+          // }
           var userEmail = $('#loginEmail').val().toLowerCase().toString();
           console.log(userEmail)
           //try sending an email to that address
           Accounts.forgotPassword({email: userEmail}, function(err){
             if (err) {
               if (err.message === 'User not found [403]') {
-                sAlert.error('This email does not exist.');
+                sAlert.error('This email does not exist, please Register');
               } else {
                 sAlert.error(err.message);
               }
             } else {
               sAlert.success('Email Sent. Check your mailbox.');
+              $('.resetPassBtn').addClass('off');
             }
           })
-          //set the reset password token into session storage
-          if (Accounts._resetPasswordToken){
-            Session.set('resetPassword', Accounts._resetPasswordToken)
-          }
         }
     });//end login template events
 
 
 //----------reset pasword form helpers and events----------//
 
-//reset password forms and helpers modifiied from https://gist.github.com/LeCoupa/9879066
+//reset password forms and functions modifiied from https://gist.github.com/LeCoupa/9879066
 
-  Template.ResetPassword.helpers({
-
-    resetPassword: function(){
-      return session.get('resetPassword')
-    }
-
-  });//end helpers
 
   Template.ResetPassword.events({
 
     'submit #resetPasswordForm': function(e, t) {
       e.preventDefault();
+      //get token from url
+      var url = FlowRouter.current().path
+      var token = url.substring(url.lastIndexOf('/')+1, url.length);
+      // console.log(token)
 
       var resetPasswordForm = $(e.currentTarget),
           password = resetPasswordForm.find('#resetPasswordPassword').val(),
           passwordConfirm = resetPasswordForm.find('#resetPasswordPasswordConfirm').val();
 
-      if (isNotEmpty(password) && areValidPasswords(password, passwordConfirm)) {
-        Accounts.resetPassword(Session.get('resetPassword'), password, function(err) {
+
+      if (password != '' && passwordConfirm != '' && password === passwordConfirm) {
+        Accounts.resetPassword(token, password, function(err) {
           if (err) {
-            console.log('We are sorry but something went wrong.');
+            sAlert.error('We are sorry but something went wrong.');
           } else {
-            console.log('Your password has been changed. Welcome back!');
-            Session.set('resetPassword', null);
+            sAlert.success('Your password has been changed. Welcome back!');
+            var token = '';
+            console.log(Meteor.user())
+            FlowRouter.go('/dashboard')
           }
         });
+      } else if(password === '' || passwordConfirm === ''){
+        sAlert.error('You must input a password')
+      } else if(password != passwordConfirm){
+        sAlert.error('Your Passwords must match')
       }
       return false;
+    },
+
+    'click .reset-go-home' : function(){
+      FlowRouter.go('/loginPg')
     }
 
   });//end events

@@ -117,6 +117,18 @@ body {
     z-index: 17;
     margin: -50px 0 0 0; }
 
+#resetPasswordForm {
+  text-align: center; }
+  #resetPasswordForm input {
+    height: 40px;
+    width: 300px;
+    font-size: 24px;
+    margin: 3% 0 0 0; }
+
+.reset-go-home {
+  margin: 100px 0;
+  font-size: 20px; }
+
 .hamburger {
   display: visible;
   padding-top: 20px;

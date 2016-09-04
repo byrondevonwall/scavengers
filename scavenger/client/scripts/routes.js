@@ -43,6 +43,14 @@ FlowRouter.route( '/loginPg', {
   name: 'loginPg' // Optional route name.
 });
 
+FlowRouter.route( '/reset-password/:token', {
+  action: function() {
+    BlazeLayout.render('ResetPassword', {main: 'ResetPassword'})
+  },
+  name: 'reset-password'
+})
+
+
 FlowRouter.route( '/', {
   action: function() {
     // Do whatever we need to do when we visit this page
@@ -52,11 +60,6 @@ FlowRouter.route( '/', {
   name: 'loginPg' // Optional route name.
 });
 
-FlowRouter.route( '/resetPassword/:resetPasswordToken', {
-  action: function() {
-    BlazeLayout.render('ResetPassword', {main: 'ResetPassword'})
-  }
-})
 
 
 //this here isthe judges portal routes
