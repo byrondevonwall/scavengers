@@ -12,6 +12,8 @@ App.accessRule('https://cc-scavenger-hunt.herokuapp.com/*');
 App.accessRule('http://cc-scavenger-hunt.herokuapp.com/*');
 App.accessRule('https://s3.amazonaws.com/scavengerhuntphotos/*');
 App.accessRule('http://localhost:3010/*');
+App.accessRule("blob:*");
+
 
 App.icons({'iphone_2x': 'public/images/mobile/icons/2016CSHlogo-iphone_2x.png',
             'iphone_3x': 'public/images/mobile/icons/2016CSHlogo-iphone_3x.png',
