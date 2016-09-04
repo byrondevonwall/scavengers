@@ -18,7 +18,6 @@ Meteor.startup(function () {
 
 //https://www.sitepoint.com/creating-custom-login-registration-form-with-meteor/
 
-var emails = [];
 
 if (Meteor.isClient) {
 
