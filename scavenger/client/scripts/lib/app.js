@@ -170,8 +170,10 @@ for(var f=0;f<teams.length; f++){
 
         'click .resetPassBtn' : function(){
           event.preventDefault();
+          //get the user's email address
           var userEmail = $('#loginEmail').val().toLowerCase().toString();
           console.log(userEmail)
+          //try sending an email to that address
           Accounts.forgotPassword({email: userEmail}, function(err){
             if (err) {
               if (err.message === 'User not found [403]') {
@@ -183,12 +185,49 @@ for(var f=0;f<teams.length; f++){
               sAlert.success('Email Sent. Check your mailbox.');
             }
           })
-        }
-
-        if (Accounts._resetPasswordToken){
-          
+          //set the reset password token into session storage
+          if (Accounts._resetPasswordToken){
+            Session.set('resetPassword', Accounts._resetPasswordToken)
+          }
         }
     });//end login template events
+
+
+//----------reset pasword form helpers and events----------//
+
+//reset password forms and helpers modifiied from https://gist.github.com/LeCoupa/9879066
+
+  Template.ResetPassword.helpers({
+
+    resetPassword: function(){
+      return session.get('resetPassword')
+    }
+
+  });//end helpers
+
+  Template.ResetPassword.events({
+
+    'submit #resetPasswordForm': function(e, t) {
+      e.preventDefault();
+
+      var resetPasswordForm = $(e.currentTarget),
+          password = resetPasswordForm.find('#resetPasswordPassword').val(),
+          passwordConfirm = resetPasswordForm.find('#resetPasswordPasswordConfirm').val();
+
+      if (isNotEmpty(password) && areValidPasswords(password, passwordConfirm)) {
+        Accounts.resetPassword(Session.get('resetPassword'), password, function(err) {
+          if (err) {
+            console.log('We are sorry but something went wrong.');
+          } else {
+            console.log('Your password has been changed. Welcome back!');
+            Session.set('resetPassword', null);
+          }
+        });
+      }
+      return false;
+    }
+
+  });//end events
 
 //----------dashboard helpers and events----------//
 

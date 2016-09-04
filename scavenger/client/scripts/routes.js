@@ -52,6 +52,12 @@ FlowRouter.route( '/', {
   name: 'loginPg' // Optional route name.
 });
 
+FlowRouter.route( '/resetPassword/:resetPasswordToken', {
+  action: function() {
+    BlazeLayout.render('ResetPassword', {main: 'ResetPassword'})
+  }
+})
+
 
 //this here isthe judges portal routes
 
