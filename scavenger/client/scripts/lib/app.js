@@ -378,7 +378,7 @@ Template.aboutPg.events({
         }
       }
     );
-
+  }
   });
 
 //----------geolocation helpers events and directives----------//
