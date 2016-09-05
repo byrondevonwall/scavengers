@@ -379,22 +379,6 @@ Template.aboutPg.events({
       }
     );
 
-      // var uploader = new Slingshot.Upload("uploadFiles");
-      // var questionId = Session.get('selectedQuestion');
-      // uploader.send(document.getElementById('uploadInput').files[0], function (error, downloadUrl) {
-      //   if (error) {
-      //     // Log service detailed response
-      //     // console.log(error)
-      //     console.error('Error uploading' );
-      //     sAlert.error(error);
-      //   }
-      //   else {
-      //     //change to meteor method
-      //     Meteor.call('uploadImage', questionId, downloadUrl);
-      //   }
-      // });
-
-    }//end click picBox fn
   });
 
 //----------geolocation helpers events and directives----------//
