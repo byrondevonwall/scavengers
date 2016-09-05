@@ -109,7 +109,7 @@ Meteor.methods({
   },
 
   'registerUser' : function(email, password, name, roles){
-    console.log(email, password, name, roles)
+    // console.log('user created ', email, name, roles)
     var id;
 
     id = Accounts.createUser({
@@ -117,10 +117,22 @@ Meteor.methods({
       password: password,
       profile:{name: name}
     })
-    console.log(id)
+    // console.log(id)
     if(roles.length > 0){
       Roles.addUsersToRoles(id, roles, 'defaultGroup')
     }
+  },
+
+  'countQuestions' : function(){
+    return questionsList.find().count();
+  },
+
+  'countRegisteredUsers' : function(){
+    return registeredUsers.find().count();
+  },
+
+  'countTeams' : function(){
+    return teams.find().count();
   }
 
 
