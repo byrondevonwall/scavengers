@@ -137,10 +137,12 @@ if (Meteor.isClient) {
 
 
 
+
 // _.each(users, function(user){
 //   console.log(user.email + "added to " + user.roles)
 //   Meteor.call('setRegisteredUser', user.email, user.roles)
 // })
+
 
 
 //----------login page helpers and events----------//
