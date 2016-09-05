@@ -16,6 +16,10 @@ if(Meteor.isServer){
      return "Cary Scavenger Hunt Password Reset Email"
    }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e0288e133bb3a6bb279baf44fc10180e387ad888
 //this code uploads photos
 
   S3.config = {
@@ -24,33 +28,6 @@ if(Meteor.isServer){
     bucket: 'scavengerhuntphotos'
   }
 
-
-
-  //   Slingshot.fileRestrictions("uploadFiles", {
-  //     allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
-  //     maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
-  // });
-  //
-  //   Slingshot.createDirective("uploadFiles", Slingshot.S3Storage, {
-  //     bucket: "scavengerhuntphotos",
-  //     acl: "public-read",
-  //
-  //
-  //     authorize: function(){
-  //       //you can't upload if youre not logged in
-  //       if(!this.userId){
-  //         var message = "Please log in before posting files";
-  //         throw new Meteor.Error("Login Required", message);
-  //       }
-  //       return true;
-  //     },
-  //
-  //     key: function(file){
-  //       //store file in a directory based on a users team name
-  //       var teamName = Meteor.user().roles.defaultGroup[0]
-  //       return teamName + "/" + file.name;
-  //     }
-  //   });
 
 };//end isServer
 
@@ -135,7 +112,7 @@ Meteor.methods({
   },
 
   'registerUser' : function(email, password, name, roles){
-    console.log(email, password, name, roles)
+    // console.log('user created ', email, name, roles)
     var id;
 
     id = Accounts.createUser({
@@ -143,11 +120,23 @@ Meteor.methods({
       password: password,
       profile:{name: name}
     })
-    console.log(id)
+    // console.log(id)
     if(roles.length > 0){
       Roles.addUsersToRoles(id, roles, 'defaultGroup')
     }
   },
+
+  'countQuestions' : function(){
+    return questionsList.find().count();
+  },
+
+  'countRegisteredUsers' : function(){
+    return registeredUsers.find().count();
+  },
+
+  'countTeams' : function(){
+    return teams.find().count();
+  }
 
   'updateTeamScore' : function(teamID, pts){
     var team = teams.findOne({_id: teamID});
