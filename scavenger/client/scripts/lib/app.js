@@ -117,13 +117,7 @@ if (Meteor.isClient) {
 
 /*
 var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "dev","adult","adult","adult","family","family","family","dev","dev", "judges"];
-=======
   //
-
-
-
-var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "dev","dev","dev","adult","adult","adult","family","family","family","dev","dev","dev", "judges"];
->>>>>>> 0b7304f10694e7823ad9e0dee46e9c610ea7ff33
 
 
 var teams = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"];
@@ -715,9 +709,11 @@ Template.verifyPg.events({
         var tempTeam = teams.findOne({teamName: tempName});
         console.log("tempTeam: "+tempTeam.teamName);
         console.log(tempTeam.overallPoints+"+"+tempQ.ptsAwarded);
+        var newPoints = tempTeam.overallPoints+tempQ.ptsAwarded;
+        teams.update({teamName: tempName},{overallPoints: newPoints});
       }
       console.log("this question counts!");
-      //fakeScore = fakeScore + this.
+
     },
 
     'click .nope': function (e) {
