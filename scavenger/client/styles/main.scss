@@ -101,13 +101,13 @@ body{
   height: 60px;
 }
 .modalGrey{
-  background: rgba(115, 148, 141, .5);
+  background: rgba(115, 148, 141, 1);
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0px;
   left:0px;
-  z-index: 155000;
+  z-index: 15;
 }
 .modalBox{
   background: #A1D7D9;
@@ -691,4 +691,13 @@ $cshGreen: #90A039;
 }
 .rejected{
   background:$cshRed;
+}
+.variablePtsModal{
+  position: fixed;
+  z-index: 17;
+  top: 200px;
+  left: 300px;
+  width: 500px;
+  height: 300px;
+  background: yellow;
 }

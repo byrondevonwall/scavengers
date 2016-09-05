@@ -102,9 +102,9 @@ if (Meteor.isClient) {
   //     [false, false, true, '', false, "Did you know this wonderful amphitheatre with the funny name honors a former Mayor? Find his likeness and take your team photo and shout 'Thanks Koka!' TEAM PHOTO", '', false, '', 150, '', 69],
   //     [true, false, false, '', false, "This new directional sign in Cary tells the way to our four Sister Cities. From the Sign, tell us the distance to Le Touquet France in kilometers. ANSWER", '', false, '', 110, '', 70]
   //  ];//end questionsArray
-
+  //
   // // //isSA, isItem, isPic, picUrl, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, questionNumber)
-
+  //
   //   for(var team=0;team<teamNames.length;team++)
   //   {console.log("generating"+teamNames[team]+"'s questions");
   //
@@ -116,20 +116,28 @@ if (Meteor.isClient) {
 
 
 
-/*
-var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "dev","adult","adult","adult","family","family","family","dev","dev", "judges"];
-  //
+
+// var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "dev","adult","adult","adult","family","family","family","dev","dev", "judges"];
+//   //
+//
+//
+// var teams = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"];
+//
+// for(var f=0;f<teams.length; f++){
+//     Meteor.call('createTeam', teams[f], teamTypes[f], 0);
+//     console.log("------------------------")
+//     console.log("team Name: "+teams[f]);
+//     console.log("team type: "+teamTypes[f]);
+//   }
 
 
-var teams = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"];
-
-
-
+// var users = [
+//
 // _.each(users, function(user){
 //   console.log(user.email + "added to " + user.roles)
 //   Meteor.call('setRegisteredUser', user.email, user.roles)
 // })
-*/
+
 
 
 //----------login page helpers and events----------//
@@ -692,23 +700,47 @@ Template.verifyPg.events({
     'click .yep': function (e) {
       var tempQ = Session.get('questionToVerify');
       var tempQnum = tempQ.questionNumber;
-      $("#"+tempQnum).addClass("verified");
 
       if(tempQ.ptsAwarded == -1)
       {
-        console.log("...pop up the variable points modal...");
+        $(".modalGray").removeClass("off");
+        $(".variablePtsModal").removeClass("off");
+
+        $("#variableBtn").click(function(){
+
+          var tempName = tempQ.groupName;
+          var tempTeam = teams.findOne({teamName: tempName});
+          var tempID = tempTeam._id;
+
+          var tempPts = Number($("#variablePtsinput").val());
+          console.log("variable pts: "+ tempPts);
+
+          Meteor.call('updateTeamScore', tempID, tempPts);
+
+          $(".modalGray").addClass("off");
+          $(".variablePtsModal").addClass("off");
+          $("#"+tempQnum).addClass("verified");
+        })
+
+        //console.log("...pop up the variable points modal...");
       }
       else
       {
         var tempName = tempQ.groupName;
         var tempTeam = teams.findOne({teamName: tempName});
-        console.log("tempTeam: "+tempTeam.teamName);
-        console.log(tempTeam.overallPoints+"+"+tempQ.ptsAwarded);
-        var newPoints = tempTeam.overallPoints+tempQ.ptsAwarded;
-        teams.update({teamName: tempName},{overallPoints: newPoints});
-      }
-      console.log("this question counts!");
+        var tempID = tempTeam._id;
 
+        var tempPts = tempQ.ptsAwarded;
+
+        // console.log("team");
+        // console.log(tempTeam);
+        // console.log(" gets +"+tempPts);
+
+        Meteor.call('updateTeamScore', tempID, tempPts);
+        $("#"+tempQnum).addClass("verified");
+
+        //console.log("for "+tempTeam.overallPoints+" points overall!");
+      }
     },
 
     'click .nope': function (e) {
