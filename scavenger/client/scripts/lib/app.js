@@ -136,78 +136,11 @@ if (Meteor.isClient) {
 
 
 
-var users = [
-{email:"miketrombley88@yahoo.com", roles:["THE GRAPE ESCAPE", "adult"]},
-{email:"mysterymaniac@aol.com" , roles:["FIGHTING BROWNS", "adult"]},
-{email:"nannettecollier@hotmail.com", roles:["FAB 4", "adult"]},
-{email:"lindsay@carolinaorthopedo.com", roles:["CAROLINA ORTHO PEDO", "corporate"]},
-{email:"parkerlodder@gmail.com", roles:["PIGGLY WIGGLY PRINCESSES","adult"]},
 
-{email:"ashley.pirolli@gmail.com", roles:["Trox","adult"]},
-{email:"westcary@rainbowccc.com", roles:["Team West Cary", "adult"]},
-{email:"lcampbellnc@gmail.com", roles:["Campbell Clan", "adult"]},
-{email:"dydulaney11@gmail.com", roles:["Team LooDu", "adult"]},
-{email:"mimi0643@gmail.com", roles:["Riddle E-Racers", "adult"]},
-{email:"ashleyp18@gmail.com", roles:["Scholars & Ballers", "adult"]},
-{email:"sheila@crosstowndowntown.com", roles:["The 52'ers", "adult"]},
-
-{email:"juliahsimmons@gmail.com", roles:["SimTown", "family"]},
-{email:"ncdouglasnc@gmail.com", roles:["Red Field Trackers", "adult"]},
-{email:"ushma.shukla@gmail.com", roles:["The Blue Whales", "family"]},
-{email:"stephgnc25@gmail.com", roles:["There's Something About Cary","family"]},
-
-{email:"norabarber@gmail.com", roles:["Plaque busters", "family"]},
-{email:"dan.marx@sas.com", roles:["x Marx the spot", "family"]},
-{email:"Aaronz@mrroof.com", roles:["Mr. Roof's Minions","corporate"]},
-{email:"abeard@collegenannies.com", roles:["Nannies & Sitters & Tutors, OH MY!","corporate"]},
-
-{email:"glen.tetrault@yahoo.com", roles:["Grinin Lizards","family"]},
-{email:"parents@julienmaia.com", roles:["Dam Those Beavers","family"]},
-{email:"llynn@roofsbyaspen.com", roles:["Super Certified","corporate"]},
-{email:"cwinnett@roofsbyaspen.com", roles:["Rain Makers","corporate"]},
-{email:"lroach@searstone.com", roles:["SearStone #1","corporate"]},
-{email:"aligay@searstone.com", roles:["SEARSTONE #2","corporate"]},
-
-{email:"ersafarz@gmail.com", roles:["The Wimbledon Wolfpack","family"]},
-{email:"lauratice22@yahoo.com", roles:["Jalapeno Hotties","family"]},
-{email:"mike@mjdavis.org", roles:["Aloha Six","adult"]},
-{email:"mccouch2@gmail.com", roles:["It's Five O'clock Somewhere","adult"]},
-
-{email:"jenjen30@gmail.com", roles:["Eeyore's Buddies","family"]},
-{email:"ortizbsn@gmail.com", roles:["The Lip BALMs","adult"]},
-{email:"acsaville@gmail.com", roles:["For Cake and Glory!","adult"]},
-{email:"rmades@gmail.com", roles:["A-Mades-ing","family"]},
-{email:"jnet318@aol.com", roles:["Ack Attack","adult"]},
-
-{email:"martha.sorrentino@gmail.com", roles:["The Hunter Games","adult"]},
-{email:"kjones124@yahoo.com", roles:["Meat Knuckles","family"]},
-{email:"scottmyersp@gmail.com", roles:["NC Myers Crew","family"]},
-{email:"jeanniemmorello@gmail.com", roles:["Marvelous Morellos","family"]},
-
-{email:"teenykins@gmail.com", roles:["The Cary Cats", "family"]},
-{email:"memphis_whitleys@yahoo.com", roles: ["The Memphians", "Family"]},
-{email:"j2newman@gmail.com", roles:["The Hungry Hungry Hippos", "Family"]},
-{email:"testa023@gmail.com", roles:["Cary Underwoods", "adult"]},
-{email:"bcouchon@nc.rr.com", roles:["The Mandonias", "adult"]},
-
-{email:"byronssupersweetdevacct@gmail.com", roles:["awesometeam5000", "dev"]},//a
-{email:"byrondevonwall@gmail.com", roles:["awesometeam5000", "dev"]},
-{email:"mattkun@gmail.com", roles:["awesometeam5000", "dev"]},
-{email:"walkup1@adultteam.com", roles:["adultwalkup1","adult"]},
-{email:"walkup2@adultteam.com", roles:["adultwalkup2","adult"]},
-{email:"walkup3@adultteam.com", roles:["adultwalkup3","adult"]},
-{email:"walkup1@familyteam.com", roles:["familywalkup1","family"]},
-{email:"walkup2@familyteam.com", roles:["familywalkup2","family"]},
-{email:"walkup3@familyteam.com", roles:["familywalkup3","family"]},
-{email:"lindsey.chester@carycitizen.com", roles:["cary citizen","dev"]},
-{email:"2much4cary@gmail.com",roles:["cary citizen","dev"]},
-{email:"test@appstoretester.com", roles:["app store test","dev"]},
-{email:"judges@judges.judges", roles:["judges"]}
-]
-_.each(users, function(user){
-  console.log(user.email + "added to " + user.roles)
-  Meteor.call('setRegisteredUser', user.email, user.roles)
-})
+//_.each(users, function(user){
+//  console.log(user.email + "added to " + user.roles)
+//  Meteor.call('setRegisteredUser', user.email, user.roles)
+//})
 
 
 //----------login page helpers and events----------//
