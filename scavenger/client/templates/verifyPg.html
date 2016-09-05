@@ -6,8 +6,9 @@
 <div class="AnswerArea">
 
   <div class="answeredQuestionsList">
-    <div class="teamTitle">
-      All of this team's answered quesitons:
+    <div class="teamInfo">
+      <span class="teamInfoEmphasis">{{selectedTeam.[0].teamName}}'s</span> total points: <span class="pts">{{selectedTeam.[0].overallPoints}}</span><br>
+      All of <span class="teamInfoEmphasis">{{selectedTeam.[0].teamName}}'s</span> answered quesitons:
     </div>
     {{#each questions}}
       {{#if this.isAnswered}}
@@ -19,19 +20,40 @@
   </div>
 
   <div class="questionAnswer">
-
-      <div class="answerTitleWrapper">Answer to question <span class="qNum"></span></div>
-      <div class="answerQuestionTextWrapper">Question: <span class="questionText"></span></div>
-      <div class="shortAnswerWrapper">Short Answer: <span class="SA"></span></div>
-      <div class="itemWrapper">Do they have the item?: <span class="item"></span></div>
-
-      <div class="imgURLWrapper">pic:<br>
-        <span class="URL">
-          <img src="" height="300px" width="300px">
+      <div class="answerTitleWrapper">
+        <span class="answerTitles">Answer to question
+           <span class="qNum">{{questionToVerify.questionNumber}}</span>
         </span>
       </div>
+      <div class="answerQuestionTextWrapper"><span class="answerTitles">Question:</span>
+        <span class="questionText">{{questionToVerify.questionText}}</span>
+      </div>
+    {{#if questionToVerify.isSA}}
+      <br>
+      <div class="shortAnswerWrapper"><span class="answerTitles">Short Answer:</span>
+        <span class="SA">{{questionToVerify.shortAnswer}}</span>
+      </div>
+    {{/if}}
 
-      <br><br>
+    {{#if questionToVerify.isItem}}
+    <br>
+      <div class="itemWrapper"><span class="answerTitles">Do they have the item?:</span>
+        <span class="item">
+          {{questionToVerify.hasItem}}
+        </span>
+      </div>
+    {{/if}}
+
+    {{#if questionToVerify.isPic}}
+    <br>
+      <div class="imgURLWrapper"><span class="answerTitles">pic:</span><br>
+        <span class="URL">
+          <img src="{{questionToVerify.picUrl}}" height="300px" width="300px">
+        </span>
+      </div>
+    {{/if}}
+
+    <br>
       <div class="thumbsContainer">
         <span class="nope">
           Reject Answer<br>
@@ -43,7 +65,6 @@
           {{> thumbsUpIcon}}
         </span>
       </div>
-
   </div><!--end questionAnswer-->
 
 </div>

@@ -70,7 +70,7 @@ FlowRouter.route( '/teamsPg', {
 FlowRouter.route( '/verifyPg', {
   action: function() {
     // Do whatever we need to do when we visit this page
-    console.log( "Okay, we're on the teamsPg page!" );
+    console.log( "Okay, we're on the verifyPg page!" );
     BlazeLayout.render( 'verifyPg', { main: 'verifyPg' } );
   },
   name: 'verifyPg' // Optional route name.

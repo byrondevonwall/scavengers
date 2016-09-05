@@ -310,8 +310,8 @@ body{
   border: solid thin black;
 }
 .questionText{
-  font-size: 36px;
-  color: #eee;
+  font-size: 12px;
+  color: black;
 }
 .answerContainer{
   padding: 20px;
@@ -499,6 +499,7 @@ $cshGreen: #90A039;
   font-family: sans-serif;
 }
 .teamList1{
+  vertical-align: top;
   background-color: $cshGreen;
   padding: 10px;
   box-sizing: border-box;
@@ -508,6 +509,7 @@ $cshGreen: #90A039;
   margin-left: 5%;
 }
 .teamList2{
+  vertical-align: top;
   background-color: $cshBlue;
   padding: 10px;
   box-sizing: border-box;
@@ -516,6 +518,7 @@ $cshGreen: #90A039;
   display: inline-block;
 }
 .teamList3{
+  vertical-align: top;
   background-color: $cshRed;
   padding: 10px;
   box-sizing: border-box;
@@ -526,6 +529,11 @@ $cshGreen: #90A039;
 .teamLink{
   margin:5px;
   text-decoration: underline;
+}
+.teamLink:hover{
+  background: white;
+  color: black;
+  cursor:pointer;
 }
 .teamLink:hover{
   margin:5px;
@@ -593,7 +601,8 @@ $cshGreen: #90A039;
   text-align: center;
 }
 .imgURLWrapper{
-  background: #aaa;
+  border: 3px dashed $cshBlue;
+  border-radius: 5px;
 }
 .backToTeams{
   box-sizing: border-box;
@@ -638,6 +647,30 @@ $cshGreen: #90A039;
   font-family: sans-serif;
 }
 .nope:hover{
-  background: $cshRed;
+  background: rgb(125, 41, 41);
   border: 1px red solid;
+}
+.teamInfo{
+  font-size: 24px;
+  color: $cshDarkBlue;
+}
+.teamInfoEmphasis{
+  font-size: 28px;
+  color: white;
+  font-weight: 900;
+}
+.pts{
+  font-size: 36px;
+  color: $cshGreen;
+  font-weight: 900;
+}
+.answerTitles{
+  font-size: 18px;
+  color: $cshBlue;
+}
+.verified{
+  background: $cshGreen;
+}
+.rejected{
+  background:$cshRed;
 }

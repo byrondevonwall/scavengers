@@ -259,8 +259,8 @@ body {
   border: solid thin black; }
 
 .questionText {
-  font-size: 36px;
-  color: #eee; }
+  font-size: 12px;
+  color: black; }
 
 .answerContainer {
   padding: 20px;
@@ -423,6 +423,7 @@ body {
   font-family: sans-serif; }
 
 .teamList1 {
+  vertical-align: top;
   background-color: #90A039;
   padding: 10px;
   box-sizing: border-box;
@@ -431,6 +432,7 @@ body {
   margin-left: 5%; }
 
 .teamList2 {
+  vertical-align: top;
   background-color: #94CED1;
   padding: 10px;
   box-sizing: border-box;
@@ -438,6 +440,7 @@ body {
   display: inline-block; }
 
 .teamList3 {
+  vertical-align: top;
   background-color: #DB432B;
   padding: 10px;
   box-sizing: border-box;
@@ -447,6 +450,11 @@ body {
 .teamLink {
   margin: 5px;
   text-decoration: underline; }
+
+.teamLink:hover {
+  background: white;
+  color: black;
+  cursor: pointer; }
 
 .teamLink:hover {
   margin: 5px;
@@ -513,7 +521,8 @@ body {
   text-align: center; }
 
 .imgURLWrapper {
-  background: #aaa; }
+  border: 3px dashed #94CED1;
+  border-radius: 5px; }
 
 .backToTeams {
   box-sizing: border-box;
@@ -556,7 +565,31 @@ body {
   font-family: sans-serif; }
 
 .nope:hover {
-  background: #DB432B;
+  background: #7d2929;
   border: 1px red solid; }
+
+.teamInfo {
+  font-size: 24px;
+  color: #233F51; }
+
+.teamInfoEmphasis {
+  font-size: 28px;
+  color: white;
+  font-weight: 900; }
+
+.pts {
+  font-size: 36px;
+  color: #90A039;
+  font-weight: 900; }
+
+.answerTitles {
+  font-size: 18px;
+  color: #94CED1; }
+
+.verified {
+  background: #90A039; }
+
+.rejected {
+  background: #DB432B; }
 
 /*# sourceMappingURL=main.css.map */
