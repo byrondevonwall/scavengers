@@ -18,7 +18,6 @@ Meteor.startup(function () {
 
 //https://www.sitepoint.com/creating-custom-login-registration-form-with-meteor/
 
-var emails = [];
 
 if (Meteor.isClient) {
 
@@ -103,7 +102,9 @@ if (Meteor.isClient) {
   //     [false, false, true, '', false, "Did you know this wonderful amphitheatre with the funny name honors a former Mayor? Find his likeness and take your team photo and shout 'Thanks Koka!' TEAM PHOTO", '', false, '', 150, '', 69],
   //     [true, false, false, '', false, "This new directional sign in Cary tells the way to our four Sister Cities. From the Sign, tell us the distance to Le Touquet France in kilometers. ANSWER", '', false, '', 110, '', 70]
   //  ];//end questionsArray
-  // //isSA, isItem, isPic, picUrl, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, questionNumber)
+
+  // // //isSA, isItem, isPic, picUrl, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, questionNumber)
+
   //   for(var team=0;team<teamNames.length;team++)
   //   {console.log("generating"+teamNames[team]+"'s questions");
   //
@@ -113,8 +114,16 @@ if (Meteor.isClient) {
   //     }//end question for loop
   //   }//end team for loop
 
+
 /*
 var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "dev","adult","adult","adult","family","family","family","dev","dev", "judges"];
+=======
+  //
+
+
+
+var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "dev","dev","dev","adult","adult","adult","family","family","family","dev","dev","dev", "judges"];
+>>>>>>> 0b7304f10694e7823ad9e0dee46e9c610ea7ff33
 
 
 var teams = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"];
@@ -126,7 +135,6 @@ for(var f=0;f<teams.length; f++){
   console.log("team type: "+teamTypes[f]);
 }
 */
-
 
 // var users =
 // _.each(users, function(user){
@@ -262,22 +270,73 @@ for(var f=0;f<teams.length; f++){
 
         'click .resetPassBtn' : function(){
           event.preventDefault();
-          var userEmail = $('#loginEmail').val().toString();
+          //get the user's email address
+
+          // Accounts.emailTemplates.sendResetPasswordEmail.text = function(user, url){
+          //   return "Click this link to reset your password: " + url +
+          // }
+          var userEmail = $('#loginEmail').val().toLowerCase().toString();
           console.log(userEmail)
+          //try sending an email to that address
           Accounts.forgotPassword({email: userEmail}, function(err){
             if (err) {
               if (err.message === 'User not found [403]') {
-                sAlert.error('This email does not exist.');
+                sAlert.error('This email does not exist, please Register');
               } else {
                 sAlert.error(err.message);
               }
             } else {
               sAlert.success('Email Sent. Check your mailbox.');
+              $('.resetPassBtn').addClass('off');
             }
           })
         }
-
     });//end login template events
+
+
+//----------reset pasword form helpers and events----------//
+
+//reset password forms and functions modifiied from https://gist.github.com/LeCoupa/9879066
+
+
+  Template.ResetPassword.events({
+
+    'submit #resetPasswordForm': function(e, t) {
+      e.preventDefault();
+      //get token from url
+      var url = FlowRouter.current().path
+      var token = url.substring(url.lastIndexOf('/')+1, url.length);
+      // console.log(token)
+
+      var resetPasswordForm = $(e.currentTarget),
+          password = resetPasswordForm.find('#resetPasswordPassword').val(),
+          passwordConfirm = resetPasswordForm.find('#resetPasswordPasswordConfirm').val();
+
+
+      if (password != '' && passwordConfirm != '' && password === passwordConfirm) {
+        Accounts.resetPassword(token, password, function(err) {
+          if (err) {
+            sAlert.error('We are sorry but something went wrong.');
+          } else {
+            sAlert.success('Your password has been changed. Welcome back!');
+            var token = '';
+            console.log(Meteor.user())
+            FlowRouter.go('/dashboard')
+          }
+        });
+      } else if(password === '' || passwordConfirm === ''){
+        sAlert.error('You must input a password')
+      } else if(password != passwordConfirm){
+        sAlert.error('Your Passwords must match')
+      }
+      return false;
+    },
+
+    'click .reset-go-home' : function(){
+      FlowRouter.go('/loginPg')
+    }
+
+  });//end events
 
 //----------dashboard helpers and events----------//
 
@@ -406,10 +465,10 @@ Template.aboutPg.events({
 //----------file-uploader directives events and helpers----------//
 
   //this restricts the type/size of file that users can upload to AWS
-  Slingshot.fileRestrictions("myFileUploads", {
-    allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
-    maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
-  });
+  // Slingshot.fileRestrictions("myFileUploads", {
+  //   allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
+  //   maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
+  // });
 
   //click .picBox
   //change #imgUpload
@@ -423,20 +482,38 @@ Template.aboutPg.events({
 
     //upload to AWS once file is selected
     'change #imgUpload' : function(){
-      var uploader = new Slingshot.Upload("uploadFiles");
+      var files = $("#uploadInput")[0].files;
+      console.log(files[0].name)
+      var userTeam = Meteor.user().roles.defaultGroup[0]
       var questionId = Session.get('selectedQuestion');
-      uploader.send(document.getElementById('uploadInput').files[0], function (error, downloadUrl) {
-        if (error) {
-          // Log service detailed response
-          // console.log(error)
-          console.error('Error uploading' );
-          sAlert.error(error);
+
+      S3.upload({
+        files: files,
+        path: userTeam
+      }, function(err, res){
+        if(err){
+          sAlert.error(err)
+        } else if(res){
+          console.log(res.secure_url)
+          Meteor.call('uploadImage', questionId, res.secure_url)
         }
-        else {
-          //change to meteor method
-          Meteor.call('uploadImage', questionId, downloadUrl);
-        }
-      });
+      }
+    );
+
+      // var uploader = new Slingshot.Upload("uploadFiles");
+      // var questionId = Session.get('selectedQuestion');
+      // uploader.send(document.getElementById('uploadInput').files[0], function (error, downloadUrl) {
+      //   if (error) {
+      //     // Log service detailed response
+      //     // console.log(error)
+      //     console.error('Error uploading' );
+      //     sAlert.error(error);
+      //   }
+      //   else {
+      //     //change to meteor method
+      //     Meteor.call('uploadImage', questionId, downloadUrl);
+      //   }
+      // });
 
     }//end click picBox fn
   });

@@ -1,5 +1,5 @@
 App.info({
-    id: 'com.mattandyrondev.ccsh',
+    id: 'com.mattandbyrondev.ccsh',
     name: 'CCSH-2016',
     description: 'Cary Citizen 2016 Scavenger Hunt App',
     author: 'MattByron Development Group',
@@ -8,10 +8,14 @@ App.info({
     version: "0.0.3"
 });
 
-App.accessRule('https://cc-scavenger-hunt.herokuapp.com/*');
-App.accessRule('http://cc-scavenger-hunt.herokuapp.com/*');
-App.accessRule('https://s3.amazonaws.com/scavengerhuntphotos/*');
-App.accessRule('http://localhost:3010/*');
+
+// App.accessRule('https://cc-scavenger-hunt.herokuapp.com/*');
+// App.accessRule('http://cc-scavenger-hunt.herokuapp.com/*');
+// App.accessRule('https://s3.amazonaws.com/scavengerhuntphotos/*');
+// App.accessRule('http://localhost:3010/*');
+App.accessRule("blob:*");
+App.accessRule("*")
+
 
 App.icons({'iphone_2x': 'public/images/mobile/icons/2016CSHlogo-iphone_2x.png',
             'iphone_3x': 'public/images/mobile/icons/2016CSHlogo-iphone_3x.png',

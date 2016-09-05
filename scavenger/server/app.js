@@ -2,9 +2,22 @@
 
 
 if(Meteor.isServer){
+//------password reset email config functions/vars----------//
+  Accounts.emailTemplates.resetPassword.text = function(user, url){
+    console.log('url change')
+     url = url.replace('#/', '')
+     return "Click this link to reset your password: " + url
+   }
 
-  
+   Accounts.emailTemplates.siteName = "Cary Scavenger Hunt";
+   Accounts.emailTemplates.from = "postmaster@caryscavengerhunt.pw";
 
+   Accounts.emailTemplates.resetPassword.subject = function(){
+     return "Cary Scavenger Hunt Password Reset Email"
+   }
+
+
+//----------team/question creation arrays----------//
 
   //declare seed users
   var users = [
@@ -44,31 +57,40 @@ if(Meteor.isServer){
     // });//end each
 
 //this code uploads photos
-    Slingshot.fileRestrictions("uploadFiles", {
-      allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
-      maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
-  });
 
-    Slingshot.createDirective("uploadFiles", Slingshot.S3Storage, {
-      bucket: "scavengerhuntphotos",
-      acl: "public-read",
+  S3.config = {
+    key: Meteor.settings.AWSAccessKeyId,
+    secret: Meteor.settings.AWSSecretAccessKey,
+    bucket: 'scavengerhuntphotos'
+  }
 
 
-      authorize: function(){
-        //you can't upload if youre not logged in
-        if(!this.userId){
-          var message = "Please log in before posting files";
-          throw new Meteor.Error("Login Required", message);
-        }
-        return true;
-      },
 
-      key: function(file){
-        //store file in a directory based on a users team name
-        var teamName = Meteor.user().roles.defaultGroup[0]
-        return teamName + "/" + file.name;
-      }
-    });
+  //   Slingshot.fileRestrictions("uploadFiles", {
+  //     allowedFileTypes: ["image/png", "image/jpeg", "image/gif"],
+  //     maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
+  // });
+  //
+  //   Slingshot.createDirective("uploadFiles", Slingshot.S3Storage, {
+  //     bucket: "scavengerhuntphotos",
+  //     acl: "public-read",
+  //
+  //
+  //     authorize: function(){
+  //       //you can't upload if youre not logged in
+  //       if(!this.userId){
+  //         var message = "Please log in before posting files";
+  //         throw new Meteor.Error("Login Required", message);
+  //       }
+  //       return true;
+  //     },
+  //
+  //     key: function(file){
+  //       //store file in a directory based on a users team name
+  //       var teamName = Meteor.user().roles.defaultGroup[0]
+  //       return teamName + "/" + file.name;
+  //     }
+  //   });
 
 };//end isServer
 

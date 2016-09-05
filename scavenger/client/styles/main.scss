@@ -127,6 +127,23 @@ body{
     margin: -50px 0 0 0;
   }
 }
+
+#resetPasswordForm{
+  text-align: center;
+
+  input {
+    height:40px;
+    width: 300px;
+    font-size: 24px;
+    margin: 3% 0 0 0;
+  }
+
+}
+.reset-go-home{
+  margin: 100px 0;
+  font-size: 20px;
+}
+
 .hamburger{
   // border: purple 1px solid;
   display: visible;
@@ -217,6 +234,7 @@ body{
   font-family: sans-serif;
   text-align: center;
   text-overflow: ellipsis;
+
 }
 .dashTitle{
   font-size: 40px;
