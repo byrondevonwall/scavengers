@@ -21,12 +21,20 @@ Meteor.startup(function () {
 
 if (Meteor.isClient) {
 
-Meteor.call('countQuestions', questionCounter)
 
+
+Meteor.call('countQuestions', questionCounter)
+var qCount;
 function questionCounter(err, count){
   var qCount = count;
-  console.log(qCount)
+  console.log(qCount);
   if(qCount === 0){
+    addQuestions(qCount);
+  }
+}
+
+function addQuestions(qCount){
+if(qCount === 0){
 
       var teamNames =["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test"];
 
@@ -124,11 +132,20 @@ function questionCounter(err, count){
   }//end if questions === 0
 }
 
+
+var ruCount;
+
 Meteor.call('countRegisteredUsers', registeredUserCounter)
 
 function registeredUserCounter(err, count){
   var ruCount = count;
-  console.log(ruCount)
+  console.log(ruCount);
+  if(ruCount === 0){
+    addRegUsers(ruCount);
+  };
+}
+
+function addRegUsers(ruCount){
   if(ruCount === 0){
     var users = [
     {email:"miketrombley88@yahoo.com", roles:["THE GRAPE ESCAPE", "adult"]},
@@ -206,11 +223,19 @@ function registeredUserCounter(err, count){
 }
 
 
+var tCount;
+
 Meteor.call('countTeams', teamCounter)
 
 function teamCounter(err, count){
   var tCount = count;
   console.log(tCount)
+  if(tCount === 0){
+  addTeams(tCount)
+  }
+}
+
+function addTeams(tCount){
   if(tCount === 0){
     var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "dev","adult","adult","adult","family","family","family","dev","dev", "judges"];
 
