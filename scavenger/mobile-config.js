@@ -1,5 +1,5 @@
 App.info({
-    id: 'com.mattandyrondev.ccsh',
+    id: 'com.mattandbyrondev.ccsh',
     name: 'CCSH-2016',
     description: 'Cary Citizen 2016 Scavenger Hunt App',
     author: 'MattByron Development Group',
