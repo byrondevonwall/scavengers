@@ -4,7 +4,7 @@
 if(Meteor.isServer){
 //------password reset email config functions/vars----------//
   Accounts.emailTemplates.resetPassword.text = function(user, url){
-    console.log('url change')
+    // console.log('url change')
      url = url.replace('#/', '')
      return "Click this link to reset your password: " + url
    }
@@ -141,7 +141,7 @@ Meteor.methods({
 });//end methods
 
 Meteor.publish('users', function(){
-  console.log("Server: publishing all users");
+  // console.log("Server: publishing all users");
   return Meteor.users.find();
 });
 
