@@ -16,7 +16,10 @@ if(Meteor.isServer){
      return "Cary Scavenger Hunt Password Reset Email"
    }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> e0288e133bb3a6bb279baf44fc10180e387ad888
 //this code uploads photos
 
   S3.config = {
@@ -135,8 +138,16 @@ Meteor.methods({
     return teams.find().count();
   }
 
-
-
+  'updateTeamScore' : function(teamID, pts){
+    var team = teams.findOne({_id: teamID});
+    var oldPts = team.overallPoints;
+    var newPoints = Number(oldPts + pts);
+    teams.update({_id: teamID},
+      {$set: {
+        overallPoints: newPoints
+      }
+    });
+  }//end update team score
 
 });//end methods
 

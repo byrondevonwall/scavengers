@@ -23,7 +23,6 @@ if (Meteor.isClient) {
 
 
 
-
 //----------login page helpers and events----------//
     //this instantiates the modal
     Template.loginPg.events({
@@ -73,17 +72,6 @@ if (Meteor.isClient) {
                   $(".needLog").removeClass('off');
                 }
               })
-              // var id;
-              //
-              // id = Accounts.createUser({
-              //   email: regEmail,
-              //   password: regPass,
-              //   profile:{name: regName}
-              // })
-              // console.log(id)
-              // if(user.role.length > 0){
-              //   Roles.addUsersToRoles(id, user.role, 'defaultGroup')
-              // }
 
 
             }
@@ -580,21 +568,56 @@ Template.verifyPg.events({
 
       var tempQ = Session.get('questionToVerify');
       var tempQnum = "#"+tempQ.questionNumber;
-      $(tempQnum).addClass("verified");
 
       if(tempQ.ptsAwarded == -1)
       {
+
         // console.log("...pop up the variable points modal...");
+
+        $(".modalGray").removeClass("off");
+        $(".variablePtsModal").removeClass("off");
+
+        $("#variableBtn").click(function(){
+
+          var tempName = tempQ.groupName;
+          var tempTeam = teams.findOne({teamName: tempName});
+          var tempID = tempTeam._id;
+
+          var tempPts = Number($("#variablePtsinput").val());
+          // console.log("variable pts: "+ tempPts);
+
+          Meteor.call('updateTeamScore', tempID, tempPts);
+
+          $(".modalGray").addClass("off");
+          $(".variablePtsModal").addClass("off");
+          $("#"+tempQnum).addClass("verified");
+        })
+
+        //console.log("...pop up the variable points modal...");
+
       }
       else
       {
         var tempName = tempQ.groupName;
         var tempTeam = teams.findOne({teamName: tempName});
+
         // console.log("tempTeam: "+tempTeam.teamName);
         // console.log(tempTeam.overallPoints+"+"+tempQ.ptsAwarded);
+
+        var tempID = tempTeam._id;
+
+        var tempPts = tempQ.ptsAwarded;
+
+        // console.log("team");
+        // console.log(tempTeam);
+        // console.log(" gets +"+tempPts);
+
+        Meteor.call('updateTeamScore', tempID, tempPts);
+        $("#"+tempQnum).addClass("verified");
+
+        //console.log("for "+tempTeam.overallPoints+" points overall!");
+
       }
-      console.log("this question counts!");
-      //fakeScore = fakeScore + this.
     },
 
     'click .nope': function (e) {
