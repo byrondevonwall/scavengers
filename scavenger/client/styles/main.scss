@@ -28,6 +28,7 @@ body{
     height: 150px;
   }
 }
+
 .resetPassBtn{
   font-size: 20px;
   color: darken(gray, 15%);
@@ -100,6 +101,47 @@ body{
   width: 45%;
   height: 60px;
 }
+
+
+@media  screen and (min-width: 1023px){
+  .loginContainer{
+    .heroImg{
+      width: 30%;
+      margin: 2% 0 0 0;
+    }
+  }
+  .eachLogin{
+    text-align: center;
+    //border: blue 1px solid;
+    height: 50px;
+    font-size: 24px;
+    margin: 0 0 0 40%;
+    input{
+      height:40px;
+      width: 300px;
+      font-size: 20px;
+      margin: 3% 0 0 0;
+      display: block;
+    }
+  }
+  .cc-logo{
+    width: 60%;
+    height: 70px;
+  }
+  .TFD-logo{
+    width: 25%;
+    height: 80px;
+  }
+  .COD-logo{
+    width: 25%;
+    height: 80px;
+  }
+  .needRegBtn{
+    display: none;
+  }
+}
+
+
 .modalGrey{
   background: rgba(115, 148, 141, 1);
   width: 100%;
