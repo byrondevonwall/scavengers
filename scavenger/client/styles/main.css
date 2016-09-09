@@ -654,4 +654,13 @@ body {
   height: 300px;
   background: #ecf78e; }
 
+.leadTeamLink {
+  margin: 5px;
+  text-decoration: underline; }
+
+.leadTeamLink:hover {
+  background: white;
+  color: black;
+  cursor: pointer; }
+
 /*# sourceMappingURL=main.css.map */

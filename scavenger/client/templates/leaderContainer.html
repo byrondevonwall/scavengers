@@ -4,8 +4,8 @@
     <div class="teamList1">
       <div class="listTitle">Corporate Teams</div>
       <ul>
-        {{#each teams "corporate"}}
-          <li class="teamLink" id="{{this.teamName}}">{{this.teamName}}</li>
+        {{#each leaderboard "corporate"}}
+          <li class="leadTeamLink" id="{{this.teamName}}">{{this.teamName}}</li>
         {{/each}}
       </ul>
     </div>
@@ -14,8 +14,8 @@
       <div class="listTitle">Family Teams</div>
       <span class="dumb"></span>
       <ul>
-        {{#each teams "family"}}
-          <li class="teamLink" id="{{this.teamName}}">{{this.teamName}}</li>
+        {{#each leaderboard "family"}}
+          <li class="leadTeamLink" id="{{this.teamName}}">{{this.teamName}}</li>
         {{/each}}
       </ul>
     </div>
@@ -23,8 +23,8 @@
     <div class="teamList3">
       <div class="listTitle">Adult Teams</div>
       <ul>
-        {{#each teams "adult"}}
-          <li class="teamLink" id="{{this.teamName}}">{{this.teamName}}</li>
+        {{#each leaderboard "adult"}}
+          <li class="leadTeamLink" id="{{this.teamName}}">{{this.teamName}}</li>
         {{/each}}
       </ul>
     </div>

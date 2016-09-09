@@ -578,30 +578,36 @@ Template.leaderPg.events({
 
   });
 
-  //--------------------leaderPg HELPERS----------------------
-    Template.leaderPg.helpers({
+  //--------------------leaderContainer HELPERS----------------------
+    Template.leaderContainer.helpers({
 
-    'teams': function (type) {
+    'leaderboard': function (type) {
+      console.log("we're in leaderteams");
 
       if(type === "adult")
       {
         var adultTeams = teams.find({type: 'adult'}, {sort: { overallPoints: -1 }}).fetch();
+        //var adultTeams = teams.find({type: 'adult'}).fetch();
+        console.log(adultTeams);
         return adultTeams;
       }
       else if(type === "family")
       {
         var familyTeams = teams.find({type: 'family'}, {sort: { overallPoints: -1 }}).fetch();
-        //$(".dumb").text(familyTeams);
+        //var familyTeams = teams.find({type: 'family'}).fetch();
+        console.log(familyTeams);
         return familyTeams;
       }
       else if(type === "corporate")
       {
         var corporateTeams = teams.find({type: 'corporate'},{sort: { overallPoints: -1 }}).fetch();
+        //var corporateTeams = teams.find({type: 'corporate'}).fetch();
+        console.log(corporateTeams);
         return corporateTeams;
       }
     }//end teams function
 
-    });//end teamlist helpers
+  });//end leaderPg helpers
 
   //----------------------teamsPg events ---------------------------
 //these two variables are used by multiple helpers and events in the teamspg and verifypg which is why theyre global in scope.
@@ -633,6 +639,7 @@ Template.teamsPg.events({
   Template.teamListContainer.helpers({
 
   'teams': function (type) {
+    console.log("we;re in teamslistcontainer helpper");
 
     if(type === "adult")
     {
