@@ -249,7 +249,7 @@ if (Meteor.isClient) {
             [false, false, true, '', false, "This community center celebrates 25 years of serving Cary residents this year. Visit the lobby and find the timeline that was unveiled at the Lazy Daze re-dedication here! Prove it with a photo of your team's celebration. TEAM PHOTO", '', false, '', 125, '', false, false, 66],
             [false, false, true, '', false, "Dave & Busters was founded by a guy named Dave who loved all things fun & games and a guy named Buster who loved fine food and drink. Find the Giant Crane in the Midway, take your team photo, grab your 20 for 20 coupon to come back another day! TEAM PHOTO", '', false, '', 250, '', true, false, 67],
             [false, false, true, '', false, "Cary's newest park will be dedicated in the fall. Find the sheep and you might win it all!  Hang with the herd of sheep say BAAAA! Take a photo with the sheep TEAM PHOTO", '', false, '', 300, '', false, false, 68],
-            [false, false, true, '', false, "Did you know this wonderful amphitheatre with the funny name honors a former Mayor? Find his likeness and take your team photo and shout 'Thanks Koka!' TEAM PHOTO", '', false, '', 150, '', false, false, 69],
+            [false, false, true, '', false, "Did you know this wonderful amphitheatre with the funny name that honors a former Mayor? Find his likeness and take your team photo and shout 'Thanks Koka!' TEAM PHOTO", '', false, '', 150, '', false, false, 69],
             [true, false, false, '', false, "This new directional sign in Cary tells the way to our four Sister Cities. From the Sign, tell us the distance to Le Touquet France in kilometers. ANSWER", '', false, '', 110, '', false, false, 70]
          ];//end questionsArray
 
@@ -494,8 +494,8 @@ Template.dashboard.events({
     if(timeNow > startTime && timeNow < endTime){
       FlowRouter.go('/answerPage')
     } else{
-      // sAlert.error("Questions can only be answered between 9:00AM and 1:30PM on September 17, 2016")
-      FlowRouter.go('/answerPage')
+      sAlert.error("Questions can only be answered between 9:00AM and 1:30PM on September 17, 2016")
+      // FlowRouter.go('/answerPage')
     }
     // event.preventDefault();
     // sAlert.error('Questions Are not Currently Available')
