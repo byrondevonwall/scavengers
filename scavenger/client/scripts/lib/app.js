@@ -588,21 +588,21 @@ Template.leaderPg.events({
       {
         var adultTeams = teams.find({type: 'adult'}, {sort: { overallPoints: -1 }}).fetch();
         //var adultTeams = teams.find({type: 'adult'}).fetch();
-        console.log(adultTeams);
+        //console.log(adultTeams);
         return adultTeams;
       }
       else if(type === "family")
       {
         var familyTeams = teams.find({type: 'family'}, {sort: { overallPoints: -1 }}).fetch();
         //var familyTeams = teams.find({type: 'family'}).fetch();
-        console.log(familyTeams);
+        //console.log(familyTeams);
         return familyTeams;
       }
       else if(type === "corporate")
       {
         var corporateTeams = teams.find({type: 'corporate'},{sort: { overallPoints: -1 }}).fetch();
         //var corporateTeams = teams.find({type: 'corporate'}).fetch();
-        console.log(corporateTeams);
+        //console.log(corporateTeams);
         return corporateTeams;
       }
     }//end teams function
@@ -639,7 +639,7 @@ Template.teamsPg.events({
   Template.teamListContainer.helpers({
 
   'teams': function (type) {
-    console.log("we;re in teamslistcontainer helpper");
+    //console.log("we;re in teamslistcontainer helpper");
 
     if(type === "adult")
     {
@@ -741,7 +741,7 @@ Template.verifyPg.events({
         $("#variableBtn").click(function(){
           if(isNaN($("#variablePtsinput").val()))
           {
-            console.log("please enter a number fool.");
+            //console.log("please enter a number fool.");
           }
           else
           {
@@ -749,10 +749,13 @@ Template.verifyPg.events({
             var tempTeam = teams.findOne({teamName: tempName});
             var tempID = tempTeam._id;
             var tempPts = 0;
+            var tempQID = tempQ._id;
+            //console.log("question ID: "+tempQID);
 
             tempPts = Number($("#variablePtsinput").val());
-            console.log("variable pts: "+ tempPts);
+            //console.log("variable pts: "+ tempPts);
             Meteor.call('updateTeamScore', tempID, tempPts);
+            Meteor.call('questionVerified', tempQID);
 
             $(".modalGrey").addClass("off");
             $(".variablePtsModal").addClass("off");
@@ -773,19 +776,19 @@ Template.verifyPg.events({
       {
         var tempName = tempQ.groupName;
         var tempTeam = teams.findOne({teamName: tempName});
-
         // console.log("tempTeam: "+tempTeam.teamName);
         // console.log(tempTeam.overallPoints+"+"+tempQ.ptsAwarded);
-
         var tempID = tempTeam._id;
-
         var tempPts = tempQ.ptsAwarded;
+        var tempQID = tempQ._id;
+        //console.log("question ID: "+tempQID);
 
         // console.log("team");
         // console.log(tempTeam);
         // console.log(" gets +"+tempPts);
 
         Meteor.call('updateTeamScore', tempID, tempPts);
+        Meteor.call('questionVerified', tempQID);
         $(tempQnum).removeClass("rejected");
         $(tempQnum).addClass("verified");
 

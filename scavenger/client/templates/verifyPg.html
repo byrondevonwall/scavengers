@@ -66,7 +66,9 @@
       </div>
     {{/if}}
 
-    <br>
+    <br>{{#if questionToVerify.isVerified}}
+          This question has already been verified.
+        {{else}}
       <div class="thumbsContainer">
         <span class="nope">
           Reject Answer<br>
@@ -78,6 +80,7 @@
           {{> thumbsUpIcon}}
         </span>
       </div>
+      {{/if}}
   </div><!--end questionAnswer-->
 
 </div>

@@ -149,7 +149,16 @@ Meteor.methods({
         overallPoints: newPoints
       }
     });
-  }//end update team score
+  },//end update team score
+
+  'questionVerified': function(questionID){
+    
+    questionsList.update({_id: questionID},
+      {$set: {
+        isVerified: true
+      }
+    });
+  }
 
 });//end methods
 
