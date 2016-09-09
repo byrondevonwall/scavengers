@@ -12,7 +12,7 @@
       <div class="variablePtsModal animated slideInUp off">
         <br><br>
         This question requires a variable amount of points.<br>
-        please enter the total amount of points earned by this team, for this quesiton in the box below and click accept:<br><br>
+        please enter the total amount of points earned by this team, for this question in the box below and click accept:<br><br>
         <input id="variablePtsinput"><br><br>
         <div class="button" id="variableBtn">Accept</div><br><br>
         <div class="button" id="variableCancelBtn">Cancel</div>
@@ -21,7 +21,7 @@
 
     <div class="teamInfo">
       <span class="teamInfoEmphasis">{{selectedTeam.[0].teamName}}'s</span> total points: <span class="pts">{{selectedTeam.[0].overallPoints}}</span><br>
-      All of <span class="teamInfoEmphasis">{{selectedTeam.[0].teamName}}'s</span> answered quesitons:
+      All of <span class="teamInfoEmphasis">{{selectedTeam.[0].teamName}}'s</span> answered questions:
     </div>
     {{#each questions}}
       {{#if this.isAnswered}}

@@ -2,29 +2,31 @@
   <div class="teamListContainer">
 
     <div class="teamList1">
-      <div class="listTitle">Corporate Teams</div>
+      <div class="listTitle">Corporate Teams</div><br>
       <ul>
         {{#each leaderboard "corporate"}}
-          <li class="leadTeamLink" id="{{this.teamName}}">{{this.teamName}}</li>
+          <li class="leadTeamLink" id="{{this.teamName}}">{{this.teamName}}<br><span class="teamScore">{{this.overallPoints}}</span></li>
+          <br>
         {{/each}}
       </ul>
     </div>
 
     <div class="teamList2">
-      <div class="listTitle">Family Teams</div>
-      <span class="dumb"></span>
+      <div class="listTitle">Family Teams</div><br>
       <ul>
         {{#each leaderboard "family"}}
-          <li class="leadTeamLink" id="{{this.teamName}}">{{this.teamName}}</li>
+          <li class="leadTeamLink" id="{{this.teamName}}">{{this.teamName}}<br><span class="teamScore">{{this.overallPoints}}</span></li>
+          <br>
         {{/each}}
       </ul>
     </div>
 
     <div class="teamList3">
-      <div class="listTitle">Adult Teams</div>
+      <div class="listTitle">Adult Teams</div><br>
       <ul>
         {{#each leaderboard "adult"}}
-          <li class="leadTeamLink" id="{{this.teamName}}">{{this.teamName}}</li>
+          <li class="leadTeamLink" id="{{this.teamName}}">{{this.teamName}}<br><span class="teamScore">{{this.overallPoints}}</span></li>
+          <br>
         {{/each}}
       </ul>
     </div>

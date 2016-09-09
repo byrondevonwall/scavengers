@@ -255,6 +255,10 @@ body{
 .logoutBtn:active{
   background: rgb(112, 17, 17);
 }
+.aboutHunt{
+  text-align: left;
+  padding: 15px;
+}
 .dashBanner{
   position: fixed;
   height: 70px;
@@ -755,10 +759,13 @@ $cshGreen: #90A039;
 }
 .leadTeamLink{
   margin:5px;
-  text-decoration: underline;
+  width: 100%;
 }
 .leadTeamLink:hover{
   background: white;
   color: black;
   cursor:pointer;
+}
+.teamScore{
+  margin:5px;
 }

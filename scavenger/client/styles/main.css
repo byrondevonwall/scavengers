@@ -225,6 +225,10 @@ body {
 .logoutBtn:active {
   background: #701111; }
 
+.aboutHunt {
+  text-align: left;
+  padding: 15px; }
+
 .dashBanner {
   position: fixed;
   height: 70px;
@@ -656,11 +660,14 @@ body {
 
 .leadTeamLink {
   margin: 5px;
-  text-decoration: underline; }
+  width: 100%; }
 
 .leadTeamLink:hover {
   background: white;
   color: black;
   cursor: pointer; }
+
+.teamScore {
+  margin: 5px; }
 
 /*# sourceMappingURL=main.css.map */
