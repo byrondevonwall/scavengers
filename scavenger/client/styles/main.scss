@@ -640,6 +640,16 @@ $cshGreen: #90A039;
   background: $cshRed;
   width:100px;
 }
+.toLeader{
+  box-sizing: border-box;
+  padding-top: 50px;
+  position: absolute;
+  top:0;
+  left:90.7%;
+  height: 120px;
+  background: $cshGreen;
+  width:100px;
+}
 .backToLogin:hover{
   background: red;
 }
@@ -699,5 +709,5 @@ $cshGreen: #90A039;
   left: 300px;
   width: 500px;
   height: 300px;
-  background: yellow;
+  background: rgb(236, 247, 142);
 }

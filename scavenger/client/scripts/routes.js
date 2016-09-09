@@ -84,3 +84,12 @@ FlowRouter.route( '/verifyPg', {
   },
   name: 'verifyPg' // Optional route name.
 });
+
+FlowRouter.route( '/leaderPg', {
+  action: function() {
+    // Do whatever we need to do when we visit this page
+    console.log( "Okay, we're on the LeaderPg page!" );
+    BlazeLayout.render( 'leaderPg', { main: 'leaderPg' } );
+  },
+  name: 'leaderPg' // Optional route name.
+});

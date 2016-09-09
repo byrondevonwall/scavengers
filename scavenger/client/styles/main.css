@@ -554,6 +554,16 @@ body {
   background: #DB432B;
   width: 100px; }
 
+.toLeader {
+  box-sizing: border-box;
+  padding-top: 50px;
+  position: absolute;
+  top: 0;
+  left: 90.7%;
+  height: 120px;
+  background: #90A039;
+  width: 100px; }
+
 .backToLogin:hover {
   background: red; }
 
@@ -611,6 +621,6 @@ body {
   left: 300px;
   width: 500px;
   height: 300px;
-  background: yellow; }
+  background: #ecf78e; }
 
 /*# sourceMappingURL=main.css.map */

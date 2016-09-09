@@ -21,7 +21,6 @@ Meteor.startup(function () {
 
 if (Meteor.isClient) {
 
-<<<<<<< HEAD
   // var teamNames =["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test"];
   //
   //
@@ -138,10 +137,6 @@ if (Meteor.isClient) {
 //   console.log(user.email + "added to " + user.roles)
 //   Meteor.call('setRegisteredUser', user.email, user.roles)
 // })
-
-
-=======
->>>>>>> e0288e133bb3a6bb279baf44fc10180e387ad888
 
 //----------login page helpers and events----------//
     //this instantiates the modal
@@ -575,7 +570,15 @@ Template.aboutPg.events({
     });
   });
 
+  //---------------------leaderPg events--------------------------------
 
+Template.leaderPg.events({
+
+  'click .backToTeams': function () {
+    FlowRouter.go("/teamsPg");
+  },
+
+});
   //----------------------teamsPg events ---------------------------
 //these two variables are used by multiple helpers and events in the teamspg and verifypg which is why theyre global in scope.
 var clickedTeam;
@@ -594,6 +597,10 @@ Template.teamsPg.events({
   'click .backToLogin': function () {
     Meteor.logout();
     FlowRouter.go("/loginPg");
+  },
+
+  'click .toLeader': function () {
+    FlowRouter.go("/LeaderPg");
   }
 
 });
@@ -628,15 +635,15 @@ Template.teamsPg.events({
 Template.verifyPg.helpers({
 
   'questions': function () {
-    console.log("inside the questions helper");
-    console.log(clickedTeam);
+    //console.log("inside the questions helper");
+    //console.log(clickedTeam);
     ourQuestions = questionsList.find({groupName: clickedTeam, isAnswered: true}).fetch();
-    console.log(ourQuestions);
+    //console.log(ourQuestions);
     return ourQuestions
   },//end questions function
 
   'questionToVerify': function () {
-    console.log("in selectedQuestion");
+    //console.log("in selectedQuestion");
     return Session.get('questionToVerify');
   },//end questions function
 
@@ -656,7 +663,7 @@ Template.verifyPg.events({
 
   'click .oneQuestion': function (e) {
       qNum = $(e.target).attr("id");
-      console.log("number of clicked question: "+qNum);
+      //console.log("number of clicked question: "+qNum);
 
       //questionSelected = true;
       $(".oneQuestion").removeClass("selected");
@@ -666,15 +673,15 @@ Template.verifyPg.events({
       {
         if(ourQuestions[i].questionNumber == qNum)
         {
-          console.log("found a match!");
+          //console.log("found a match!");
           Session.set('questionToVerify', ourQuestions[i]);
 
           selectedQ = ourQuestions[i];
-          console.log(selectedQ);
+          //console.log(selectedQ);
         }
         else
         {
-          console.log("question not found?");
+          //console.log("question not found?");
         }
       }
 
@@ -687,7 +694,7 @@ Template.verifyPg.events({
     'click .yep': function (e) {
 
       var tempQ = Session.get('questionToVerify');
-      var tempQnum = "#"+tempQ.questionNumber;
+      var tempQnum = ("#"+tempQ.questionNumber);
 
       if(tempQ.ptsAwarded == -1)
       {
@@ -695,20 +702,32 @@ Template.verifyPg.events({
         $(".variablePtsModal").removeClass("off");
 
         $("#variableBtn").click(function(){
+          if(isNaN($("#variablePtsinput").val()))
+          {
+            console.log("please enter a number fool.");
+          }
+          else
+          {
+            var tempName = tempQ.groupName;
+            var tempTeam = teams.findOne({teamName: tempName});
+            var tempID = tempTeam._id;
+            var tempPts = 0;
 
-          var tempName = tempQ.groupName;
-          var tempTeam = teams.findOne({teamName: tempName});
-          var tempID = tempTeam._id;
+            tempPts = Number($("#variablePtsinput").val());
+            console.log("variable pts: "+ tempPts);
+            Meteor.call('updateTeamScore', tempID, tempPts);
 
-          var tempPts = Number($("#variablePtsinput").val());
-          console.log("variable pts: "+ tempPts);
+            $(".modalGrey").addClass("off");
+            $(".variablePtsModal").addClass("off");
+            $(tempQnum).addClass("verified");
+          }
+        });
 
-          Meteor.call('updateTeamScore', tempID, tempPts);
-
+        $('#variableCancelBtn').click(function(){
+          $("#variablePtsinput").val(0);
           $(".modalGray").addClass("off");
           $(".variablePtsModal").addClass("off");
-          $("#"+tempQnum).addClass("verified");
-        })
+        });
 
         //console.log("...pop up the variable points modal...");
       }
@@ -725,7 +744,8 @@ Template.verifyPg.events({
         // console.log(" gets +"+tempPts);
 
         Meteor.call('updateTeamScore', tempID, tempPts);
-        $("#"+tempQnum).addClass("verified");
+        $(tempQnum).removeClass("rejected");
+        $(tempQnum).addClass("verified");
 
         //console.log("for "+tempTeam.overallPoints+" points overall!");
       }
@@ -734,9 +754,10 @@ Template.verifyPg.events({
     'click .nope': function (e) {
       var tempQ = Session.get('questionToVerify');
       var tempQnum = '#'+tempQ.questionNumber;
+      $(tempQnum).removeClass("verified");
       $(tempQnum).addClass("rejected");
 
-      console.log("this question doesnt count!");
+      //console.log("this question doesnt count!");
     }
 
   });//end verifypg events
