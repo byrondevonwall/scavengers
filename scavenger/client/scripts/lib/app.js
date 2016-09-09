@@ -585,18 +585,18 @@ Template.leaderPg.events({
 
       if(type === "adult")
       {
-        var adultTeams = teams.find({type: 'adult'}, sort: { overallPoints: -1 }).fetch();
+        var adultTeams = teams.find({type: 'adult'}, {sort: { overallPoints: -1 }}).fetch();
         return adultTeams;
       }
       else if(type === "family")
       {
-        var familyTeams = teams.find({type: 'family'}, sort: { overallPoints: -1 }).fetch();
+        var familyTeams = teams.find({type: 'family'}, {sort: { overallPoints: -1 }}).fetch();
         //$(".dumb").text(familyTeams);
         return familyTeams;
       }
       else if(type === "corporate")
       {
-        var corporateTeams = teams.find({type: 'corporate'}, sort: { overallPoints: -1 }).fetch();
+        var corporateTeams = teams.find({type: 'corporate'},{sort: { overallPoints: -1 }}).fetch();
         return corporateTeams;
       }
     }//end teams function
