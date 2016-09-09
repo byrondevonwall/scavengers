@@ -255,6 +255,10 @@ body{
 .logoutBtn:active{
   background: rgb(112, 17, 17);
 }
+.aboutHunt{
+  text-align: left;
+  padding: 15px;
+}
 .dashBanner{
   position: fixed;
   height: 70px;
@@ -752,4 +756,99 @@ $cshGreen: #90A039;
   width: 500px;
   height: 300px;
   background: rgb(236, 247, 142);
+}
+.leaderListTitle{
+  border-bottom: $cshDarkBlue 1px solid;
+  text-align: center;
+  color: white;
+}
+.leadTeamLink3:nth-of-type(n){
+  margin:5px;
+  width: 100%;
+  background: $cshGreen;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #444;
+}
+.leadTeamLink3:nth-of-type(2n){
+  margin:5px;
+  width: 100%;
+  background: rgb(86, 139, 78);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #444;
+}
+
+.leadTeamLink2:nth-of-type(n){
+  margin:5px;
+  width: 100%;
+  background: $cshRed;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #444;
+}
+.leadTeamLink2:nth-of-type(2n){
+  margin:5px;
+  width: 100%;
+  background: rgb(156, 72, 72);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #444;
+}
+
+.leadTeamLink1:nth-of-type(n){
+  margin:5px;
+  width: 100%;
+  background: $cshBlue;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #444;
+}
+.leadTeamLink1:nth-of-type(2n){
+  margin:5px;
+  width: 100%;
+  background: $cshMidBlue;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #444;
+}
+.leadTeamLink1:nth-of-type(1){
+  font-size: 30px;
+  color: white;
+}
+.leadTeamLink1:nth-of-type(2){
+  font-size: 24px;
+  color: #ccc;
+}
+.leadTeamLink1:nth-of-type(3){
+  font-size: 18px;
+  color: #aaa;
+}
+.leadTeamLink2:nth-of-type(1){
+  font-size: 30px;
+  color: white;
+}
+.leadTeamLink2:nth-of-type(2){
+  font-size: 24px;
+  color: #ccc;
+}
+.leadTeamLink2:nth-of-type(3){
+  font-size: 18px;
+  color: #aaa;
+}
+.leadTeamLink3:nth-of-type(1){
+  font-size: 30px;
+  color: white;
+}
+.leadTeamLink3:nth-of-type(2){
+  font-size: 24px;
+  color: #ccc;
+}
+.leadTeamLink3:nth-of-type(3){
+  font-size: 18px;
+  color: #aaa;
+}
+
+.teamScore{
+  margin:5px;
 }
