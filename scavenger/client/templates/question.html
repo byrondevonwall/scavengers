@@ -4,7 +4,7 @@
   <div class="qBoxWrap">
     <span class="qBox {{#if isAnswered}}answered{{/if}}">
       <div class="qNumberText">
-        {{questionNumber}}
+        {{questionNumber}}{{#if isSponsor}}*{{/if}}
       </div>
       <div class="qIcons">
         {{#if isSA}}{{> shortGray}}{{/if}}

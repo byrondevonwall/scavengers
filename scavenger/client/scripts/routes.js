@@ -1,7 +1,7 @@
 FlowRouter.route( '/answerPage', {
   action: function() {
     // Do whatever we need to do when we visit this page
-    console.log( "Okay, we're on the answerPage page!" );
+    // console.log( "Okay, we're on the answerPage page!" );
     BlazeLayout.render( 'answerPage', { main: 'answerPage' } );
   },
   name: 'answerPage' // Optional route name.
@@ -10,7 +10,7 @@ FlowRouter.route( '/answerPage', {
 FlowRouter.route( '/dashboard', {
   action: function() {
     // Do whatever we need to do when we visit this page
-    console.log( "Okay, we're on the dashboard page!" );
+    // console.log( "Okay, we're on the dashboard page!" );
     BlazeLayout.render( 'dashboard', { main: 'dashboard' } );
   },
   name: 'dashboard' // Optional route name.
@@ -19,7 +19,7 @@ FlowRouter.route( '/dashboard', {
 FlowRouter.route( '/sponsorsPg', {
   action: function() {
     // Do whatever we need to do when we visit this page
-    console.log( "Okay, we're on the sponsors page!" );
+    // console.log( "Okay, we're on the sponsors page!" );
     BlazeLayout.render( 'sponsorsPg', { main: 'sponsorsPg' } );
   },
   name: 'sponsorsPg' // Optional route name.
@@ -28,7 +28,7 @@ FlowRouter.route( '/sponsorsPg', {
 FlowRouter.route( '/aboutPg', {
   action: function() {
     // Do whatever we need to do when we visit this page
-    console.log( "Okay, we're on the about page!" );
+    // console.log( "Okay, we're on the about page!" );
     BlazeLayout.render( 'aboutPg', { main: 'aboutPg' } );
   },
   name: 'aboutPg' // Optional route name.
@@ -37,7 +37,7 @@ FlowRouter.route( '/aboutPg', {
 FlowRouter.route( '/loginPg', {
   action: function() {
     // Do whatever we need to do when we visit this page
-    console.log( "Okay, we're on the login page!" );
+    // console.log( "Okay, we're on the login page!" );
     BlazeLayout.render( 'loginPg', { main: 'loginPg' } );
   },
   name: 'loginPg' // Optional route name.
@@ -54,7 +54,7 @@ FlowRouter.route( '/reset-password/:token', {
 FlowRouter.route( '/', {
   action: function() {
     // Do whatever we need to do when we visit this page
-    console.log( "not sure where we're going... so go to login." );
+    // console.log( "not sure where we're going... so go to login." );
     BlazeLayout.render( 'loginPg', { main: 'loginPg' } );
   },
   name: 'loginPg' // Optional route name.
@@ -67,7 +67,7 @@ FlowRouter.route( '/', {
 FlowRouter.route( '/teamsPg', {
   action: function() {
     // Do whatever we need to do when we visit this page
-    console.log( "Okay, we're on the teamsPg page!" );
+    // console.log( "Okay, we're on the teamsPg page!" );
     BlazeLayout.render( 'teamsPg', { main: 'teamsPg' } );
   },
   name: 'teamsPg', // Optional route name.
@@ -79,7 +79,7 @@ FlowRouter.route( '/teamsPg', {
 FlowRouter.route( '/verifyPg', {
   action: function() {
     // Do whatever we need to do when we visit this page
-    console.log( "Okay, we're on the verifyPg page!" );
+    // console.log( "Okay, we're on the verifyPg page!" );
     BlazeLayout.render( 'verifyPg', { main: 'verifyPg' } );
   },
   name: 'verifyPg' // Optional route name.

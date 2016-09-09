@@ -114,9 +114,6 @@ if (Meteor.isClient) {
   //     }//end question for loop
   //   }//end team for loop
 
-
-
-
 // var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "dev","adult","adult","adult","family","family","family","dev","dev", "judges"];
 //   //
 //
@@ -138,12 +135,13 @@ if (Meteor.isClient) {
 //   Meteor.call('setRegisteredUser', user.email, user.roles)
 // })
 
+
 //----------login page helpers and events----------//
     //this instantiates the modal
     Template.loginPg.events({
       'click .needRegBtn': function(event){
         event.preventDefault();
-        console.log("register modal is up");
+        // console.log("register modal is up");
         $("#regModal").removeClass('off');
         $(".modalGrey").removeClass('off');
         $(".needLog").addClass('off');
@@ -163,11 +161,11 @@ if (Meteor.isClient) {
           var regName = event.target.registerName.value
           var regPass = event.target.registerPassword.value;
           var confirmPass = event.target.confirmPassword.value;
-          console.log(regEmail, regName, regPass, confirmPass);
+          // console.log(regEmail, regName, regPass, confirmPass);
           if(regPass === confirmPass){
 
             var user = registeredUsers.findOne({email: regEmail});
-            console.log(user)
+            // console.log(user)
             if(user === undefined){
               sAlert.error("Please use the email address you used to register for this event on eventbrite.")
             } else {
@@ -176,7 +174,7 @@ if (Meteor.isClient) {
                   sAlert.error(error);
                 } else {
 
-                  console.log(result)
+                  // console.log(result)
                   sAlert.success('You have been registered, please Log In!');
                   $("#regEmail").val('');
                   $("#regName").val('');
@@ -187,17 +185,6 @@ if (Meteor.isClient) {
                   $(".needLog").removeClass('off');
                 }
               })
-              // var id;
-              //
-              // id = Accounts.createUser({
-              //   email: regEmail,
-              //   password: regPass,
-              //   profile:{name: regName}
-              // })
-              // console.log(id)
-              // if(user.role.length > 0){
-              //   Roles.addUsersToRoles(id, user.role, 'defaultGroup')
-              // }
 
 
             }
@@ -212,7 +199,7 @@ if (Meteor.isClient) {
       //this closes the registartion modal
       'click .cancelReg': function(event){
         event.preventDefault();
-        console.log("register modal is down");
+        // console.log("register modal is down");
         $("#regModal").addClass('off');
         $(".modalGrey").addClass('off');
         $(".needLog").removeClass('off');
@@ -235,14 +222,14 @@ if (Meteor.isClient) {
           event.preventDefault();
           var logEmail = event.target.loginEmail.value;
           var logPass = event.target.loginPassword.value;
-            console.log("Form submitted.", event.target.loginEmail.value);
+            // console.log("Form submitted.", event.target.loginEmail.value);
             Meteor.loginWithPassword(logEmail, logPass, function(error){
               if(error)//if there is a problem with the login info
               {
-                  console.log(error)
+                  // console.log(error)
                 if(error.message === "Incorrect password [403]"){
                   $('.resetPassBtn').removeClass('off');
-                  console.log(error);
+                  // console.log(error);
                   sAlert.error(error.message)
                 }else{
                   sAlert.error(error.message)
@@ -250,7 +237,7 @@ if (Meteor.isClient) {
               }
               else
               {
-                console.log(Meteor.user())
+                // console.log(Meteor.user())
                 if(Meteor.user().roles.defaultGroup[0] === "judges")
                 {
                   FlowRouter.go("/teamsPg");
@@ -271,7 +258,7 @@ if (Meteor.isClient) {
           //   return "Click this link to reset your password: " + url +
           // }
           var userEmail = $('#loginEmail').val().toLowerCase().toString();
-          console.log(userEmail)
+          // console.log(userEmail)
           //try sending an email to that address
           Accounts.forgotPassword({email: userEmail}, function(err){
             if (err) {
@@ -315,7 +302,7 @@ if (Meteor.isClient) {
           } else {
             sAlert.success('Your password has been changed. Welcome back!');
             var token = '';
-            console.log(Meteor.user())
+            // console.log(Meteor.user())
             FlowRouter.go('/dashboard')
           }
         });
@@ -340,20 +327,20 @@ Template.dashboard.events({
     // event.preventDefault();
     Meteor.logout();
     FlowRouter.go("/loginPg");
-    console.log("logged out");
+    // console.log("logged out");
   },//end click.logoutbtn
 
   'click .hamburger': function(event){
     // event.preventDefault();
       $(".hamMenu").removeClass('off');
       $(".modalGrey").removeClass('off');
-      console.log("opened hamburger menu");
+      // console.log("opened hamburger menu");
   },//end click.logoutbtn
 
   'click .closeBurger': function(event){
     $(".hamMenu").addClass('off');
     $(".modalGrey").addClass('off');
-    console.log("closed hamburger menu");
+    // console.log("closed hamburger menu");
   },//end click modalGrey event
 
   'click .sponsorsPg' : function(){
@@ -365,16 +352,27 @@ Template.dashboard.events({
   },//end back to questions button event
 
   'click .qBox': function(event){
+    var timeNow = new Date();
+    var startTime = new Date('September 17, 2016 09:00:00')
+    var endTime = new Date('September 17, 2016 13:30:00')
+    // console.log(timeNow, startTime, endTime)
+
+    if(timeNow > startTime && timeNow < endTime){
+      FlowRouter.go('/answerPage')
+    } else{
+      sAlert.error("Questions can only be answered between 9:00AM and 1:30PM on September 17, 2016")
+      // FlowRouter.go('/answerPage')
+    }
     // event.preventDefault();
     // sAlert.error('Questions Are not Currently Available')
-    FlowRouter.go('/answerPage')
-    console.log("clicked the answer");
+
+    // console.log("clicked the answer");
     var questionId = this._id;
-    console.log(questionId)
+    // console.log(questionId)
     Session.set('selectedQuestion', questionId);
     var testId = Session.get('selectedQuestion')
 
-    console.log(testId)
+    // console.log(testId)
   }//end anwser the q event
 
 });//end template.dashboard.events
@@ -385,7 +383,7 @@ Template.dashboard.events({
         //get user, the using that var get team name
         var currentUser = Meteor.user();
         var team = currentUser.roles.defaultGroup[0];
-        console.log(team)
+        // console.log(team)
         //find questions marked for relevant team based on team name in Q collections
         return questionsList.find({groupName: team})
       }
@@ -421,7 +419,7 @@ Template.aboutPg.events({
       'click .submitAnswerBtn' : function(){
         var SAnswer = $('#sa-answer').val();
         var itemAnswer = $('input[name="gotItem"]:checked').val();
-        console.log("do we have the item? "+itemAnswer);
+        // console.log("do we have the item? "+itemAnswer);
         var questionID = Session.get('selectedQuestion');
         var gpsLoc = Geolocation.latLng();
 
@@ -478,7 +476,7 @@ Template.aboutPg.events({
     //upload to AWS once file is selected
     'change #imgUpload' : function(){
       var files = $("#uploadInput")[0].files;
-      console.log(files[0].name)
+      // console.log(files[0].name)
       var userTeam = Meteor.user().roles.defaultGroup[0]
       var questionId = Session.get('selectedQuestion');
 
@@ -489,7 +487,7 @@ Template.aboutPg.events({
         if(err){
           sAlert.error(err)
         } else if(res){
-          console.log(res.secure_url)
+          // console.log(res.secure_url)
           Meteor.call('uploadImage', questionId, res.secure_url)
         }
       }
@@ -576,9 +574,35 @@ Template.leaderPg.events({
 
   'click .backToTeams': function () {
     FlowRouter.go("/teamsPg");
-  },
+  }
 
-});
+  });
+
+  //--------------------leaderPg HELPERS----------------------
+    Template.leaderPg.helpers({
+
+    'teams': function (type) {
+
+      if(type === "adult")
+      {
+        var adultTeams = teams.find({type: 'adult'}, sort: { overallPoints: -1 }).fetch();
+        return adultTeams;
+      }
+      else if(type === "family")
+      {
+        var familyTeams = teams.find({type: 'family'}, sort: { overallPoints: -1 }).fetch();
+        //$(".dumb").text(familyTeams);
+        return familyTeams;
+      }
+      else if(type === "corporate")
+      {
+        var corporateTeams = teams.find({type: 'corporate'}, sort: { overallPoints: -1 }).fetch();
+        return corporateTeams;
+      }
+    }//end teams function
+
+    });//end teamlist helpers
+
   //----------------------teamsPg events ---------------------------
 //these two variables are used by multiple helpers and events in the teamspg and verifypg which is why theyre global in scope.
 var clickedTeam;
@@ -590,7 +614,7 @@ Template.teamsPg.events({
 
   'click .teamLink': function(e) {
     clickedTeam = $(e.target).attr("id");
-    console.log("i clicked on: "+clickedTeam);
+    // console.log("i clicked on: "+clickedTeam);
     FlowRouter.go('verifyPg');
   },
 
@@ -639,11 +663,13 @@ Template.verifyPg.helpers({
     //console.log(clickedTeam);
     ourQuestions = questionsList.find({groupName: clickedTeam, isAnswered: true}).fetch();
     //console.log(ourQuestions);
+
     return ourQuestions
   },//end questions function
 
   'questionToVerify': function () {
     //console.log("in selectedQuestion");
+
     return Session.get('questionToVerify');
   },//end questions function
 
@@ -673,16 +699,17 @@ Template.verifyPg.events({
       {
         if(ourQuestions[i].questionNumber == qNum)
         {
-          //console.log("found a match!");
+          // console.log("found a match!");
           Session.set('questionToVerify', ourQuestions[i]);
 
           selectedQ = ourQuestions[i];
-          //console.log(selectedQ);
+          // console.log(selectedQ);
         }
-        else
-        {
-          //console.log("question not found?");
-        }
+      }
+      if(!selectedQ)
+      {
+          sAlert.error("Question " + ourQuestions[i] +" Not Found")
+          // console.log("question not found?");
       }
 
     },//end onequestions function
@@ -698,6 +725,9 @@ Template.verifyPg.events({
 
       if(tempQ.ptsAwarded == -1)
       {
+
+        // console.log("...pop up the variable points modal...");
+
         $(".modalGray").removeClass("off");
         $(".variablePtsModal").removeClass("off");
 
@@ -730,11 +760,16 @@ Template.verifyPg.events({
         });
 
         //console.log("...pop up the variable points modal...");
+
       }
       else
       {
         var tempName = tempQ.groupName;
         var tempTeam = teams.findOne({teamName: tempName});
+
+        // console.log("tempTeam: "+tempTeam.teamName);
+        // console.log(tempTeam.overallPoints+"+"+tempQ.ptsAwarded);
+
         var tempID = tempTeam._id;
 
         var tempPts = tempQ.ptsAwarded;
@@ -748,6 +783,7 @@ Template.verifyPg.events({
         $(tempQnum).addClass("verified");
 
         //console.log("for "+tempTeam.overallPoints+" points overall!");
+
       }
     },
 
@@ -757,7 +793,7 @@ Template.verifyPg.events({
       $(tempQnum).removeClass("verified");
       $(tempQnum).addClass("rejected");
 
-      //console.log("this question doesnt count!");
+      // console.log("this question doesnt count!");
     }
 
   });//end verifypg events
