@@ -42,7 +42,7 @@ Meteor.methods({
   },//end create team
 
   //method to create question...to do so type in chrome console: `Meteor.call('createQuestion', 'questiontext', 'questiontype', 'teamname')`
-  'createQuestion' : function(isSA, isItem, isPic, picUrl, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, questionNumber){
+  'createQuestion' : function(isSA, isItem, isPic, picUrl, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, isSponsor, isVerified, questionNumber){
     check(isSA, Boolean);
     check(isItem, Boolean);
     check(isPic, Boolean);
@@ -54,7 +54,10 @@ Meteor.methods({
     check(answerTime, String);
     check(ptsAwarded, Number);
     check(groupName, String);
+    check(isSponsor, Boolean);
+    check(isVerified, Boolean);
     check(questionNumber, Number);
+
     questionsList.insert({
       isSA: isSA,
       isItem: isItem,
@@ -67,7 +70,10 @@ Meteor.methods({
       answerTime: answerTime,
       ptsAwarded: ptsAwarded,
       groupName: groupName,
+      isSponsor: isSponsor,
+      isVerified: isVerified,
       questionNumber: questionNumber
+
     })
   },//end create question
 
