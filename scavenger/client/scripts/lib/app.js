@@ -57,7 +57,7 @@ if (Meteor.isClient) {
 
       {email:"norabarber@gmail.com", roles:["Plaque busters", "family"]},
       {email:"dan.marx@sas.com", roles:["x Marx the spot", "family"]},
-      {email:"Aaronz@mrroof.com", roles:["Mr. Roof's Minions","corporate"]},
+      {email:"aaronz@mrroof.com", roles:["Mr. Roof's Minions","corporate"]},
       {email:"abeard@collegenannies.com", roles:["Nannies & Sitters & Tutors, OH MY!","corporate"]},
 
       {email:"glen.tetrault@yahoo.com", roles:["Grinin Lizards","family"]},
@@ -95,9 +95,9 @@ if (Meteor.isClient) {
       {email:"haleyjs17@gotjump.com" , roles:["Win or Loose we Booze", "adult"]},
       {email:"skjaveland@storm.ca" , roles:["NEW KIDS ON THE BLOCK", "adult"]},
       {email:"kim@shorb.net" , roles:["Shorbies", "family"]},
-      {email:"Tandri@yahoo.com" , roles:["AWESOME FOUR", "family"]},
+      {email:"tandri@yahoo.com" , roles:["AWESOME FOUR", "family"]},
       {email:"ryani05@hotmail.com" , roles:["Team Valor", "adult"]},
-      {email:"JenL1217@yahoo.com" , roles:["Bentley's Brigade", "family"]},
+      {email:"jenL1217@yahoo.com" , roles:["Bentley's Brigade", "family"]},
       {email:"tarah1999@gmail.com" , roles:["SMASH HUNTERS 1.0", "adult"]},
       {email:"ainsztein@aol.com" , roles:["The A Team", "adult"]},
       {email:"naenae20@hotmail.com" , roles:["Team Hunters", "family"]},
@@ -244,7 +244,8 @@ if (Meteor.isClient) {
             [false, true, false, '', false, "Bonus points if you collect a coupon", '', false, '', 25, '', false, false, 61.5],
             [true, false, false, '', false, "The Town of Cary was declared a Bronze Level Bike Friendly Town. If you are spending some time on the roads today, notice the Bike Route Signs and tell us the Bike Route number of Cary Parkway ANSWER", '', false, '', 55, '', false, false, 62],
             [false, false, true, '', false, "The Town of Cary was declared a Bronze Level Bike Friendly Town. If you are spending some time on the roads today, notice the Bike Route Signs and tell us the Bike Route number of Cary Parkway ANSWER", '', false, '', 170, '', false, false, 63],
-            [false, false, true, '', false, "Cary Y is a great place to get and stay fit, they have cardio equipment and classes that are really legit. Great programs designed just for teens. Leaders Club, Youth & Government, and Camp High Hopes teach what leadership means.  Find the 3 signs they want you to hold that feature their mission, take your team photo standing in position. TEAM PHOTO", '', false, '', 250, '', true, false, 64],
+            [false, falses
+              , true, '', false, "Cary Y is a great place to get and stay fit, they have cardio equipment and classes that are really legit. Great programs designed just for teens. Leaders Club, Youth & Government, and Camp High Hopes teach what leadership means.  Find the 3 signs they want you to hold that feature their mission, take your team photo standing in position. TEAM PHOTO", '', false, '', 250, '', true, false, 64],
             [false, false, true, '', false, "Cary's newest Fire Station was a result of service demand growth over the last 38 years. The service area has a population of 14,371 and contains a total of 3,941 commercial and multifamily properties, more than any other service area in Town. Take a photo with a fireman at this station. TEAM PHOTO", '', false, '', 165, '', false, false, 65],
             [false, false, true, '', false, "This community center celebrates 25 years of serving Cary residents this year. Visit the lobby and find the timeline that was unveiled at the Lazy Daze re-dedication here! Prove it with a photo of your team's celebration. TEAM PHOTO", '', false, '', 125, '', false, false, 66],
             [false, false, true, '', false, "Dave & Busters was founded by a guy named Dave who loved all things fun & games and a guy named Buster who loved fine food and drink. Find the Giant Crane in the Midway, take your team photo, grab your 20 for 20 coupon to come back another day! TEAM PHOTO", '', false, '', 250, '', true, false, 67],
@@ -291,12 +292,15 @@ if (Meteor.isClient) {
       'submit form': function(event) {
 
           event.preventDefault();
-          var regEmail = event.target.registerEmail.value;
+          var regEmail = event.target.registerEmail.value.toLowerCase();
           var regName = event.target.registerName.value
           var regPass = event.target.registerPassword.value;
           var confirmPass = event.target.confirmPassword.value;
           // console.log(regEmail, regName, regPass, confirmPass);
           if(regPass === confirmPass){
+
+
+
 
             var user = registeredUsers.findOne({email: regEmail});
             // console.log(user)
@@ -354,7 +358,7 @@ if (Meteor.isClient) {
       'submit form': function(event) {
           var isGood = false;
           event.preventDefault();
-          var logEmail = event.target.loginEmail.value;
+          var logEmail = event.target.loginEmail.value.toLowerCase();
           var logPass = event.target.loginPassword.value;
             // console.log("Form submitted.", event.target.loginEmail.value);
             Meteor.loginWithPassword(logEmail, logPass, function(error){
