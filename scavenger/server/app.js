@@ -30,6 +30,19 @@ if(Meteor.isServer){
 
 Meteor.methods({
 
+  'setTeamScore' : function(nameOfTeam, finalPoints){
+    //This method overwrites a team's score.
+    //console.log("in the set scroe");
+    var teamToSet = teams.findOne({teamName: nameOfTeam});
+    var theTeamID = teamToSet._id;
+    //console.log(theTeamID);
+    teams.update({_id: theTeamID},
+      {$set: {
+        overallPoints: finalPoints
+      }
+    });
+  },
+
   'createTeam' : function(teamName, type, overallPoints){
     check(teamName, String);
     check(type, String);
@@ -144,6 +157,7 @@ Meteor.methods({
     var team = teams.findOne({_id: teamID});
     var oldPts = team.overallPoints;
     var newPoints = Number(oldPts + pts);
+
     teams.update({_id: teamID},
       {$set: {
         overallPoints: newPoints
@@ -152,7 +166,7 @@ Meteor.methods({
   },//end update team score
 
   'questionVerified': function(questionID){
-    
+
     questionsList.update({_id: questionID},
       {$set: {
         isVerified: true

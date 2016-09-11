@@ -357,12 +357,12 @@ Template.dashboard.events({
     var endTime = new Date('September 17, 2016 13:30:00')
     // console.log(timeNow, startTime, endTime)
 
-    if(timeNow > startTime && timeNow < endTime){
+    //if(timeNow > startTime && timeNow < endTime){
+      //FlowRouter.go('/answerPage')
+    //} else{
+      // sAlert.error("Questions can only be answered between 9:00AM and 1:30PM on September 17, 2016")
       FlowRouter.go('/answerPage')
-    } else{
-      sAlert.error("Questions can only be answered between 9:00AM and 1:30PM on September 17, 2016")
-      // FlowRouter.go('/answerPage')
-    }
+    //}
     // event.preventDefault();
     // sAlert.error('Questions Are not Currently Available')
 
@@ -619,6 +619,7 @@ var qnum;
 Template.teamsPg.events({
 
   'click .teamLink': function(e) {
+    selectedQ='';
     clickedTeam = $(e.target).attr("id");
     // console.log("i clicked on: "+clickedTeam);
     FlowRouter.go('verifyPg');
