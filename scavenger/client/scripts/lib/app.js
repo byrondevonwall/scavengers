@@ -36,7 +36,7 @@ if (Meteor.isClient) {
   function addRegUsers(ruCount){
     if(ruCount === 0){
       var users = [
-      
+
       ]
       _.each(users, function(user){
         console.log(user.email + "added to " + user.roles)
@@ -67,7 +67,7 @@ if (Meteor.isClient) {
       var teams = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "Moms on a Mission", "The team that shall not be named", "The Chin-Tastic 4!", "Win or Loose we Booze", "NEW KIDS ON THE BLOCK", "Shorbies", "AWESOME FOUR", "Team Valor", "Bentley's Brigade", "SMASH HUNTERS 1.0", "The A Team", "Team Hunters", "Smarty Pants", "Wafflesons", "awesometeam5000","awesometeam5000", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"]
 
       for(var f=0;f<teams.length; f++){
-        Meteor.call('createTeam', teams[f], teamTypes[f], 0);
+        Meteor.call('createTeam', teams[f], teamTypes[f], 0, 0);
         console.log("------------------------")
         console.log("team Name: "+teams[f]);
         console.log("team type: "+teamTypes[f]);
@@ -174,7 +174,7 @@ if (Meteor.isClient) {
          ];//end questionsArray
 
 
-        // //isSA, isItem, isPic, picUrl, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, questionNumber)
+        // //isSA, isItem, isPic, picUrl, hasItem, questionText, shortAnswer, isAnswered, answerTime, ptsAwarded, groupName, isSponsored, isVerified, questionNumber)
 
           for(var team=0;team<teamNames.length;team++)
           {console.log("generating"+teamNames[team]+"'s questions");
@@ -731,7 +731,6 @@ Template.verifyPg.helpers({
 
   'questionToVerify': function () {
     //console.log("in selectedQuestion");
-
     return Session.get('questionToVerify');
   },//end questions function
 
@@ -746,6 +745,7 @@ Template.verifyPg.helpers({
   }); //end helpers
 
 //------------------------verify pg events-----------------------
+  var sponsorQuestions = 0;
 
 Template.verifyPg.events({
 
@@ -812,13 +812,16 @@ Template.verifyPg.events({
             Meteor.call('updateTeamScore', tempID, tempPts);
             Meteor.call('questionVerified', tempQID);
 
+            tempQ.isVerified = true;
+            Session.set('questionToVerify', tempQ);
+
             $(".modalGrey").addClass("off");
             $(".variablePtsModal").addClass("off");
             $(tempQnum).addClass("verified");
           }
         });
 
-        $('#variableCancelBtn').click(function(){
+          $('#variableCancelBtn').click(function(){
           $("#variablePtsinput").val(0);
           $(".modalGray").addClass("off");
           $(".variablePtsModal").addClass("off");
@@ -836,14 +839,23 @@ Template.verifyPg.events({
         var tempID = tempTeam._id;
         var tempPts = tempQ.ptsAwarded;
         var tempQID = tempQ._id;
-        //console.log("question ID: "+tempQID);
+        console.log("question ID: "+tempQID);
 
         // console.log("team");
         // console.log(tempTeam);
         // console.log(" gets +"+tempPts);
 
         Meteor.call('updateTeamScore', tempID, tempPts);
+        //question verified automatically keeps count of the number of sponsor questions a team has answered.
         Meteor.call('questionVerified', tempQID);
+
+        //if the team has exactly 22 sponsored questions, they get 500 extra points.
+        console.log("about to check for sponsors");
+        if(tempTeam.sponsorQs === 21)
+        {
+          Meteor.call('updateTeamScore', tempID, 500);
+          sAlert.success('This team has been awarded 500 extra points for answering all sponsored questions!');
+        }
         $(tempQnum).removeClass("rejected");
         $(tempQnum).addClass("verified");
 
@@ -857,6 +869,7 @@ Template.verifyPg.events({
       var tempQnum = '#'+tempQ.questionNumber;
       $(tempQnum).removeClass("verified");
       $(tempQnum).addClass("rejected");
+      Meteor.call('questionVerified', tempQID);
 
       // console.log("this question doesnt count!");
     }

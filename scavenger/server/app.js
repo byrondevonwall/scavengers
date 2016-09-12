@@ -43,14 +43,16 @@ Meteor.methods({
     });
   },
 
-  'createTeam' : function(teamName, type, overallPoints){
+  'createTeam' : function(teamName, type, overallPoints, sponsorQs){
     check(teamName, String);
     check(type, String);
     check(overallPoints, Number);
+    check(sponsorQs, Number);
     teams.insert({
       teamName: teamName,
       type: type,
       overallPoints: overallPoints,
+      sponsorQs: sponsorQs,
     })
   },//end create team
 
@@ -166,13 +168,28 @@ Meteor.methods({
   },//end update team score
 
   'questionVerified': function(questionID){
+      var theQ = questionsList.findOne({_id: questionID});
+      var qTeamName = theQ.groupName;
+      var qTeam = teams.findOne({teamName: qTeamName});
+
+      if(theQ.isSponsor)
+      {
+        teams.update({_id: qTeam._id},
+          {$set: {
+            sponsorQs: qTeam.sponsorQs + 1
+          }
+        });
+
+        console.log(qTeam.sponsorQs);
+
+      }//end if
 
     questionsList.update({_id: questionID},
       {$set: {
         isVerified: true
       }
     });
-  }
+  },
 
 });//end methods
 
