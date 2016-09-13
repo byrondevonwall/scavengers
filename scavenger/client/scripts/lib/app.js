@@ -21,7 +21,7 @@ Meteor.startup(function () {
 
 if (Meteor.isClient) {
 
-
+Meteor.call('countRegisteredUsers', registeredUserCounter)
   function registeredUserCounter(err, count){
     var ruCount = count;
     console.log(ruCount);
