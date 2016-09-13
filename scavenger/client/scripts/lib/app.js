@@ -496,9 +496,6 @@ Template.dashboard.events({
     } else{
       // sAlert.error("Questions can only be answered between 9:00AM and 1:30PM on September 17, 2016")
       FlowRouter.go('/answerPage')
-
-    }
-
     }
 
     // event.preventDefault();
