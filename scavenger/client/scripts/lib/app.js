@@ -277,7 +277,7 @@ Template.dashboard.events({
         var team = currentUser.roles.defaultGroup[0];
         // console.log(team)
         //find questions marked for relevant team based on team name in Q collections
-        return questionsList.find({groupName: team})
+        return questionsList.find({groupName: team}, {sort: { questionNumber: 1 }})
       }
     });//end 'questions'
 
@@ -561,7 +561,7 @@ Template.verifyPg.helpers({
   'questions': function () {
     //console.log("inside the questions helper");
     //console.log(clickedTeam);
-    ourQuestions = questionsList.find({groupName: clickedTeam, isAnswered: true}).fetch();
+    ourQuestions = questionsList.find({groupName: clickedTeam, isAnswered: true}, {sort: { questionNumber: 1 }}).fetch();
     //console.log(ourQuestions);
 
     return ourQuestions
