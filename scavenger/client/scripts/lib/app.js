@@ -505,8 +505,8 @@ Template.dashboard.events({
     if(timeNow > startTime && timeNow < endTime){
       FlowRouter.go('/answerPage')
     } else{
-      // sAlert.error("Questions can only be answered between 9:00AM and 1:30PM on September 17, 2016")
-      FlowRouter.go('/answerPage')
+      sAlert.error("Questions can only be answered between 9:00AM and 1:30PM on September 17, 2016")
+      // FlowRouter.go('/answerPage')
     }
 
     // event.preventDefault();
