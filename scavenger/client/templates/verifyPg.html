@@ -41,6 +41,24 @@
       <div class="answerQuestionTextWrapper"><span class="answerTitles">Question:</span>
         <span class="questionText">{{questionToVerify.questionText}}</span>
       </div>
+      
+        <br>
+      {{#if questionToVerify.isVerified}}
+            This question has already been verified.
+          {{else}}
+        <div class="thumbsContainer">
+          <span class="nope">
+            Reject Answer<br>
+            {{> thumbsDownIcon}}
+          </span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="yep">
+            Accept Answer<br>
+            {{> thumbsUpIcon}}
+          </span>
+        </div>
+        {{/if}}
+
     {{#if questionToVerify.isSA}}
       <br>
       <div class="shortAnswerWrapper"><span class="answerTitles">Short Answer:</span>
@@ -66,21 +84,8 @@
       </div>
     {{/if}}
 
-    <br>{{#if questionToVerify.isVerified}}
-          This question has already been verified.
-        {{else}}
-      <div class="thumbsContainer">
-        <span class="nope">
-          Reject Answer<br>
-          {{> thumbsDownIcon}}
-        </span>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span class="yep">
-          Accept Answer<br>
-          {{> thumbsUpIcon}}
-        </span>
-      </div>
-      {{/if}}
+    <br>
+
   </div><!--end questionAnswer-->
 
 </div>

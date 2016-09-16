@@ -657,7 +657,7 @@ $cshGreen: #90A039;
   width: 38.4%;
   position: fixed;
   left: 51.5%;
-  height: 650px;
+  height: 725px;
   margin-right: 10%;
   float:right;
 }
@@ -708,6 +708,7 @@ $cshGreen: #90A039;
   display: inline-block;
   width:100px;
   font-family: sans-serif;
+  font-size: 12px;
 }
 .yep:hover{
   background: $cshGreen;
@@ -719,6 +720,7 @@ $cshGreen: #90A039;
   display: inline-block;
   width:100px;
   font-family: sans-serif;
+  font-size: 12px;
 }
 .nope:hover{
   background: rgb(125, 41, 41);
