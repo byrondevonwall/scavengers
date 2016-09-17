@@ -95,7 +95,7 @@ if (Meteor.isClient) {
         {email:"kim@shorb.net" , roles:["Shorbies", "family"]},
         {email:"Tandri@yahoo.com" , roles:["AWESOME FOUR", "family"]},
         {email:"ryani05@hotmail.com" , roles:["Team Valor", "adult"]},
-        {email:"JenL1217@yahoo.com" , roles:["Bentley's Brigade", "family"]},
+        {email:"jenl1217@yahoo.com" , roles:["Bentley's Brigade", "family"]},
         {email:"tarah1999@gmail.com" , roles:["SMASH HUNTERS 1.0", "adult"]},
         {email:"ainsztein@aol.com" , roles:["The A Team", "adult"]},
         {email:"naenae20@hotmail.com" , roles:["Team Hunters", "family"]},
