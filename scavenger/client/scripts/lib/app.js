@@ -83,7 +83,7 @@ if (Meteor.isClient) {
 
         {email:"teenykins@gmail.com", roles:["The Cary Cats", "family"]},
         {email:"memphis_whitleys@yahoo.com", roles: ["The Memphians", "family"]},
-        {email:"j2newman@gmail.com", roles:["The Hungry Hungry Hippos", "family"]},
+        {email:"j2newman@bellsouth.net", roles:["The Hungry Hungry Hippos", "family"]},
         {email:"testa023@gmail.com", roles:["Cary Underwoods", "adult"]},
         {email:"bcouchon@nc.rr.com", roles:["The Mandonias", "adult"]},
 
@@ -110,6 +110,10 @@ if (Meteor.isClient) {
         {email:"shelly@roboshark.com", roles:["Roboshark", "family"]},
         {email:"shannonlcote@gmail.com", roles:["REDHEADED ROAD-RUNNERS", "family"]},
         {email:"rstahlbusch@gmail.com", roles:["The Chippettes", "family"]},
+
+        {email:"songniy@gmail.com", roles:["Git Gud", "adult"]},
+        {email:"beth.shaver@gmail.com", roles:["Zamahabe", "family"]},
+        {email:"rdrabenstott@gmail.com", roles:["Squirrel Power", "family"]},
 
         {email:"byronssupersweetdevacct@gmail.com", roles:["awesometeam5000", "dev"]},//a
         {email:"byrondevonwall@gmail.com", roles:["awesometeam5000", "dev"]},
@@ -147,11 +151,12 @@ if (Meteor.isClient) {
 
       function addTeams(tCount){
         if(tCount === 0){
-          var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "adult", "family", "family", "adult", "adult", "family", "family", "adult", "family", "adult", "adult", "family", "adult", "adult", "family", "adult", "adult", "family", "family", "family", "family","dev","adult","adult","adult","family","family","family","dev","dev","dev", "judges"]
+          var teamTypes = ["adult","adult","adult","corporate","adult","adult","adult","adult","adult","adult","adult","adult","family","adult","family","family","family","family","corporate","corporate","family","family","corporate","corporate","corporate","corporate","family","family","adult","adult","family","adult","adult","family","adult","adult","family","family","family","family","family","family","adult","adult", "adult", "family", "family", "adult", "adult", "family", "family", "adult", "family", "adult", "adult", "family", "adult", "adult", "family", "adult", "adult", "family", "family", "family", "family", "adult", "family", "family", "dev","adult","adult","adult","family","family","family","dev","dev","dev", "judges"]
 
 
 
-        var teams = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "Moms on a Mission", "The team that shall not be named", "The Chin-Tastic 4!", "Win or Loose we Booze", "NEW KIDS ON THE BLOCK", "Shorbies", "AWESOME FOUR", "Team Valor", "Bentley's Brigade", "SMASH HUNTERS 1.0", "The A Team", "Team Hunters", "Smarty Pants", "Wafflesons", "Familia Peluche", "Don't Cross Us!", "Cary Newbies", "The Flashes", "Roboshark", "REDHEADED ROAD-RUNNERS", "The Chippettes", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"]
+        var teams = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "Moms on a Mission", "The team that shall not be named", "The Chin-Tastic 4!", "Win or Loose we Booze", "NEW KIDS ON THE BLOCK", "Shorbies", "AWESOME FOUR", "Team Valor", "Bentley's Brigade", "SMASH HUNTERS 1.0", "The A Team", "Team Hunters", "Smarty Pants", "Wafflesons", "Familia Peluche", "Don't Cross Us!", "Cary Newbies", "The Flashes", "Roboshark", "REDHEADED ROAD-RUNNERS", "The Chippettes", "Git Gud", "Zamahabe", "Squirrel Power",
+         "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"]
 
         for(var f=0;f<teams.length; f++){
           Meteor.call('createTeam', teams[f], teamTypes[f], 0, 0);
@@ -177,7 +182,8 @@ if (Meteor.isClient) {
     function addQuestions(qCount){
     if(qCount === 0){
 
-          var teamNames = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "Moms on a Mission", "The team that shall not be named", "The Chin-Tastic 4!", "Win or Loose we Booze", "NEW KIDS ON THE BLOCK", "Shorbies", "AWESOME FOUR", "Team Valor", "Bentley's Brigade", "SMASH HUNTERS 1.0", "The A Team", "Team Hunters", "Smarty Pants", "Wafflesons", "Familia Peluche", "Don't Cross Us!", "Cary Newbies", "The Flashes", "Roboshark", "REDHEADED ROAD-RUNNERS", "The Chippettes", "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"]
+          var teamNames = ["THE GRAPE ESCAPE", "FIGHTING BROWNS", "FAB 4", "CAROLINA ORTHO PEDO", "PIGGLY WIGGLY PRINCESSES", "Trox", "Team West Cary", "Campbell Clan", "Team LooDu", "Riddle E-Racers", "Scholars & Ballers", "The 52'ers", "SimTown", "Red Field Trackers", "The Blue Whales", "There's Something About Cary", "Plaque busters", "x Marx the spot", "Mr. Roof's Minions", "Nannies & Sitters & Tutors, OH MY!", "Grinin Lizards", "Dam Those Beavers", "Super Certified", "Rain Makers", "SearStone #1", "SEARSTONE #2", "The Wimbledon Wolfpack", "Jalapeno Hotties", "Aloha Six", "It's Five O'clock Somewhere", "Eeyore's Buddies", "The Lip BALMs", "For Cake and Glory!", "A-Mades-ing", "Ack Attack", "The Hunter Games", "Meat Knuckles", "NC Myers Crew", "Marvelous Morellos", "The Cary Cats", "The Memphians", "The Hungry Hungry Hippos", "Cary Underwoods", "The Mandonias", "Moms on a Mission", "The team that shall not be named", "The Chin-Tastic 4!", "Win or Loose we Booze", "NEW KIDS ON THE BLOCK", "Shorbies", "AWESOME FOUR", "Team Valor", "Bentley's Brigade", "SMASH HUNTERS 1.0", "The A Team", "Team Hunters", "Smarty Pants", "Wafflesons", "Familia Peluche", "Don't Cross Us!", "Cary Newbies", "The Flashes", "Roboshark", "REDHEADED ROAD-RUNNERS", "The Chippettes", "Git Gud", "Zamahabe", "Squirrel Power",
+           "awesometeam5000", "adultwalkup1", "adultwalkup2", "adultwalkup3", "familywalkup1", "familywalkup2", "familywalkup3", "cary citizen", "app store test", "judges"]
 
 
           //a point value of -1 indicates a variable point question.
@@ -505,8 +511,8 @@ Template.dashboard.events({
     if(timeNow > startTime && timeNow < endTime){
       FlowRouter.go('/answerPage')
     } else{
-      sAlert.error("Questions can only be answered between 9:00AM and 1:30PM on September 17, 2016")
-      // FlowRouter.go('/answerPage')
+      // sAlert.error("Questions can only be answered between 9:00AM and 1:30PM on September 17, 2016")
+      FlowRouter.go('/answerPage')
     }
 
     // event.preventDefault();
