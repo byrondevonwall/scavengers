@@ -55,7 +55,7 @@ if (Meteor.isClient) {
 
         {email:"norabarber@gmail.com", roles:["Plaque busters", "family"]},
         {email:"dan.marx@sas.com", roles:["x Marx the spot", "family"]},
-        {email:"Aaronz@mrroof.com", roles:["Mr. Roof's Minions","corporate"]},
+        {email:"aaronz@mrroof.com", roles:["Mr. Roof's Minions","corporate"]},
         {email:"abeard@collegenannies.com", roles:["Nannies & Sitters & Tutors, OH MY!","corporate"]},
 
         {email:"glen.tetrault@yahoo.com", roles:["Grinin Lizards","family"]},
@@ -93,7 +93,7 @@ if (Meteor.isClient) {
         {email:"haleyjs17@gotjump.com" , roles:["Win or Loose we Booze", "adult"]},
         {email:"skjaveland@storm.ca" , roles:["NEW KIDS ON THE BLOCK", "adult"]},
         {email:"kim@shorb.net" , roles:["Shorbies", "family"]},
-        {email:"Tandri@yahoo.com" , roles:["AWESOME FOUR", "family"]},
+        {email:"tandri@yahoo.com" , roles:["AWESOME FOUR", "family"]},
         {email:"ryani05@hotmail.com" , roles:["Team Valor", "adult"]},
         {email:"jenl1217@yahoo.com" , roles:["Bentley's Brigade", "family"]},
         {email:"tarah1999@gmail.com" , roles:["SMASH HUNTERS 1.0", "adult"]},
